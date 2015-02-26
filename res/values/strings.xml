@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">86区</string>
+    <string name="user_admin">系统</string>
+    <string name="title_home">86生活服务平台</string>
+    <string name="title_shequ">社区</string>
+    <string name="title_center">个人中心</string>
+    <string name="money">价格:</string>
+
+    <!-- 业务类别 -->
+    <string name="center">个人</string>
+    <string name="home">首页</string>
+    <string name="community">社区</string>
+    <string name="business">商圈</string>
+    <string name="life">慢主张</string>
+    <string name="activity">活动</string>
+    <string name="cars">汽车</string>
+    <string name="news">新闻</string>
+    <string name="more">更多&#8230;</string>
+    <string name="fresh_another_data">数据加载中&#8230;</string>
+    <string name="fresh_more_data">加载更多数据</string>
+    <string name="choice_page_editext_tips">请输入小区关键字或拼音首字母</string>
+    <string name="home_business_more">更多</string>
+    <string name="home_hot_talk">聚焦南昌</string>
+    <string name="app_no_data">暂无商家数据</string>
+
+    <!-- user info -->
+    <string name="user_login">登入/注册</string>
+    <string name="user_shequ">所在社区：</string>
+    <string name="user_message">我的信箱</string>
+    <string name="user_feedback">意见反馈</string>
+    <string name="user_about_us">关于我们</string>
+    <string name="user_no_group">暂无小区</string>
+    <string name="user_shequ_change">更改</string>
+
+    <!-- 登录页面 -->
+    <string name="login_title">登录86区</string>
+    <string name="login_username">用户名</string>
+    <string name="login_password">密码</string>
+    <string name="login">登录</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="register_new">注册新用户</string>
+    <string name="login_loading">登入验证,请稍等！</string>
+    <string name="login_error_username_none">用户名不存在</string>
+    <string name="login_error_password_wrong">密码错误</string>
+    <string name="login_error_input">非法输入</string>
+    <string name="login_error_net">请检查网络连接</string>
+
+    <!-- 意见反馈 -->
+    <string name="feedback_content">意见内容</string>
+    <string name="feedback_content_hint">请留下您的宝贵意见和建议</string>
+    <string name="feedback_contact">联系方式 (必填)</string>
+    <string name="feedback_contact_hint">请留下您的联系电话、Email或QQ</string>
+    <string name="feedback_submit">提交</string>
+
+    <!-- 注册页面 -->
+    <string name="register_welcome">欢迎注册86区</string>
+    <string name="register_login">直接登入</string>
+    <string name="register">注册</string>
+    <string name="register_please_fill_message">请填写信息！</string>
+    <string name="register_confirmation">验证通过！</string>
+    <string name="register_account">请输入您的账号</string>
+    <string name="register_already">该账号已注册！</string>
+    <string name="register_email">请输入您的邮箱</string>
+    <string name="register_email_wrong">邮箱地址格式不对！</string>
+    <string name="register_email_register">该邮箱已注册！</string>
+    <string name="register_password">请输入您的密码</string>
+    <string name="register_repassword">请重复输入密码</string>
+    <string name="register_password_not_same">两次输入的内容不一致！</string>
+
+</resources>

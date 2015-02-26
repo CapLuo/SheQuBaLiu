@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- title -->
+    <dimen name="_title_size">24sp</dimen>
+    <dimen name="_title_business_size">22sp</dimen>
+
+    <!-- user login page -->
+    <dimen name="login_layout_margin">20dp</dimen>
+    <dimen name="login_edittext_margin">10dp</dimen>
+    <dimen name="login_edittext_texsize">24sp</dimen>
+    <dimen name="login_textline_margintop">10dp</dimen>
+    <dimen name="login_textline_marginleft">20dp</dimen>
+    <dimen name="login_textline_height">1dp</dimen>
+    <dimen name="login_textregister_marginleft">8dp</dimen>
+    <dimen name="login_textregister_textsize">20sp</dimen>
+    <dimen name="login_button_textsize">24sp</dimen>
+
+    <!-- user message page -->
+    <dimen name="message_name_textsize">22sp</dimen>
+    <dimen name="message_content_textsize">20sp</dimen>
+    <dimen name="message_item_margintop">4dp</dimen>
+
+    <!-- feedback page -->
+    <dimen name="feedback_content_hight">120dp</dimen>
+
+    <!-- user page -->
+    <dimen name="user_square_content">30dp</dimen>
+    <dimen name="user_info_image_witdh">85dp</dimen>
+
+    <!-- home page -->
+    <dimen name="top_advert_img_height">200dp</dimen>
+    <dimen name="top_indicator_margin_bottom">4dp</dimen>
+    <dimen name="gridview_spacing">10dp</dimen>
+    <dimen name="gridview_textsize">16sp</dimen>
+    <dimen name="gridview_item_text_margintop">9dp</dimen>
+    <dimen name="gridview_item_text_marginbottom">3dp</dimen>
+    <dimen name="gridview_item_img_width">55dp</dimen>
+    <dimen name="gridview_column_width">90dp</dimen>
+
+    <!-- community page -->
+    <dimen name="community_item_paddingtop">10dp</dimen>
+    <dimen name="community_item_list_img_height">55dp</dimen>
+    <dimen name="community_item_list_item_size">16sp</dimen>
+    <dimen name="community_item_list_img_marginleft">20dp</dimen>
+    <dimen name="community_item_list_text_marginLeft">20dp</dimen>
+
+    <!-- resgister page -->
+    <dimen name="register_margin_left">20dp</dimen>
+    <dimen name="register_margintop">10dp</dimen>
+    <dimen name="register_line_height">1dp</dimen>
+    <dimen name="register_text_textsize">24sp</dimen>
+    <dimen name="register_edit_textsize">22sp</dimen>
+    <dimen name="register_error_message_size">20sp</dimen>
+    <dimen name="register_button_textsize">22sp</dimen>
+    <dimen name="register_edit_margin_left">8dp</dimen>
+
+    <!-- second goods page -->
+    <dimen name="second_good_page_paddingleft">20dp</dimen>
+    <dimen name="second_good_page_paddingTop">10dp</dimen>
+    <dimen name="second_good_page_width">150dp</dimen>
+
+    <!-- neighbour page -->
+    <dimen name="neighbour_page_paddingleft">20dp</dimen>
+    <dimen name="neighbour_page_paddingtop">10dp</dimen>
+    <dimen name="neighbour_page_img_width">96dp</dimen>
+    <dimen name="neighbour_page_textsize">20sp</dimen>
+
+    <!-- repair page -->
+    <dimen name="repair_item_img_width">55dp</dimen>
+    <dimen name="repair_item_textsize">18sp</dimen>
+    <dimen name="repair_item_margin_top">10dp</dimen>
+    <dimen name="repair_line_height">1dp</dimen>
+
+    <!-- choice community page -->
+    <dimen name="choice_margin_left">20dp</dimen>
+    <dimen name="choice_margin_top">10dp</dimen>
+    <dimen name="choice_item_size">18sp</dimen>
+    <dimen name="choice_slide_height">460dp</dimen>
+    <dimen name="choice_slide_width">30dp</dimen>
+
+</resources>

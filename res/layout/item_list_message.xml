@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_list_selector"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_textline_marginleft"
+        android:layout_marginRight="@dimen/login_textline_marginleft" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/message_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/message_item_margintop"
+                android:textSize="@dimen/message_name_textsize" />
+
+            <TextView
+                android:id="@+id/message_contend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/message_item_margintop"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="@dimen/message_content_textsize" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/message_list_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_textline_height"
+        android:layout_marginLeft="@dimen/login_textline_marginleft"
+        android:layout_marginRight="@dimen/login_textline_marginleft"
+        android:background="@color/list_gray" />
+
+</LinearLayout>

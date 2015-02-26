@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="shequ_business">
+        <item>邻里圈</item>
+        <item>二手市场</item>
+        <item>维修</item>
+        <item>快递</item>
+        <item>家政</item>
+        <item>缴费</item>
+        <item>便利店</item>
+        <item>果蔬</item>
+        <item>健康</item>
+        <item>教育</item>
+        <item>金融</item>
+    </string-array>
+    <string-array name="shequ_repair">
+        <item>西门子</item>
+        <item>LG</item>
+        <item>澳柯玛</item>
+        <item>格兰仕</item>
+        <item>格力</item>
+        <item>海尔</item>
+        <item>美的</item>
+        <item>三星</item>
+        <item>松下</item>
+        <item>索尼</item>
+    </string-array>
+    <string-array name="shequ_repair_phone">
+        <item>4008899999</item>
+        <item>4008199999</item>
+        <item>4006187777</item>
+        <item>4008300333</item>
+        <item>4008365315</item>
+        <item>4006999999</item>
+        <item>4008899315</item>
+        <item>4008105858</item>
+        <item>4008100781</item>
+        <item>4008109000</item>
+    </string-array>
+    <string-array name="shequ_express">
+        <item>中通</item>
+        <item>全峰</item>
+        <item>顺丰</item>
+        <item>EMS</item>
+        <item>申通</item>
+        <item>天天</item>
+        <item>汇通</item>
+        <item>中铁</item>
+        <item>全一</item>
+        <item>韵达</item>
+    </string-array>
+    <string-array name="shequ_express_phone">
+        <item>4008270270</item>
+        <item>4001000001</item>
+        <item>4008111111</item>
+        <item>11183</item>
+        <item>4008895543</item>
+        <item>4001888888</item>
+        <item>4009565656</item>
+        <item>95572</item>
+        <item>4006631111</item>
+        <item>4008216789</item>
+    </string-array>
+    <string-array name="shequ_zuche">
+        <item>神州租车</item>
+        <item>一嗨租车</item>
+        <item>中联租车</item>
+    </string-array>
+    <string-array name="shequ_zuche_phone">
+        <item>4006166666</item>
+        <item>4006900791</item>
+        <item>4008886608</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.shequ.baliu.view.EyeCityListView
+                android:id="@+id/list_secondhand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.shequ.baliu.view.EyeCityListView>
+
+            <Button
+                android:id="@+id/secondhand_refresh_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fresh_more_data" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

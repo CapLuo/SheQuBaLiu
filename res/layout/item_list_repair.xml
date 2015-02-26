@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/neighbour_page_paddingleft"
+    android:paddingRight="@dimen/neighbour_page_paddingleft"
+    android:paddingTop="@dimen/neighbour_page_paddingtop" >
+
+    <ImageView
+        android:id="@+id/list_repair_img"
+        android:layout_width="@dimen/repair_item_img_width"
+        android:layout_height="@dimen/repair_item_img_width"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/repair_item_margin_top"
+        android:layout_marginTop="@dimen/repair_item_margin_top"
+        android:contentDescription="@drawable/icon_blue" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/neighbour_page_paddingleft"
+        android:layout_toRightOf="@id/list_repair_img"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/list_repair_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/repair_item_textsize" />
+
+        <TextView
+            android:id="@+id/list_repair_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/repair_item_textsize" />
+    </LinearLayout>
+
+</RelativeLayout>
