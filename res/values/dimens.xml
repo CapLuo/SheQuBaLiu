@@ -79,4 +79,9 @@
     <dimen name="choice_slide_height">460dp</dimen>
     <dimen name="choice_slide_width">30dp</dimen>
 
+    <!-- conversation page -->
+    <dimen name="conversation_margin_left">10dp</dimen>
+    <dimen name="conversation_margin_top">10dp</dimen>
+    <dimen name="conversation_text_size">18sp</dimen>
+
 </resources>

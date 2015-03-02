@@ -15,5 +15,6 @@
     <color name="white">#FFFFFF</color>
     <color name="transport_white">#80000000</color>
     <color name="transparent">#00000000</color>
+    <color name="oranger">#FF9C21</color>
 
 </resources>

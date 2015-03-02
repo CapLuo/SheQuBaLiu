@@ -69,4 +69,8 @@
     <string name="register_repassword">请重复输入密码</string>
     <string name="register_password_not_same">两次输入的内容不一致！</string>
 
+    <!-- 会话页面 -->
+    <string name="conversation_commit">给ta留言</string>
+    <string name="conversation_hint">你想对ta说&#8230;</string>
+
 </resources>

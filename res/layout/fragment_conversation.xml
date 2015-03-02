@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/conversation_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/coversation_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/conversation_margin_left"
+            android:layout_marginRight="@dimen/conversation_margin_left"
+            android:background="@drawable/conversation_commit_button"
+            android:text="@string/conversation_commit"
+            android:textSize="@dimen/conversation_text_size" />
+
+        <EditText
+            android:id="@+id/conversation_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/conversation_margin_left"
+            android:layout_toLeftOf="@id/coversation_commit"
+            android:background="@drawable/conversation_edit_background"
+            android:hint="@string/conversation_hint"
+            android:textSize="@dimen/conversation_text_size" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/conversation_bottom" >
+    </ScrollView>
+
+</RelativeLayout>
