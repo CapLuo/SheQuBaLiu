@@ -12,10 +12,11 @@ import android.view.ViewGroup;
 
 public class BussinessFragment extends Fragment {
 
+	private View mContentView;
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.activity_business, container, false);
+		return mContentView;
 	}
 
 	@Override
