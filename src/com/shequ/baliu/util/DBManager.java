@@ -18,7 +18,7 @@ public class DBManager {
 
 	public String lastAddTime = "0";
 
-	//单例模式
+	// 单例模式
 	public DBManager(Context context) {
 		mContext = context;
 		this.getInstance();
@@ -90,19 +90,22 @@ public class DBManager {
 	public void addMessage(MessageInfo info) {
 		db.execSQL(
 				"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-						+ " VALUES(?,?,?,?,?)",
+						+ " VALUES(?,?,?,?,?,?)",
 				new Object[] { info.getId(), info.getSendid(),
-						info.getSendname(), info.getMessage(), info.getTime() });
+						info.getSendname(), info.getReceiveid(),
+						info.getMessage(), info.getTime() });
 	}
 
 	public void addMessages(List<MessageInfo> messages) {
 		db.beginTransaction();
 		try {
 			for (MessageInfo info : messages) {
-				db.execSQL("REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-						+ " VALUES(?,?,?,?,?)", new Object[] { info.getId(),
-						info.getSendid(), info.getSendname(),
-						info.getMessage(), info.getTime() });
+				db.execSQL(
+						"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
+								+ " VALUES(?,?,?,?,?,?)",
+						new Object[] { info.getId(), info.getSendid(),
+								info.getReceiveid(), info.getSendname(),
+								info.getMessage(), info.getTime() });
 			}
 			db.setTransactionSuccessful();
 		} finally {
@@ -128,11 +131,14 @@ public class DBManager {
 			info.setID(c.getString(c.getColumnIndex(SqlHelper._MessageID)));
 			info.setSendid(c.getString(c
 					.getColumnIndex(SqlHelper._MessageSendId)));
+			info.setReceiveid(c.getString(c
+					.getColumnIndex(SqlHelper._MessageReceiveId)));
 			info.setSendname(c.getString(c
 					.getColumnIndex(SqlHelper._MessageSendName)));
 			info.setMessage(c.getString(c
 					.getColumnIndex(SqlHelper._MessageContent)));
-			info.setTime(lastAddTime = c.getString(c.getColumnIndex(SqlHelper._MessageTime)));
+			info.setTime(lastAddTime = c.getString(c
+					.getColumnIndex(SqlHelper._MessageTime)));
 			list.add(info);
 			c.moveToNext();
 		}
@@ -140,7 +146,7 @@ public class DBManager {
 		return list;
 	}
 
-	//用完必须close
+	// 用完必须close
 	public void closeDB() {
 		db.close();
 		db = null;

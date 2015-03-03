@@ -175,6 +175,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 	public static final String _MessageID = "id";
 	public static final String _MessageSendId = "sendid";
+	public static final String _MessageReceiveId = "receiveid";
 	public static final String _MessageSendName = "sendname";
 	public static final String _MessageContent = "content";
 	public static final String _MessageTime = "time";
@@ -216,6 +217,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 		buffer.append("CREATE TABLE [" + MESSAGE_TABLE_NAME + "] (");
 		buffer.append("[" + _MessageID + "] INTEGER NOT NULL PRIMARY KEY, ");
 		buffer.append("[" + _MessageSendId + "] TEXT,");
+		buffer.append("[" + _MessageReceiveId + "] TEXT,");
 		buffer.append("[" + _MessageSendName + "] TEXT,");
 		buffer.append("[" + _MessageContent + "] TEXT,");
 		buffer.append("[" + _MessageTime + "] TEXT)");

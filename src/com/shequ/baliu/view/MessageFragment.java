@@ -58,7 +58,7 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 				}
 			}
 		}
-		
+
 	};
 
 	@Override
@@ -129,7 +129,8 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 							List<MessageInfo> messages = new ArrayList<MessageInfo>();
 							for (int i = 0; i < response.length(); i++) {
 								JSONObject json = response.getJSONObject(i);
-								MessageInfo info = parserJson(json);
+								MessageInfo info = MessageInfo.parserJson(json);
+								mLastAddTime = info.getTime();
 								messages.add(info);
 							}
 							if (mMessages.isEmpty()) {
@@ -147,16 +148,6 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 
 				});
 
-	}
-
-	private MessageInfo parserJson(JSONObject json) throws JSONException {
-		MessageInfo info = new MessageInfo();
-		info.setID(json.getString("messageid"));
-		info.setSendid(json.getString("userid"));
-		info.setMessage(json.getString("content"));
-		info.setTime(mLastAddTime = json.getString("addtime"));
-		info.setSendname(json.getString("nickname"));
-		return info;
 	}
 
 	@Override
