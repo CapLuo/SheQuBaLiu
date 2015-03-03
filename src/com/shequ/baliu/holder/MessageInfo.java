@@ -1,10 +1,14 @@
 package com.shequ.baliu.holder;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MessageInfo {
 
 	private String id;
 	private String message;
 	private String sendid;
+	private String receiveid;
 	private String sendname;
 	private String time;
 
@@ -32,6 +36,14 @@ public class MessageInfo {
 		this.sendid = sendid;
 	}
 
+	public String getReceiveid() {
+		return receiveid;
+	}
+
+	public void setReceiveid(String receiveid) {
+		this.receiveid = receiveid;
+	}
+
 	public String getSendname() {
 		return sendname;
 	}
@@ -46,5 +58,16 @@ public class MessageInfo {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public static MessageInfo parserJson(JSONObject json) throws JSONException {
+		MessageInfo info = new MessageInfo();
+		info.setID(json.getString("messageid"));
+		info.setSendid(json.getString("userid"));
+		info.setReceiveid(json.getString("touserid"));
+		info.setMessage(json.getString("content"));
+		info.setTime(json.getString("addtime"));
+		info.setSendname(json.getString("nickname"));
+		return info;
 	}
 }
