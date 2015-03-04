@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -28,6 +29,8 @@ import com.shequ.baliu.view.HomeFragment;
 import com.shequ.baliu.view.PersionFragment;
 
 public class SheQuActivity extends FragmentActivity implements OnClickListener {
+
+	public static int request_code = 101;
 
 	private ShequTools mShequTools;
 
@@ -378,6 +381,15 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
 		});
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent intent) {
+		if (resultCode == 400) {
+			setChoiceFragmentContent(2);
+		}
+	}
+
 	// private void businessTextHighLight() {
 	// int index = ShequBusinessEnum.getValues(mDataHolder
 	// .getCurrentBusiness());

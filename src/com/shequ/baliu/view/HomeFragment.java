@@ -116,7 +116,8 @@ public class HomeFragment extends Fragment {
 					bundle.putInt("position", position);
 					intent.putExtras(bundle);
 					intent.setClass(getActivity(), ShequFunActivity.class);
-					getActivity().startActivity(intent);
+					getActivity().startActivityForResult(intent,
+							SheQuActivity.request_code);
 				}
 			}
 		});
@@ -213,7 +214,8 @@ public class HomeFragment extends Fragment {
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 				try {
-					mAdvertAdapter = new AdapterHomeAdvertImage(parserImageUrl(response));
+					mAdvertAdapter = new AdapterHomeAdvertImage(
+							parserImageUrl(response));
 					mImagePagerView.setAdapter(mAdvertAdapter);
 					scheduledExecutorService.scheduleAtFixedRate(
 							new ScrollTask(), 1, 3, TimeUnit.SECONDS);
@@ -264,7 +266,7 @@ public class HomeFragment extends Fragment {
 	/**
 	 * 换行切换任务
 	 * 
-	 * @author Administrator
+	 * @author luo
 	 * 
 	 */
 	private class ScrollTask implements Runnable {

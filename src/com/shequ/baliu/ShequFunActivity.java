@@ -8,16 +8,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.mobstat.StatService;
 import com.shequ.baliu.util.ShequFunEnum;
-import com.shequ.baliu.view.ConversationFragment;
 import com.shequ.baliu.view.NeighbourFragment;
 import com.shequ.baliu.view.RepairExpressFragment;
 import com.shequ.baliu.view.SecondhandFragment;
 import com.shequ.baliu.view.BankFragment;
 
 public class ShequFunActivity extends FragmentActivity {
+
+	public static int result_islogin = 200;
+	public static int result_notlogin = 400;
 
 	private View mTitleBar;
 	private TextView mTitle;
@@ -80,6 +83,15 @@ public class ShequFunActivity extends FragmentActivity {
 	}
 
 	private void choiceFragment(ShequFunEnum fun) {
+		if (fun == ShequFunEnum.NEIGHBOUR) {
+			ShequApplication app = (ShequApplication) getApplication();
+			if (!app.getLogin()) {
+				Toast.makeText(this, "请先登入", Toast.LENGTH_SHORT).show();
+				setResult(result_notlogin);
+				onBackPressed();
+				return;
+			}
+		}
 		FragmentTransaction transaction = mFragmentManager.beginTransaction();
 		switch (fun) {
 		case NEIGHBOUR:

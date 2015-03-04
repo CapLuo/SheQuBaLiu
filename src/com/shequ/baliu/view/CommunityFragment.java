@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.baidu.mobstat.StatService;
 import com.shequ.baliu.R;
+import com.shequ.baliu.SheQuActivity;
 import com.shequ.baliu.ShequFunActivity;
 import com.shequ.baliu.adapter.AdapterCommunity;
 
@@ -71,6 +72,7 @@ public class CommunityFragment extends Fragment implements OnItemClickListener {
 		bundle.putInt("position", position);
 		intent.putExtras(bundle);
 		intent.setClass(getActivity(), ShequFunActivity.class);
-		getActivity().startActivity(intent);
+		getActivity()
+				.startActivityForResult(intent, SheQuActivity.request_code);
 	}
 }
