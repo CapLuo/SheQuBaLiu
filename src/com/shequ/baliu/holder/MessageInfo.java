@@ -3,6 +3,8 @@ package com.shequ.baliu.holder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.text.TextUtils;
+
 public class MessageInfo {
 
 	private String id;
@@ -45,6 +47,9 @@ public class MessageInfo {
 	}
 
 	public String getSendname() {
+		if (TextUtils.isEmpty(sendname)) {
+			return "";
+		}
 		return sendname;
 	}
 
@@ -60,14 +65,17 @@ public class MessageInfo {
 		this.time = time;
 	}
 
-	public static MessageInfo parserJson(JSONObject json) throws JSONException {
+	public static MessageInfo parserJson(JSONObject json, boolean isConversation)
+			throws JSONException {
 		MessageInfo info = new MessageInfo();
 		info.setID(json.getString("messageid"));
 		info.setSendid(json.getString("userid"));
 		info.setReceiveid(json.getString("touserid"));
 		info.setMessage(json.getString("content"));
 		info.setTime(json.getString("addtime"));
-		info.setSendname(json.getString("nickname"));
+		if (!isConversation) {
+			info.setSendname(json.getString("nickname"));
+		}
 		return info;
 	}
 }

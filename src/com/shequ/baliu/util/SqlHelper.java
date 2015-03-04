@@ -1,5 +1,7 @@
 package com.shequ.baliu.util;
 
+import java.io.UnsupportedEncodingException;
+
 import org.apache.http.Header;
 
 import android.content.Context;
@@ -21,11 +23,16 @@ public class SqlHelper extends SQLiteOpenHelper {
 	public static void get(String tableName, String where,
 			JsonHttpResponseHandler jsonHttpHandler) {
 		RequestParams params = new RequestParams();
-		String paramsValue = new String(Base64.encode(("SELECT * FROM `"
-				+ tableName + "` WHERE " + where).getBytes(), 0));
-		Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
-		params.put("r", paramsValue);
-		HttpUtil.get(StaticVariableSet.DATA_URL, params, jsonHttpHandler);
+		String paramsValue;
+		try {
+			paramsValue = new String(Base64.encode(("SELECT * FROM `"
+					+ tableName + "` WHERE " + where).getBytes("utf-8"), 0));
+			Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
+			params.put("r", paramsValue);
+			HttpUtil.get(StaticVariableSet.DATA_URL, params, jsonHttpHandler);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void get(String colum, String from, String where,
@@ -128,6 +135,16 @@ public class SqlHelper extends SQLiteOpenHelper {
 				});
 	}
 
+	public static void add(String tableName, String values,
+			AsyncHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		String paramsValue = new String(Base64.encode(("INSERT INTO "
+				+ tableName + values).getBytes(), 0));
+		Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
+		params.put("r", paramsValue);
+		HttpUtil.post(StaticVariableSet.DATA_URL, params, responseHandler);
+	}
+
 	public static void update(String tableName, String values, String where) {
 		RequestParams params = new RequestParams();
 		String paramsValue = new String(Base64.encode(("UPDATE `" + tableName
@@ -174,6 +191,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 	public static final String MESSAGE_TABLE_NAME = "Club_Message";
 
 	public static final String _MessageID = "id";
+	public static final String _MessageNetId = "messageid";
 	public static final String _MessageSendId = "sendid";
 	public static final String _MessageReceiveId = "receiveid";
 	public static final String _MessageSendName = "sendname";
@@ -216,6 +234,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 		buffer.append("CREATE TABLE [" + MESSAGE_TABLE_NAME + "] (");
 		buffer.append("[" + _MessageID + "] INTEGER NOT NULL PRIMARY KEY, ");
+		buffer.append("[" + _MessageNetId + "] TEXT,");
 		buffer.append("[" + _MessageSendId + "] TEXT,");
 		buffer.append("[" + _MessageReceiveId + "] TEXT,");
 		buffer.append("[" + _MessageSendName + "] TEXT,");

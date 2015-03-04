@@ -90,20 +90,24 @@ public class DBManager {
 	public void addMessage(MessageInfo info) {
 		db.execSQL(
 				"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-						+ " VALUES(?,?,?,?,?,?)",
-				new Object[] { info.getId(), info.getSendid(),
-						info.getSendname(), info.getReceiveid(),
+						+ " VALUES(?,?,?,?,?,?,?)",
+				new Object[] { null, info.getId(), info.getSendid(),
+						info.getReceiveid(), info.getSendname(),
 						info.getMessage(), info.getTime() });
 	}
 
 	public void addMessages(List<MessageInfo> messages) {
+		if (messages.size() == 0) {
+			return;
+		}
+
 		db.beginTransaction();
 		try {
 			for (MessageInfo info : messages) {
 				db.execSQL(
 						"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-								+ " VALUES(?,?,?,?,?,?)",
-						new Object[] { info.getId(), info.getSendid(),
+								+ " VALUES(?,?,?,?,?,?,?)",
+						new Object[] { null, info.getId(), info.getSendid(),
 								info.getReceiveid(), info.getSendname(),
 								info.getMessage(), info.getTime() });
 			}
@@ -119,7 +123,7 @@ public class DBManager {
 
 	public List<MessageInfo> queryMessage() {
 		Cursor c = db.rawQuery("SELECT * FROM " + SqlHelper.MESSAGE_TABLE_NAME
-				+ " ORDER BY " + SqlHelper._MessageTime, null);
+				+ " ORDER BY " + SqlHelper._MessageNetId, null);
 		return parserMessageCursor(c);
 	}
 
@@ -128,7 +132,7 @@ public class DBManager {
 		c.moveToFirst();
 		while (!c.isAfterLast()) {
 			MessageInfo info = new MessageInfo();
-			info.setID(c.getString(c.getColumnIndex(SqlHelper._MessageID)));
+			info.setID(c.getString(c.getColumnIndex(SqlHelper._MessageNetId)));
 			info.setSendid(c.getString(c
 					.getColumnIndex(SqlHelper._MessageSendId)));
 			info.setReceiveid(c.getString(c

@@ -24,6 +24,9 @@ public class ConversationActivity extends FragmentActivity implements
 	private View mReturn;
 	private TextView mTitle;
 
+	private String mTouserid;
+	private String mName;
+
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -44,19 +47,26 @@ public class ConversationActivity extends FragmentActivity implements
 	}
 
 	private void initData() {
-		setChoiceFragment();
-
 		Intent intent = getIntent();
 		String title = intent.getExtras().getString("Title");
+		String id = intent.getExtras().getString("Id");
 		if (!TextUtils.isEmpty(title)) {
-			mTitle.setText(title);
+			mName = title;
+			mTitle.setText(mName);
 		}
+		if (!TextUtils.isEmpty(id)) {
+			mTouserid = id;
+		}
+
+		setChoiceFragment();
 	}
 
 	private void setChoiceFragment() {
 		mTransaction = mManager.beginTransaction();
 		if (mConversationPage == null) {
-			mConversationPage = new ConversationFragment();
+			ShequApplication app = (ShequApplication) getApplication();
+			mConversationPage = new ConversationFragment(app.getInfo()
+					.getUserId(), mTouserid, mName);
 		}
 		mTransaction.replace(R.id._content_main, mConversationPage);
 		mTransaction.commit();

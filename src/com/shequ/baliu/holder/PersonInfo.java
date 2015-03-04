@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import com.shequ.baliu.util.StaticVariableSet;
 
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
 public class PersonInfo {
 
@@ -188,7 +189,12 @@ public class PersonInfo {
 		info.setMerchant(isMerchant == null ? "0" : isMerchant);
 		String path = json.getString("path");
 		String face = json.getString("face");
-		info.setPhoto(StaticVariableSet.IMG_URL + "/Upload/face/" + path + face);
+		if (TextUtils.isEmpty(path + face)) {
+			info.setPhone("");
+		} else {
+			info.setPhoto(StaticVariableSet.IMG_URL + "/Upload/face/" + path
+					+ face);
+		}
 		return info;
 	}
 }

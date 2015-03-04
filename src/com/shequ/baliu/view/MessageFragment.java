@@ -129,7 +129,8 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 							List<MessageInfo> messages = new ArrayList<MessageInfo>();
 							for (int i = 0; i < response.length(); i++) {
 								JSONObject json = response.getJSONObject(i);
-								MessageInfo info = MessageInfo.parserJson(json);
+								MessageInfo info = MessageInfo.parserJson(json,
+										false);
 								mLastAddTime = info.getTime();
 								messages.add(info);
 							}

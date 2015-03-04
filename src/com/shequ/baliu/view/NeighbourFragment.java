@@ -121,6 +121,7 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 		PersonInfo info = (PersonInfo) mAdapter.getItem(position);
 		Intent intent = new Intent();
 		intent.putExtra("Title", info.getNickName());
+		intent.putExtra("Id", info.getUserId());
 		intent.setClass(getActivity(), ConversationActivity.class);
 		getActivity().startActivity(intent);
 	}

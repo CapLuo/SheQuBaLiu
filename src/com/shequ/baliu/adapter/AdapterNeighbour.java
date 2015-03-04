@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,9 +64,8 @@ public class AdapterNeighbour extends BaseAdapter {
 		TextView name = (TextView) convertView
 				.findViewById(R.id.neighbour_name);
 		String img_url = mList.get(position).getPhoto();
-		ImageLoader.getInstance().displayImage(mList.get(position).getPhoto(),
-				img, mOptions);
-		if (img_url == null || img_url.equals("")) {
+		ImageLoader.getInstance().displayImage(img_url, img, mOptions);
+		if (TextUtils.isEmpty(img_url)) {
 			img.setImageResource(R.drawable.user_head_default);
 		}
 		name.setText(mList.get(position).getNickName());
