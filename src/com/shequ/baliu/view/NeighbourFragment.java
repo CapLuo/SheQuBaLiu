@@ -37,6 +37,8 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 	private AdapterNeighbour mAdapter;
 	private View mMoreView;
 
+	private String mUserId;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +54,15 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 		initData();
 
 		return mContentView;
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		ShequApplication app = (ShequApplication) getActivity()
+				.getApplication();
+		mUserId = app.getInfo().getUserId();
 	}
 
 	private void initView(LayoutInflater inflater) {
@@ -102,7 +113,8 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 						for (int i = 0; i < response.length(); i++) {
 							JSONObject json = response.getJSONObject(i);
 							PersonInfo info = PersonInfo.parseJson(json);
-							if (info != null) {
+							if (info != null
+									&& !info.getUserId().equals(mUserId)) {
 								people.add(info);
 							}
 						}
