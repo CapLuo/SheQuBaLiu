@@ -84,4 +84,14 @@
     <dimen name="conversation_margin_top">10dp</dimen>
     <dimen name="conversation_text_size">18sp</dimen>
 
+    <!-- about page -->
+    <dimen name="about_img_width">95dp</dimen>
+    <dimen name="about_img_marginTop">20dp</dimen>
+    <dimen name="about_line_height">1dp</dimen>
+    <dimen name="about_content_text_size">15sp</dimen>
+    <dimen name="about_text_size">17sp</dimen>
+    <dimen name="about_layout_margin_left">10dp</dimen>
+    <dimen name="about_layout_margin_top">15dp</dimen>
+    <dimen name="about_layout_text_margin_top">10dp</dimen>
+
 </resources>

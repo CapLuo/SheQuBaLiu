@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.baidu.mobstat.StatService;
+import com.shequ.baliu.view.AboutFragment;
 import com.shequ.baliu.view.FeedbackFragment;
 import com.shequ.baliu.view.LoginFragment;
 import com.shequ.baliu.view.MessageFragment;
@@ -31,6 +32,7 @@ public class ShequUserActivity extends FragmentActivity implements
 	private RegisterFragment mRegisterFragment;
 	private MessageFragment mMessageFragment;
 	private FeedbackFragment mFeedBackFragment;
+	private AboutFragment mAboutFragment;
 
 	private int mCurrentIndex;
 
@@ -112,6 +114,10 @@ public class ShequUserActivity extends FragmentActivity implements
 		}
 		if (index == 4) {
 			mTitle.setText(R.string.user_about_us);
+			if (mAboutFragment == null) {
+				mAboutFragment = new AboutFragment();
+			}
+			mTransaction.replace(R.id.content_main, mAboutFragment);
 		}
 		mTransaction.commit();
 	}

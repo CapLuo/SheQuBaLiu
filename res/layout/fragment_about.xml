@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="@dimen/about_img_width"
+        android:layout_height="@dimen/about_img_width"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/about_img_marginTop"
+        android:contentDescription="@drawable/icon_blue"
+        android:src="@drawable/icon_blue" />
+
+    <TextView
+        android:id="@+id/about_vesrion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/about_layout_margin_left"
+        android:layout_marginRight="@dimen/about_layout_margin_left"
+        android:layout_marginTop="@dimen/about_layout_margin_top"
+        android:text="@string/about_content"
+        android:textSize="@dimen/about_content_text_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/about_layout_margin_left"
+        android:layout_marginRight="@dimen/about_layout_margin_left"
+        android:layout_marginTop="@dimen/about_layout_margin_top"
+        android:background="@drawable/about_area_background"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/about_layout_text_margin_top"
+            android:paddingTop="@dimen/about_layout_text_margin_top" >
+
+            <TextView
+                android:id="@+id/about_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/about_layout_margin_left"
+                android:text="@string/about_author"
+                android:textSize="@dimen/about_text_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/about_author"
+                android:gravity="center_horizontal"
+                android:text="@string/about_author_c"
+                android:textSize="@dimen/about_text_size" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/about_line_height"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/about_layout_text_margin_top"
+            android:paddingTop="@dimen/about_layout_text_margin_top" >
+
+            <TextView
+                android:id="@+id/about_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/about_layout_margin_left"
+                android:text="@string/about_email"
+                android:textSize="@dimen/about_text_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/about_email"
+                android:gravity="center_horizontal"
+                android:text="@string/about_email_c"
+                android:textSize="@dimen/about_text_size" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
