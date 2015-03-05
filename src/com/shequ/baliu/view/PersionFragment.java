@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -105,8 +107,13 @@ public class PersionFragment extends Fragment implements OnClickListener {
 				} else {
 					mUserShequName.setText(app.getInfo().getGroupName());
 				}
-				ImageLoader.getInstance().displayImage(
-						app.getInfo().getPhoto(), mPersionFace, mOptions);
+				String img_url = app.getInfo().getPhoto();
+				if (TextUtils.isEmpty(img_url)) {
+					mPersionFace.setImageResource(R.drawable.user_head_default);
+				} else {
+					ImageLoader.getInstance().displayImage(
+							app.getInfo().getPhoto(), mPersionFace, mOptions);
+				}
 			} else {
 				inLogin.setVisibility(View.VISIBLE);
 				mUserInfoLayout.setVisibility(View.INVISIBLE);
