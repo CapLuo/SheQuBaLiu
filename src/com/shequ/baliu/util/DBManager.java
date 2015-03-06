@@ -90,10 +90,10 @@ public class DBManager {
 	public void addMessage(MessageInfo info) {
 		db.execSQL(
 				"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-						+ " VALUES(?,?,?,?,?,?,?)",
+						+ " VALUES(?,?,?,?,?,?,?,?)",
 				new Object[] { null, info.getId(), info.getSendid(),
 						info.getReceiveid(), info.getSendname(),
-						info.getMessage(), info.getTime() });
+						info.getMessage(), info.getType(), info.getTime() });
 	}
 
 	public void addMessages(List<MessageInfo> messages) {
@@ -106,10 +106,11 @@ public class DBManager {
 			for (MessageInfo info : messages) {
 				db.execSQL(
 						"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-								+ " VALUES(?,?,?,?,?,?,?)",
+								+ " VALUES(?,?,?,?,?,?,?,?)",
 						new Object[] { null, info.getId(), info.getSendid(),
 								info.getReceiveid(), info.getSendname(),
-								info.getMessage(), info.getTime() });
+								info.getMessage(), info.getType(),
+								info.getTime() });
 			}
 			db.setTransactionSuccessful();
 		} finally {
@@ -121,8 +122,9 @@ public class DBManager {
 		db.delete(SqlHelper.MESSAGE_TABLE_NAME, "id == ?", new String[] { id });
 	}
 
-	public List<MessageInfo> queryMessage() {
+	public List<MessageInfo> queryMessage(String type) {
 		Cursor c = db.rawQuery("SELECT * FROM " + SqlHelper.MESSAGE_TABLE_NAME
+				+ " WHERE " + SqlHelper._MessageType + " = " + type
 				+ " ORDER BY " + SqlHelper._MessageNetId, null);
 		return parserMessageCursor(c);
 	}

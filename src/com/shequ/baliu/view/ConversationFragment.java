@@ -119,7 +119,7 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 	private void initData() {
 		mDBManager = new DBManager(getActivity());
 
-		List<MessageInfo> mMessages = mDBManager.queryMessage();
+		List<MessageInfo> mMessages = mDBManager.queryMessage("9");
 		for (MessageInfo info : mMessages) {
 			addChildeInContentMain(info.getMessage(),
 					info.getSendid().equals(mUserid));
@@ -179,8 +179,6 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 					public void onSuccess(int statusCode, Header[] headers,
 							JSONArray response) {
 						try {
-							Log.e("@@@@",
-									statusCode + " first " + response.length());
 							ArrayList<MessageInfo> infos = new ArrayList<MessageInfo>();
 							for (int i = 0; i < response.length(); i++) {
 								JSONObject json = response.getJSONObject(i);
@@ -209,7 +207,6 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 	}
 
 	private void getReceiveMessageFromNet() {
-		Log.e("@@@@", " " + mMessageId);
 		SqlHelper.get(StaticVariableSet.USER_MESSAGE, " `userid` = "
 				+ mTouserid + " AND `touserid` = " + mUserid + " AND `type` = "
 				+ 9 + " AND " + mMessageId
@@ -220,8 +217,6 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 					public void onSuccess(int statusCode, Header[] headers,
 							JSONArray response) {
 						try {
-							Log.e("@@@@",
-									statusCode + " second " + response.length());
 							ArrayList<MessageInfo> infos = new ArrayList<MessageInfo>();
 							for (int i = 0; i < response.length(); i++) {
 								JSONObject json = response.getJSONObject(i);

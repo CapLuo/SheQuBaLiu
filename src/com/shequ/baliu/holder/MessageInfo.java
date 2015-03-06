@@ -12,6 +12,7 @@ public class MessageInfo {
 	private String sendid;
 	private String receiveid;
 	private String sendname;
+	private String type;
 	private String time;
 
 	public String getId() {
@@ -57,6 +58,14 @@ public class MessageInfo {
 		this.sendname = sendname;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getTime() {
 		return time;
 	}
@@ -73,6 +82,7 @@ public class MessageInfo {
 		info.setReceiveid(json.getString("touserid"));
 		info.setMessage(json.getString("content"));
 		info.setTime(json.getString("addtime"));
+		info.setType(json.getString("type"));
 		if (!isConversation) {
 			info.setSendname(json.getString("nickname"));
 		}

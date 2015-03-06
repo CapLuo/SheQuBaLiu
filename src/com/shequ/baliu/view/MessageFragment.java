@@ -44,16 +44,15 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 
 	private List<MessageInfo> mMessages;
 
-	private String mLastAddTime = "0";
+	private String mMessageId = "0";
+	private boolean isNeedGetMessage = false;
 
 	private BroadcastReceiver mBroadCast = new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			if (intent.getAction().equals(Intent.ACTION_TIME_TICK)) {
-				if (mLastAddTime.equals("0")) {
-					initData();
-				} else {
+				if (isNeedGetMessage) {
 					updateDataFromNet();
 				}
 			}
@@ -101,8 +100,11 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 	}
 
 	private void initData() {
-		mMessages = mDBManager.queryMessage();
-		mLastAddTime = mDBManager.lastAddTime;
+		isNeedGetMessage = false;
+		mMessages = mDBManager.queryMessage("0");
+		for (MessageInfo info : mMessages) {
+			mMessageId = info.getId();
+		}
 		if (mMessages.isEmpty()) {
 			updateDataFromNet();
 		} else {
@@ -115,40 +117,44 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 	private void updateDataFromNet() {
 		String touserid = ((ShequApplication) (getActivity().getApplication()))
 				.getInfo().getUserId();
-		SqlHelper.getMessage(StaticVariableSet.USER_MESSAGE,
-				StaticVariableSet.USER_INFO, "userid", "touserid = " + touserid
-						+ " AND `" + StaticVariableSet.USER_MESSAGE
-						+ "`.addtime > " + mLastAddTime + " ORDER BY `"
-						+ StaticVariableSet.USER_MESSAGE + "`.addtime",
+		SqlHelper.get(StaticVariableSet.USER_MESSAGE, " `touserid` = "
+				+ touserid + " AND `type` = " + 0 + " AND " + mMessageId
+				+ " < `messageid` ORDER BY `messageid`",
 				new JsonHttpResponseHandler("UTF-8") {
 
 					@Override
 					public void onSuccess(int statusCode, Header[] headers,
 							JSONArray response) {
 						try {
-							List<MessageInfo> messages = new ArrayList<MessageInfo>();
+							ArrayList<MessageInfo> infos = new ArrayList<MessageInfo>();
 							for (int i = 0; i < response.length(); i++) {
 								JSONObject json = response.getJSONObject(i);
 								MessageInfo info = MessageInfo.parserJson(json,
-										false);
-								mLastAddTime = info.getTime();
-								messages.add(info);
+										true);
+								infos.add(info);
+								mMessageId = info.getId();
 							}
 							if (mMessages.isEmpty()) {
-								mMessages = messages;
+								mMessages = infos;
 								mAdapter.notifyDataSetListAll(mMessages);
 							} else {
-								mMessages.addAll(messages);
-								mAdapter.notifyDataSetList(messages);
+								mMessages.addAll(infos);
+								mAdapter.notifyDataSetList(infos);
 							}
-							mDBManager.addMessages(mMessages);
+							mDBManager.addMessages(infos);
+							isNeedGetMessage = true;
 						} catch (JSONException e) {
 							Log.e(StaticVariableSet.TAG, e.getMessage());
 						}
 					}
 
+					@Override
+					public void onFailure(int statusCode, Header[] headers,
+							String responseString, Throwable throwable) {
+						isNeedGetMessage = true;
+						Log.e(StaticVariableSet.TAG, throwable.getMessage());
+					}
 				});
-
 	}
 
 	@Override
