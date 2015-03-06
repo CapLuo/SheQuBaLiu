@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/list_neighbour"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:listSelector="@drawable/item_list_selector" >
-    </ListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </RelativeLayout>

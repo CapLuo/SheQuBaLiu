@@ -20,6 +20,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.ConversationActivity;
 import com.shequ.baliu.R;
@@ -33,11 +37,13 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 
 	private View mContentView;
 
-	private ListView mNeighbourListview;
+	private PullToRefreshListView mListerView;
+
 	private AdapterNeighbour mAdapter;
-	private View mMoreView;
 
 	private String mUserId;
+	private int mCountNeighbour = 0;
+	private boolean isRefreshing = false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -66,17 +72,30 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 	}
 
 	private void initView(LayoutInflater inflater) {
-		mNeighbourListview = (ListView) mContentView
+		mListerView = (PullToRefreshListView) mContentView
 				.findViewById(R.id.list_neighbour);
 		mAdapter = new AdapterNeighbour(getActivity());
-		mNeighbourListview.setAdapter(mAdapter);
+		mListerView.setAdapter(mAdapter);
 		// mMoreView = inflater.inflate(R.layout.item_list_load, null);
 		// mNeighbourListview.addFooterView(mMoreView);
-		mNeighbourListview.setOnItemClickListener(this);
+		mListerView.setMode(Mode.PULL_FROM_END);
+		mListerView.setOnItemClickListener(this);
 	}
 
 	private void initData() {
 		loadMoreData();
+
+		mListerView.setOnRefreshListener(new OnRefreshListener<ListView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				if (!isRefreshing) {
+					isRefreshing = true;
+					loadMoreData();
+				}
+			}
+			
+		});
 	}
 
 	private void loadMoreData() { // 加载更多数据
@@ -102,35 +121,49 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 					+ "`.`groupid` = `" + StaticVariableSet.SHEQU_GROUP
 					+ "`.`groupid`", "`"
 					+ StaticVariableSet.SHEQU_GROUP_RELATION + "`.`groupid` = "
-					+ groupid + " LIMIT 0, 15", new JsonHttpResponseHandler(
-					"UTF-8") {
-				@Override
-				public void onSuccess(int statusCode, Header[] headers,
-						JSONArray response) {
-					List<PersonInfo> people = new ArrayList<PersonInfo>();
-					try {
-
-						for (int i = 0; i < response.length(); i++) {
-							JSONObject json = response.getJSONObject(i);
-							PersonInfo info = PersonInfo.parseJson(json);
-							if (info != null
-									&& !info.getUserId().equals(mUserId)) {
-								people.add(info);
+					+ groupid + " AND `" + StaticVariableSet.USER_INFO
+					+ "`.`ismerchant` = 0 LIMIT " + mCountNeighbour + ", 15",
+					new JsonHttpResponseHandler("UTF-8") {
+						@Override
+						public void onSuccess(int statusCode, Header[] headers,
+								JSONArray response) {
+							List<PersonInfo> people = new ArrayList<PersonInfo>();
+							try {
+								mCountNeighbour += 15;
+								for (int i = 0; i < response.length(); i++) {
+									JSONObject json = response.getJSONObject(i);
+									PersonInfo info = PersonInfo
+											.parseJson(json);
+									if (info != null
+											&& !info.getUserId()
+													.equals(mUserId)) {
+										people.add(info);
+									}
+								}
+								mAdapter.notifyDataList(people);
+							} catch (JSONException exception) {
+								Log.e(StaticVariableSet.TAG,
+										exception.getMessage());
 							}
+							isRefreshing = false;
+							mListerView.onRefreshComplete();
 						}
-						mAdapter.notifyDataList(people);
-					} catch (JSONException exception) {
-						Log.e(StaticVariableSet.TAG, exception.getMessage());
-					}
-				}
-			});
+
+						@Override
+						public void onFailure(int statusCode, Header[] headers,
+								String responseString, Throwable throwable) {
+							isRefreshing = false;
+							mListerView.onRefreshComplete();
+							Log.e(StaticVariableSet.TAG, throwable.getMessage());
+						}
+					});
 		}
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long arg3) {
-		PersonInfo info = (PersonInfo) mAdapter.getItem(position);
+		PersonInfo info = (PersonInfo) mAdapter.getItem(position - 1);
 		Intent intent = new Intent();
 		intent.putExtra("Title", info.getNickName());
 		intent.putExtra("Id", info.getUserId());

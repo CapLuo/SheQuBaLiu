@@ -36,7 +36,7 @@ public class AdapterNeighbour extends BaseAdapter {
 	}
 
 	public void notifyDataList(List<PersonInfo> list) {
-		mList = list;
+		mList.addAll(list);
 		this.notifyDataSetChanged();
 	}
 
