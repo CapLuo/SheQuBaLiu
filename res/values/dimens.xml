@@ -4,6 +4,9 @@
     <!-- title -->
     <dimen name="_title_size">24sp</dimen>
     <dimen name="_title_business_size">22sp</dimen>
+    <dimen name="bottom_bar_img_width">36dp</dimen>
+    <dimen name="bottom_bar_height">70dp</dimen>
+    <dimen name="bottom_bar_line_height">1dp</dimen>
 
     <!-- user login page -->
     <dimen name="login_layout_margin">20dp</dimen>

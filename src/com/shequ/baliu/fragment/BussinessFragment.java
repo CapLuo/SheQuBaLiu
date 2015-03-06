@@ -1,4 +1,4 @@
-package com.shequ.baliu.view;
+package com.shequ.baliu.fragment;
 
 import com.baidu.mobstat.StatService;
 import com.shequ.baliu.R;
@@ -13,9 +13,19 @@ import android.view.ViewGroup;
 public class BussinessFragment extends Fragment {
 
 	private View mContentView;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		if (mContentView == null) {
+			mContentView = inflater.inflate(R.layout.fragment_business,
+					container, false);
+		}
+		if (mContentView.getParent() != null) {
+			((ViewGroup) mContentView.getParent()).removeView(mContentView);
+		}
+
+		initView();
 		return mContentView;
 	}
 
@@ -29,6 +39,10 @@ public class BussinessFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 		StatService.onPageStart(getActivity(), "BussinessFragment");
+	}
+
+	private void initView() {
+
 	}
 
 }

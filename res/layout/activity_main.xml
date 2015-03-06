@@ -10,18 +10,19 @@
     <LinearLayout
         android:id="@+id/_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/bottom_bar_height"
         android:layout_alignParentBottom="true"
         android:orientation="vertical" >
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/bottom_bar_line_height"
             android:background="@color/gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/bottom_bar_height"
+            android:baselineAligned="false"
             android:background="@color/white" >
 
             <RelativeLayout
@@ -38,10 +39,11 @@
 
                     <ImageView
                         android:id="@+id/_layout_home_image"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="@dimen/bottom_bar_img_width"
+                        android:layout_height="@dimen/bottom_bar_img_width"
                         android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
+                        android:contentDescription="@drawable/ic_tabbar_course_normal"
                         android:src="@drawable/ic_tabbar_course_normal" />
 
                     <TextView
@@ -68,10 +70,11 @@
 
                     <ImageView
                         android:id="@+id/_layout_community_image"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="@dimen/bottom_bar_img_width"
+                        android:layout_height="@dimen/bottom_bar_img_width"
                         android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
+                        android:contentDescription="@drawable/ic_tabbar_found_normal"
                         android:src="@drawable/ic_tabbar_found_normal" />
 
                     <TextView
@@ -88,8 +91,7 @@
                 android:id="@+id/_layout_bussiness"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="gone" >
+                android:layout_weight="1" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,11 +101,12 @@
 
                     <ImageView
                         android:id="@+id/_layout_bussiness_image"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="@dimen/bottom_bar_img_width"
+                        android:layout_height="@dimen/bottom_bar_img_width"
                         android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_tabbar_settings_normal" />
+                        android:contentDescription="@drawable/ic_tabbar_business_normal"
+                        android:src="@drawable/ic_tabbar_business_normal" />
 
                     <TextView
                         android:id="@+id/_layout_bussiness_text"
@@ -129,10 +132,11 @@
 
                     <ImageView
                         android:id="@+id/_layout_person_image"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="@dimen/bottom_bar_img_width"
+                        android:layout_height="@dimen/bottom_bar_img_width"
                         android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
+                        android:contentDescription="@drawable/ic_tabbar_settings_normal"
                         android:src="@drawable/ic_tabbar_settings_normal" />
 
                     <TextView

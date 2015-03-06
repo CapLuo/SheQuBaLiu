@@ -1,4 +1,4 @@
-package com.shequ.baliu.view;
+package com.shequ.baliu.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +43,7 @@ import com.shequ.baliu.holder.AdvertHomeInfo;
 import com.shequ.baliu.holder.ShequEyeCityHolder;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
+import com.shequ.baliu.view.CirclePageIndicator;
 
 public class HomeFragment extends Fragment {
 
@@ -63,6 +64,12 @@ public class HomeFragment extends Fragment {
 	private AdpterEyeCity mDynamicAdapter;
 
 	private DisplayImageOptions mOptions;
+
+	private SheQuActivity mActivity;
+
+	public HomeFragment(SheQuActivity activity) {
+		mActivity = activity;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -248,7 +255,7 @@ public class HomeFragment extends Fragment {
 			info.setTitle(title);
 			info.setUrl(url);
 			info.setDrawable(StaticVariableSet.IMG_URL + photo);
-			ImageView view = new ImageView(getActivity());
+			ImageView view = new ImageView(mActivity);
 			ImageLoader.getInstance().displayImage(info.getDrawable(), view,
 					mOptions);
 			// view.setTag(info);

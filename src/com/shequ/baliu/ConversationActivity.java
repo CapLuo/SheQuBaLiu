@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.shequ.baliu.view.ConversationFragment;
+import com.shequ.baliu.fragment.ConversationFragment;
 
 public class ConversationActivity extends FragmentActivity implements
 		OnClickListener {

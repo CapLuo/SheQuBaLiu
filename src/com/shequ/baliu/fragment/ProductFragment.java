@@ -1,4 +1,4 @@
-package com.shequ.baliu.view;
+package com.shequ.baliu.fragment;
 
 import com.shequ.baliu.R;
 
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BankFragment extends Fragment {
+public class ProductFragment extends Fragment {
 
 	private View mContentView;
 
@@ -17,12 +17,19 @@ public class BankFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		if (mContentView == null) {
-			mContentView = inflater.inflate(R.layout.fragment_ticket, null, false);
+			mContentView = inflater.inflate(R.layout.fragment_product,
+					container, false);
 		}
 		if (mContentView.getParent() != null) {
 			((ViewGroup) mContentView.getParent()).removeView(mContentView);
 		}
+
+		initView();
 		return mContentView;
+	}
+
+	private void initView() {
+
 	}
 
 }

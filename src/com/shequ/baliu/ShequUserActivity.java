@@ -10,11 +10,11 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.baidu.mobstat.StatService;
-import com.shequ.baliu.view.AboutFragment;
-import com.shequ.baliu.view.FeedbackFragment;
-import com.shequ.baliu.view.LoginFragment;
-import com.shequ.baliu.view.MessageFragment;
-import com.shequ.baliu.view.RegisterFragment;
+import com.shequ.baliu.fragment.AboutFragment;
+import com.shequ.baliu.fragment.FeedbackFragment;
+import com.shequ.baliu.fragment.LoginFragment;
+import com.shequ.baliu.fragment.MessageFragment;
+import com.shequ.baliu.fragment.RegisterFragment;
 
 public class ShequUserActivity extends FragmentActivity implements
 		OnClickListener {

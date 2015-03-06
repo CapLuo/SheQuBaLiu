@@ -19,14 +19,14 @@ import android.widget.TextView;
 
 import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.shequ.baliu.fragment.BussinessFragment;
+import com.shequ.baliu.fragment.CommunityFragment;
+import com.shequ.baliu.fragment.HomeFragment;
+import com.shequ.baliu.fragment.PersionFragment;
 import com.shequ.baliu.holder.PersonInfo;
 import com.shequ.baliu.util.ShequTools;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
-import com.shequ.baliu.view.BussinessFragment;
-import com.shequ.baliu.view.CommunityFragment;
-import com.shequ.baliu.view.HomeFragment;
-import com.shequ.baliu.view.PersionFragment;
 
 public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
@@ -231,10 +231,10 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			setChoiceFragmentContent(1);
 			break;
 		case R.id._layout_bussiness:
-			// setChoiceFragmentContent(2);
+			setChoiceFragmentContent(2);
 			break;
 		case R.id._layout_person:
-			setChoiceFragmentContent(2);
+			setChoiceFragmentContent(3);
 			break;
 		case R.id._text_button:
 			if (mPersion != null) {
@@ -258,7 +258,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			mHomeLayoutImage
 					.setImageResource(R.drawable.ic_tabbar_course_pressed);
 			if (mHome == null) {
-				mHome = new HomeFragment();
+				mHome = new HomeFragment(this);
 			}
 			mTransaction.replace(R.id._content_main, mHome);
 			break;
@@ -271,14 +271,16 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			}
 			mTransaction.replace(R.id._content_main, mCommunity);
 			break;
-		// case 2:
-		// mBussinessLayoutImage.setImageResource(R.drawable.ic_tabbar_settings_pressed);
-		// if (mBussiness == null) {
-		// mBussiness = new BussinessFragment();
-		// }
-		// mTransaction.replace(R.id._content_main, mBussiness);
-		// break;
 		case 2:
+			mTitle.setText(getResources().getString(R.string.business));
+			mBussinessLayoutImage
+					.setImageResource(R.drawable.ic_tabbar_business_pressed);
+			if (mBussiness == null) {
+				mBussiness = new BussinessFragment();
+			}
+			mTransaction.replace(R.id._content_main, mBussiness);
+			break;
+		case 3:
 			mTitle.setText(getResources().getString(R.string.title_center));
 			mPersionLayoutImage
 					.setImageResource(R.drawable.ic_tabbar_settings_pressed);
@@ -303,7 +305,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		mCommunityLayoutImage
 				.setImageResource(R.drawable.ic_tabbar_found_normal);
 		mBussinessLayoutImage
-				.setImageResource(R.drawable.ic_tabbar_settings_normal);
+				.setImageResource(R.drawable.ic_tabbar_business_normal);
 		mPersionLayoutImage
 				.setImageResource(R.drawable.ic_tabbar_settings_normal);
 	}

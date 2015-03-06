@@ -1,4 +1,4 @@
-package com.shequ.baliu.view;
+package com.shequ.baliu.fragment;
 
 import org.apache.http.Header;
 import org.json.JSONArray;

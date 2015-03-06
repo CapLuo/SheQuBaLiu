@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mobstat.StatService;
+import com.shequ.baliu.fragment.BankFragment;
+import com.shequ.baliu.fragment.NeighbourFragment;
+import com.shequ.baliu.fragment.RepairExpressFragment;
+import com.shequ.baliu.fragment.SecondhandFragment;
 import com.shequ.baliu.util.ShequFunEnum;
-import com.shequ.baliu.view.NeighbourFragment;
-import com.shequ.baliu.view.RepairExpressFragment;
-import com.shequ.baliu.view.SecondhandFragment;
-import com.shequ.baliu.view.BankFragment;
 
 public class ShequFunActivity extends FragmentActivity {
 
