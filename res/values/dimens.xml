@@ -13,6 +13,7 @@
     <dimen name="login_edittext_margin">10dp</dimen>
     <dimen name="login_edittext_texsize">24sp</dimen>
     <dimen name="login_textline_margintop">10dp</dimen>
+    <dimen name="login_textline_paddingtop">5dp</dimen>
     <dimen name="login_textline_marginleft">20dp</dimen>
     <dimen name="login_textline_height">1dp</dimen>
     <dimen name="login_textregister_marginleft">8dp</dimen>
@@ -36,6 +37,8 @@
     <dimen name="top_indicator_margin_bottom">4dp</dimen>
     <dimen name="gridview_spacing">10dp</dimen>
     <dimen name="gridview_textsize">16sp</dimen>
+    <dimen name="home_eye_city_title">19sp</dimen>
+    <dimen name="listview_textsize">17sp</dimen>
     <dimen name="gridview_item_text_margintop">9dp</dimen>
     <dimen name="gridview_item_text_marginbottom">3dp</dimen>
     <dimen name="gridview_item_img_width">55dp</dimen>

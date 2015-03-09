@@ -60,7 +60,7 @@ public class AdpterEyeCity extends BaseAdapter {
 		if (position == getCount() - 1) {
 			line.setVisibility(View.INVISIBLE);
 		} else {
-			line.setVisibility(View.VISIBLE);
+			//line.setVisibility(View.VISIBLE);
 		}
 
 		convertView.setTag(mList.get(position));

@@ -11,7 +11,8 @@
         android:layout_marginLeft="@dimen/login_textline_marginleft"
         android:layout_marginRight="@dimen/login_textline_marginleft"
         android:layout_marginTop="@dimen/login_textline_margintop"
-        android:textSize="@dimen/message_content_textsize" />
+        android:singleLine="true"
+        android:textSize="@dimen/listview_textsize" />
 
     <TextView
         android:id="@+id/line"
@@ -20,6 +21,7 @@
         android:layout_marginLeft="@dimen/login_textline_marginleft"
         android:layout_marginRight="@dimen/login_textline_marginleft"
         android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@color/gray" />
+        android:background="@color/gray"
+        android:visibility="gone" />
 
 </LinearLayout>
