@@ -23,7 +23,6 @@ public class ShequUserActivity extends FragmentActivity implements
 	private TextView mTitle;
 	private View mReturn;
 	private TextView mTextButton;
-	private View mSettings;
 
 	private FragmentManager mFragmentManager;
 	private FragmentTransaction mTransaction;
@@ -63,7 +62,6 @@ public class ShequUserActivity extends FragmentActivity implements
 		mTitle = (TextView) mTitleBar.findViewById(R.id._text_title);
 		mReturn = mTitleBar.findViewById(R.id._return);
 		mTextButton = (TextView) mTitleBar.findViewById(R.id._text_button);
-		mSettings = mTitleBar.findViewById(R.id._settings);
 	}
 
 	private void initData() {
@@ -96,7 +94,6 @@ public class ShequUserActivity extends FragmentActivity implements
 		}
 		if (index == 2) {
 			mTitle.setText(R.string.user_feedback);
-			mSettings.setVisibility(View.INVISIBLE);
 			mTextButton.setVisibility(View.VISIBLE);
 			mTextButton.setText(getResources().getString(
 					R.string.feedback_submit));

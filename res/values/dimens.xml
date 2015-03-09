@@ -4,6 +4,9 @@
     <!-- title -->
     <dimen name="_title_size">24sp</dimen>
     <dimen name="_title_business_size">22sp</dimen>
+    <dimen name="title_icon_width">32dp</dimen>
+    <dimen name="title_padding">10dp</dimen>
+    <dimen name="title_img_padding_right">15dp</dimen>
     <dimen name="bottom_bar_img_width">36dp</dimen>
     <dimen name="bottom_bar_height">70dp</dimen>
     <dimen name="bottom_bar_line_height">1dp</dimen>

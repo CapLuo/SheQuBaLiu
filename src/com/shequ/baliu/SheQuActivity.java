@@ -34,8 +34,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
 	private ShequTools mShequTools;
 
+	private boolean isList = true;
 	private View mTitleBar;
-	private ImageView mSettingsView;
+	private ImageView mCommunityMode;
 	private ImageView mReturnView;
 	private TextView mTitle;
 	private TextView mTextButton;
@@ -101,12 +102,13 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
 	private void initView() {
 		mTitleBar = findViewById(R.id._title_bar);
-		mSettingsView = (ImageView) mTitleBar.findViewById(R.id._settings);
-		mSettingsView.setOnClickListener(this);
 		mReturnView = (ImageView) mTitleBar.findViewById(R.id._return);
 		mReturnView.setOnClickListener(this);
 		mTitle = (TextView) mTitleBar.findViewById(R.id._text_title);
 		mTextButton = (TextView) mTitleBar.findViewById(R.id._text_button);
+		mCommunityMode = (ImageView) mTitleBar
+				.findViewById(R.id.community_mode);
+		mCommunityMode.setOnClickListener(this);
 
 		mHomeLayout = (RelativeLayout) findViewById(R.id._layout_home);
 		mHomeLayout.setOnClickListener(this);
@@ -222,8 +224,6 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		case R.id._return:
 			this.onBackPressed();
 			break;
-		case R.id._settings:
-			break;
 		case R.id._layout_home:
 			setChoiceFragmentContent(0);
 			break;
@@ -241,6 +241,17 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 				mPersion.loginOut(view);
 			}
 			break;
+		case R.id.community_mode:
+			isList = !isList;
+			if (isList) {
+				mCommunity.setModeLayout(isList);
+				mCommunityMode.setImageResource(R.drawable.mode_list);
+
+			} else {
+				mCommunity.setModeLayout(isList);
+				mCommunityMode.setImageResource(R.drawable.mode_grid);
+			}
+			break;
 		default:
 			break;
 		}
@@ -248,6 +259,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
 	public void setChoiceFragmentContent(int position) {
 		mTextButton.setVisibility(View.INVISIBLE);
+		mCommunityMode.setVisibility(View.INVISIBLE);
 		mTransaction = mFragmentManager.beginTransaction();
 		mCurrentPosition = position;
 		// hideAllFragment(mTransaction);
@@ -269,6 +281,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			if (mCommunity == null) {
 				mCommunity = new CommunityFragment();
 			}
+			mCommunityMode.setVisibility(View.VISIBLE);
 			mTransaction.replace(R.id._content_main, mCommunity);
 			break;
 		case 2:

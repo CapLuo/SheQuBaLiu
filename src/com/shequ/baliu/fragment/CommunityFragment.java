@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.baidu.mobstat.StatService;
@@ -22,7 +24,9 @@ public class CommunityFragment extends Fragment implements OnItemClickListener {
 	private View mContentView;
 
 	private ListView mCommunityListView;
-	private AdapterCommunity mCommunityAdapter;
+	private GridView mCommunityGridView;
+
+	private boolean mIsList = true;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -41,10 +45,12 @@ public class CommunityFragment extends Fragment implements OnItemClickListener {
 
 	private void initView() {
 		mCommunityListView = (ListView) mContentView
-				.findViewById(R.id._listview_community);
-		mCommunityAdapter = new AdapterCommunity(getActivity());
-		mCommunityListView.setAdapter(mCommunityAdapter);
+				.findViewById(R.id.community_list);
+		mCommunityGridView = (GridView) mContentView
+				.findViewById(R.id.community_grid);
 		mCommunityListView.setOnItemClickListener(this);
+		mCommunityGridView.setOnItemClickListener(this);
+		setModeLayout(mIsList);
 	}
 
 	@Override
@@ -65,7 +71,8 @@ public class CommunityFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		String title = (String) mCommunityAdapter.getItem(position);
+		String title = (String) mCommunityListView.getAdapter().getItem(
+				position);
 		Intent intent = new Intent();
 		Bundle bundle = new Bundle();
 		bundle.putString("title", title);
@@ -74,5 +81,20 @@ public class CommunityFragment extends Fragment implements OnItemClickListener {
 		intent.setClass(getActivity(), ShequFunActivity.class);
 		getActivity()
 				.startActivityForResult(intent, SheQuActivity.request_code);
+	}
+
+	public void setModeLayout(boolean isList) {
+		mIsList = isList;
+		if (isList) {
+			mCommunityListView.setAdapter(new AdapterCommunity(getActivity(),
+					true));
+			mCommunityGridView.setVisibility(View.GONE);
+			mCommunityListView.setVisibility(View.VISIBLE);
+		} else {
+			mCommunityGridView.setAdapter(new AdapterCommunity(getActivity(),
+					false));
+			mCommunityListView.setVisibility(View.GONE);
+			mCommunityGridView.setVisibility(View.VISIBLE);
+		}
 	}
 }

@@ -15,11 +15,14 @@ public class AdapterCommunity extends BaseAdapter {
 	private Context mContext;
 	private String[] mCommunityBusiness;
 
-	public AdapterCommunity(Context context) {
+	private boolean mIsList = true;
+
+	public AdapterCommunity(Context context, boolean isList) {
 		mContext = context;
 
 		mCommunityBusiness = mContext.getResources().getStringArray(
 				R.array.shequ_business);
+		mIsList = isList;
 	}
 
 	@Override
@@ -42,8 +45,13 @@ public class AdapterCommunity extends BaseAdapter {
 		ViewHolder holder;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = LayoutInflater.from(mContext).inflate(
-					R.layout.item_list_community, null);
+			if (mIsList) {
+				convertView = LayoutInflater.from(mContext).inflate(
+						R.layout.item_list_community, null);
+			} else {
+				convertView = LayoutInflater.from(mContext).inflate(
+						R.layout.item_grid_community, null);
+			}
 			holder.img = (ImageView) convertView.findViewById(R.id._item_img);
 			holder.name = (TextView) convertView.findViewById(R.id._item_text);
 			convertView.setTag(holder);

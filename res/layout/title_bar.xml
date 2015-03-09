@@ -8,19 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/red"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp" >
+        android:paddingBottom="@dimen/title_padding"
+        android:paddingLeft="@dimen/title_padding"
+        android:paddingRight="@dimen/title_padding"
+        android:paddingTop="@dimen/title_padding" >
 
         <ImageView
             android:id="@+id/_return"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/title_icon_width"
+            android:layout_height="@dimen/title_icon_width"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/title_padding"
             android:contentDescription="@drawable/title_left_arrow"
-            android:paddingRight="15dp"
+            android:paddingRight="@dimen/title_img_padding_right"
             android:scaleType="centerInside"
             android:src="@drawable/title_left_arrow" />
 
@@ -34,14 +34,14 @@
             android:textSize="@dimen/_title_size" />
 
         <ImageView
-            android:id="@+id/_settings"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:id="@+id/community_mode"
+            android:layout_width="@dimen/title_icon_width"
+            android:layout_height="@dimen/title_icon_width"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:contentDescription="@drawable/_drawable_settings"
+            android:contentDescription="@drawable/mode_list"
             android:scaleType="fitXY"
-            android:src="@drawable/_drawable_settings"
+            android:src="@drawable/mode_list"
             android:visibility="gone" />
 
         <TextView
