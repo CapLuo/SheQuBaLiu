@@ -22,10 +22,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.ListView;
 
 import com.baidu.mobstat.StatService;
@@ -41,6 +43,7 @@ import com.shequ.baliu.adapter.AdapterHomeBusiness;
 import com.shequ.baliu.adapter.AdpterEyeCity;
 import com.shequ.baliu.holder.AdvertHomeInfo;
 import com.shequ.baliu.holder.ShequEyeCityHolder;
+import com.shequ.baliu.util.ShequTools;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
 import com.shequ.baliu.view.CirclePageIndicator;
@@ -133,6 +136,11 @@ public class HomeFragment extends Fragment {
 		mImageLayout.setVisibility(View.INVISIBLE);
 		mImagePagerView = (ViewPager) mContentView
 				.findViewById(R.id._home_image_viewpage);
+		ShequTools shequTools = new ShequTools(getActivity());
+		LayoutParams lp = (LayoutParams) mImagePagerView.getLayoutParams();
+		lp.height = shequTools.getDisplayMetricsWidth() / 2;
+		lp.width = shequTools.getDisplayMetricsWidth();
+		mImagePagerView.setLayoutParams(lp);
 		mImageIndicator = (CirclePageIndicator) mContentView
 				.findViewById(R.id._home_image_indicator);
 
@@ -256,6 +264,7 @@ public class HomeFragment extends Fragment {
 			info.setUrl(url);
 			info.setDrawable(StaticVariableSet.IMG_URL + photo);
 			ImageView view = new ImageView(mActivity);
+			view.setScaleType(ScaleType.FIT_XY);
 			ImageLoader.getInstance().displayImage(info.getDrawable(), view,
 					mOptions);
 			// view.setTag(info);

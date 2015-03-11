@@ -36,7 +36,6 @@
     <dimen name="user_info_image_witdh">85dp</dimen>
 
     <!-- home page -->
-    <dimen name="top_advert_img_height">200dp</dimen>
     <dimen name="top_indicator_margin_bottom">4dp</dimen>
     <dimen name="gridview_spacing">10dp</dimen>
     <dimen name="gridview_textsize">16sp</dimen>

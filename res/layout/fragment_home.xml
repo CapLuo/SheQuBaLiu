@@ -16,12 +16,12 @@
             <FrameLayout
                 android:id="@+id/_home_image_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/top_advert_img_height" >
+                android:layout_height="wrap_content" >
 
                 <com.shequ.baliu.view.ShequViewPage
                     android:id="@+id/_home_image_viewpage"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/top_advert_img_height" />
+                    android:layout_height="wrap_content" />
 
                 <com.shequ.baliu.view.CirclePageIndicator
                     android:id="@+id/_home_image_indicator"
