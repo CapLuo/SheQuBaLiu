@@ -401,7 +401,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
 		if (resultCode == 400) {
-			setChoiceFragmentContent(2);
+			setChoiceFragmentContent(3);
 		}
 	}
 
