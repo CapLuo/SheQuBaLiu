@@ -63,13 +63,21 @@ public class ConversationActivity extends FragmentActivity implements
 
 	private void setChoiceFragment() {
 		mTransaction = mManager.beginTransaction();
+		hideAllFragment(mTransaction);
 		if (mConversationPage == null) {
 			ShequApplication app = (ShequApplication) getApplication();
 			mConversationPage = new ConversationFragment(app.getInfo()
 					.getUserId(), mTouserid, mName);
+			mTransaction.add(R.id._content_main, mConversationPage);
 		}
-		mTransaction.replace(R.id._content_main, mConversationPage);
+		mTransaction.show(mConversationPage);
 		mTransaction.commit();
+	}
+
+	private void hideAllFragment(FragmentTransaction transaction) {
+		if (mConversationPage != null) {
+			transaction.hide(mConversationPage);
+		}
 	}
 
 	@Override

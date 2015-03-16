@@ -93,41 +93,47 @@ public class ShequFunActivity extends FragmentActivity {
 			}
 		}
 		FragmentTransaction transaction = mFragmentManager.beginTransaction();
+		hideAllFragment(transaction);
 		switch (fun) {
 		case NEIGHBOUR:
 			mFun = ShequFunEnum.NEIGHBOUR;
 			if (mNeighbourFragment == null) {
 				mNeighbourFragment = new NeighbourFragment();
+				transaction.add(R.id._content_main, mNeighbourFragment);
 			}
-			transaction.replace(R.id._content_main, mNeighbourFragment);
+			transaction.show(mNeighbourFragment);
 			break;
 		case SECONDHAND:
 			mFun = ShequFunEnum.SECONDHAND;
 			if (mSecondhandFragment == null) {
 				mSecondhandFragment = new SecondhandFragment();
+				transaction.add(R.id._content_main, mSecondhandFragment);
 			}
-			transaction.replace(R.id._content_main, mSecondhandFragment);
+			transaction.show(mSecondhandFragment);
 			break;
 		case REPAIR:
 			mFun = ShequFunEnum.REPAIR;
 			if (mRepairExpressFragment == null) {
 				mRepairExpressFragment = new RepairExpressFragment();
+				transaction.add(R.id._content_main, mRepairExpressFragment);
 			}
-			transaction.replace(R.id._content_main, mRepairExpressFragment);
+			transaction.show(mRepairExpressFragment);
 			break;
 		case EXPRESS:
 			mFun = ShequFunEnum.EXPRESS;
 			if (mRepairExpressFragment == null) {
 				mRepairExpressFragment = new RepairExpressFragment();
+				transaction.add(R.id._content_main, mRepairExpressFragment);
 			}
-			transaction.replace(R.id._content_main, mRepairExpressFragment);
+			transaction.show(mRepairExpressFragment);
 			break;
 		case TOGHTER:
 			mFun = ShequFunEnum.TOGHTER;
 			if (mRepairExpressFragment == null) {
 				mRepairExpressFragment = new RepairExpressFragment();
+				transaction.add(R.id._content_main, mRepairExpressFragment);
 			}
-			transaction.replace(R.id._content_main, mRepairExpressFragment);
+			transaction.show(mRepairExpressFragment);
 			break;
 		case DISTRIBUTION:
 			mFun = ShequFunEnum.DISTRIBUTION;
@@ -139,8 +145,9 @@ public class ShequFunActivity extends FragmentActivity {
 			mFun = ShequFunEnum.BANKING;
 			if (mBankFragment == null) {
 				mBankFragment = new BankFragment();
+				transaction.add(R.id._content_main, mBankFragment);
 			}
-			transaction.replace(R.id._content_main, mBankFragment);
+			transaction.show(mBankFragment);
 			break;
 		default:
 			break;
@@ -150,5 +157,20 @@ public class ShequFunActivity extends FragmentActivity {
 
 	public ShequFunEnum getCurrentFunEnum() {
 		return mFun;
+	}
+
+	private void hideAllFragment(FragmentTransaction transaction) {
+		if (mNeighbourFragment != null) {
+			transaction.hide(mNeighbourFragment);
+		}
+		if (mSecondhandFragment != null) {
+			transaction.hide(mSecondhandFragment);
+		}
+		if (mRepairExpressFragment != null) {
+			transaction.hide(mRepairExpressFragment);
+		}
+		if (mBankFragment != null) {
+			transaction.hide(mBankFragment);
+		}
 	}
 }

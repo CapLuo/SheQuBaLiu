@@ -262,7 +262,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		mCommunityMode.setVisibility(View.INVISIBLE);
 		mTransaction = mFragmentManager.beginTransaction();
 		mCurrentPosition = position;
-		// hideAllFragment(mTransaction);
+		hideAllFragment(mTransaction);
 		clearAllSelector();
 		switch (position) {
 		case 0:
@@ -271,8 +271,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 					.setImageResource(R.drawable.ic_tabbar_course_pressed);
 			if (mHome == null) {
 				mHome = new HomeFragment(this);
+				mTransaction.add(R.id._content_main, mHome);
 			}
-			mTransaction.replace(R.id._content_main, mHome);
+			mTransaction.show(mHome);
 			break;
 		case 1:
 			mTitle.setText(getResources().getString(R.string.title_shequ));
@@ -280,9 +281,10 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 					.setImageResource(R.drawable.ic_tabbar_found_pressed);
 			if (mCommunity == null) {
 				mCommunity = new CommunityFragment();
+				mTransaction.add(R.id._content_main, mCommunity);
 			}
 			mCommunityMode.setVisibility(View.VISIBLE);
-			mTransaction.replace(R.id._content_main, mCommunity);
+			mTransaction.show(mCommunity);
 			break;
 		case 2:
 			mTitle.setText(getResources().getString(R.string.business));
@@ -290,8 +292,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 					.setImageResource(R.drawable.ic_tabbar_business_pressed);
 			if (mBussiness == null) {
 				mBussiness = new BussinessFragment();
+				mTransaction.add(R.id._content_main, mBussiness);
 			}
-			mTransaction.replace(R.id._content_main, mBussiness);
+			mTransaction.show(mBussiness);
 			break;
 		case 3:
 			mTitle.setText(getResources().getString(R.string.title_center));
@@ -304,8 +307,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			}
 			if (mPersion == null) {
 				mPersion = new PersionFragment();
+				mTransaction.add(R.id._content_main, mPersion);
 			}
-			mTransaction.replace(R.id._content_main, mPersion);
+			mTransaction.show(mPersion);
 			break;
 		default:
 			break;
