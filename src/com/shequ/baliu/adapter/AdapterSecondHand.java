@@ -28,7 +28,7 @@ public class AdapterSecondHand extends BaseAdapter {
 		mContext = context;
 		goods = new ArrayList<SecondHandGoods>();
 		mOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
-				.cacheOnDisk(false).bitmapConfig(Bitmap.Config.RGB_565)
+				.cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565)
 				.imageScaleType(ImageScaleType.IN_SAMPLE_INT).build();
 	}
 
@@ -69,21 +69,31 @@ public class AdapterSecondHand extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = LayoutInflater.from(mContext).inflate(
 					R.layout.item_list_secondhand, null);
+			holder.head = (ImageView) convertView
+					.findViewById(R.id._item_secondhand_head_img);
+			holder.name = (TextView) convertView
+					.findViewById(R.id._item_secondhand_name);
+			holder.groupname = (TextView) convertView
+					.findViewById(R.id._item_secondhand_group);
 			holder.img = (ImageView) convertView
 					.findViewById(R.id._item_secondhand_img);
-			// holder.time = (TextView)
-			// convertViews.findViewById(R.id._item_secondhand_time);
+			holder.time = (TextView) convertView
+					.findViewById(R.id._item_secondhand_time);
 			holder.title = (TextView) convertView
 					.findViewById(R.id._item_secondhand_title);
-			holder.price = (TextView) convertView
-					.findViewById(R.id._item_secondhand_price);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+		holder.img.setImageBitmap(null);
 		ImageLoader.getInstance().displayImage(goods.get(position).getPhoto(),
 				holder.img, mOptions);
+		holder.head.setImageBitmap(null);
+		ImageLoader.getInstance().displayImage(
+				goods.get(position).getHeadphoto(), holder.head, mOptions);
 		holder.title.setText(goods.get(position).getTitle());
+		holder.name.setText(goods.get(position).getNickname());
+		holder.groupname.setText(goods.get(position).getGroupname());
 
 		/*
 		 * Date date = new
@@ -97,16 +107,17 @@ public class AdapterSecondHand extends BaseAdapter {
 		 * sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
 		 * holder.time.setText(sdf.format(date)); }
 		 */
-		holder.price.setText(mContext.getResources().getString(R.string.money)
-				+ goods.get(position).getPrice());
 
 		return convertView;
 	}
 
 	static class ViewHolder {
 		public ImageView img;
-		// public TextView time;
+		public ImageView head;
+		public TextView name;
+		public TextView groupname;
+		public TextView time;
 		public TextView title;
-		public TextView price;
 	}
+
 }

@@ -17,9 +17,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
@@ -34,13 +38,12 @@ public class SecondhandFragment extends Fragment implements
 
 	private View mContentView;
 
-	private View refresh;
-
-	private ListView mListView;
+	private PullToRefreshListView mListView;
 	private AdapterSecondHand mAdatper;
 
 	private static final int PRINTSCREEN = 10;
 	private int start = 0;
+	private boolean isRefreshing = false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -60,22 +63,33 @@ public class SecondhandFragment extends Fragment implements
 	}
 
 	private void initView() {
-		refresh = mContentView.findViewById(R.id.secondhand_refresh_more);
-		refresh.setOnClickListener(this);
-		mListView = (ListView) mContentView.findViewById(R.id.list_secondhand);
+		mListView = (PullToRefreshListView) mContentView
+				.findViewById(R.id.list_secondhand);
 		mAdatper = new AdapterSecondHand(getActivity());
 		mListView.setAdapter(mAdatper);
 		mListView.setOnItemClickListener(this);
-		mListView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
+		mListView.setMode(Mode.PULL_FROM_END);
+		mListView.setOnScrollListener(new PauseOnScrollListener(ImageLoader
+				.getInstance(), true, true));
 	}
 
 	private void initData() {
 		getDataFromNet();
+
+		mListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
+
+			@Override
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				if (!isRefreshing) {
+					isRefreshing = true;
+					getDataFromNet();
+				}
+			}
+		});
 	}
 
 	private void getDataFromNet() {
-		SqlHelper.get(StaticVariableSet.SECOND_MARKET,
-				"photo is not null ORDER BY addtime LIMIT " + start + ", " + PRINTSCREEN,
+		SqlHelper.getFleaDeal(start + ", " + PRINTSCREEN,
 				new JsonHttpResponseHandler("UTF-8") {
 
 					@Override
@@ -85,8 +99,10 @@ public class SecondhandFragment extends Fragment implements
 							List<SecondHandGoods> list = new ArrayList<SecondHandGoods>();
 							for (int i = 0; i < response.length(); i++) {
 								JSONObject object = response.getJSONObject(i);
-								SecondHandGoods good = parseJson(object);
+								SecondHandGoods good = SecondHandGoods
+										.parseJson(object);
 								if (good != null) {
+									Log.e("@@@@", "sadasd");
 									list.add(good);
 								}
 							}
@@ -94,51 +110,21 @@ public class SecondhandFragment extends Fragment implements
 						} catch (JSONException e) {
 							Log.e(StaticVariableSet.TAG, e.getMessage());
 						}
+						isRefreshing = false;
+						mListView.onRefreshComplete();
+					}
+
+					@Override
+					public void onFailure(int statusCode, Header[] headers,
+							String responseString, Throwable throwable) {
+						Log.e(StaticVariableSet.TAG, throwable.getMessage());
+						isRefreshing = false;
+						mListView.onRefreshComplete();
 					}
 
 				});
 		start += PRINTSCREEN;
 
-	}
-
-	private SecondHandGoods parseJson(JSONObject json) throws JSONException {
-		SecondHandGoods good = new SecondHandGoods();
-		String userid = json.getString("userid");
-		if (userid == null || userid.equals("")) {
-			return null;
-		} else {
-			good.setUserid(userid);
-		}
-		String photo = json.getString("photo");
-		if (photo == null || photo.equals("")) {
-			return null;
-		} else {
-			if (!photo.startsWith("http")) {
-				photo = StaticVariableSet.IMG_URL + photo;
-			}
-			good.setPhoto(photo);
-		}
-		String title = json.getString("title");
-		if (title == null || title.equals("")) {
-			return null;
-		} else {
-			good.setTitle(title);
-		}
-		String price = json.getString("price");
-		if (price == null || price.equals("")) {
-			return null;
-		} else {
-			good.setPrice(price);
-		}
-		String content = json.getString("content");
-		if (content == null || content.equals("")) {
-			return null;
-		} else {
-			good.setContent(content);
-		}
-		String addTime = json.getString("addtime");
-		good.setAddTime(addTime);
-		return good;
 	}
 
 	@Override
@@ -149,16 +135,6 @@ public class SecondhandFragment extends Fragment implements
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.secondhand_refresh_more:
-			refreshMore();
-			break;
-		default:
-			break;
-		}
 	}
 
-	private void refreshMore() {
-		getDataFromNet();
-	}
 }

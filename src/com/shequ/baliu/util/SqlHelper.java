@@ -84,6 +84,33 @@ public class SqlHelper extends SQLiteOpenHelper {
 		get(paramsValue, handler);
 	}
 
+	public static void getFleaDeal(String limit, JsonHttpResponseHandler handler) {
+		String paramsValue = new String(Base64.encode(
+				("SELECT `" + StaticVariableSet.SECOND_MARKET + "`.`userid`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`title`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`price`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`content`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`photo`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`updatetime`, `"
+						+ StaticVariableSet.USER_INFO + "`.`username`, `"
+						+ StaticVariableSet.USER_INFO + "`.`path`, `"
+						+ StaticVariableSet.USER_INFO + "`.`face`, `"
+						+ StaticVariableSet.USER_INFO + "`.`nickname`, `"
+						+ StaticVariableSet.SHEQU_GROUP
+						+ "`.`groupname` FROM `"
+						+ StaticVariableSet.SECOND_MARKET + "` JOIN `"
+						+ StaticVariableSet.USER_INFO + "` ON `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`userid` = `"
+						+ StaticVariableSet.USER_INFO + "`.`userid` JOIN  `"
+						+ StaticVariableSet.SHEQU_GROUP + "` ON `"
+						+ StaticVariableSet.USER_INFO + "`.`groupid` = `"
+						+ StaticVariableSet.SHEQU_GROUP
+						+ "`.`groupid` WHERE 1 ORDER BY `"
+						+ StaticVariableSet.SECOND_MARKET
+						+ "`.`updatetime` LIMIT " + limit).getBytes(), 0));
+		get(paramsValue, handler);
+	}
+
 	/**
 	 * 联合查询
 	 */

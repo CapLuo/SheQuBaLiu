@@ -66,7 +66,14 @@
     <!-- second goods page -->
     <dimen name="second_good_page_paddingleft">20dp</dimen>
     <dimen name="second_good_page_paddingTop">10dp</dimen>
-    <dimen name="second_good_page_width">150dp</dimen>
+    <dimen name="second_good_page_width">100dp</dimen>
+    <dimen name="second_good_head_width">45dp</dimen>
+    <dimen name="second_good_name_width">80dp</dimen>
+    <dimen name="second_good_group_width">120dp</dimen>
+    <dimen name="second_good_name_textsize">15sp</dimen>
+    <dimen name="second_good_title_size">18sp</dimen>
+    <dimen name="second_good_title_margin_left">60dp</dimen>
+    <dimen name="second_good_title_margin_top">8dp</dimen>
 
     <!-- neighbour page -->
     <dimen name="neighbour_page_paddingleft">20dp</dimen>

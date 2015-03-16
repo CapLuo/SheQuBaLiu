@@ -37,7 +37,7 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 
 	private View mContentView;
 
-	private PullToRefreshListView mListerView;
+	private PullToRefreshListView mListView;
 
 	private AdapterNeighbour mAdapter;
 
@@ -72,20 +72,20 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 	}
 
 	private void initView(LayoutInflater inflater) {
-		mListerView = (PullToRefreshListView) mContentView
+		mListView = (PullToRefreshListView) mContentView
 				.findViewById(R.id.list_neighbour);
 		mAdapter = new AdapterNeighbour(getActivity());
-		mListerView.setAdapter(mAdapter);
+		mListView.setAdapter(mAdapter);
 		// mMoreView = inflater.inflate(R.layout.item_list_load, null);
 		// mNeighbourListview.addFooterView(mMoreView);
-		mListerView.setMode(Mode.PULL_FROM_END);
-		mListerView.setOnItemClickListener(this);
+		mListView.setMode(Mode.PULL_FROM_END);
+		mListView.setOnItemClickListener(this);
 	}
 
 	private void initData() {
 		loadMoreData();
 
-		mListerView.setOnRefreshListener(new OnRefreshListener<ListView>() {
+		mListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -94,7 +94,7 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 					loadMoreData();
 				}
 			}
-			
+
 		});
 	}
 
@@ -146,14 +146,14 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 										exception.getMessage());
 							}
 							isRefreshing = false;
-							mListerView.onRefreshComplete();
+							mListView.onRefreshComplete();
 						}
 
 						@Override
 						public void onFailure(int statusCode, Header[] headers,
 								String responseString, Throwable throwable) {
 							isRefreshing = false;
-							mListerView.onRefreshComplete();
+							mListView.onRefreshComplete();
 							Log.e(StaticVariableSet.TAG, throwable.getMessage());
 						}
 					});
