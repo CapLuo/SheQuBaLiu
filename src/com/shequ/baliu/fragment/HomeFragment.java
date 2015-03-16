@@ -157,7 +157,8 @@ public class HomeFragment extends Fragment {
 				intent.setClass(getActivity(), ShequShowActivity.class);
 				intent.putExtra("PATH",
 						((ShequEyeCityHolder) view.getTag()).getUrl());
-				getActivity().startActivity(intent);
+				//getActivity().startActivity(intent);
+				//暂时不做跳转
 			}
 
 		});
