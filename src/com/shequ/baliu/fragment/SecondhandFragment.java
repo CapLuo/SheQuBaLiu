@@ -102,7 +102,6 @@ public class SecondhandFragment extends Fragment implements
 								SecondHandGoods good = SecondHandGoods
 										.parseJson(object);
 								if (good != null) {
-									Log.e("@@@@", "sadasd");
 									list.add(good);
 								}
 							}

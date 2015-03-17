@@ -102,7 +102,6 @@ public class SecondHandGoods {
 		} else {
 			good.setUserid(userid);
 		}
-		Log.e("@@@@", "userid = " + userid);
 
 		String photo = json.getString("photo");
 		if (photo == null || photo.equals("")) {
@@ -120,7 +119,6 @@ public class SecondHandGoods {
 		} else {
 			good.setTitle(title);
 		}
-		Log.e("@@@@", title);
 
 		String price = json.getString("price");
 		if (price == null || price.equals("")) {
@@ -128,7 +126,6 @@ public class SecondHandGoods {
 		} else {
 			good.setPrice(price);
 		}
-		Log.e("@@@@", "price = " + price);
 
 		String content = json.getString("content");
 		if (content == null || content.equals("")) {
@@ -139,18 +136,15 @@ public class SecondHandGoods {
 
 		String updatetime = json.getString("updatetime");
 		good.setUpdateTime(updatetime);
-		Log.e("@@@@", "updatetime = " + updatetime);
 
 		String nickname = json.getString("nickname");
 		if (TextUtils.isEmpty(nickname)) {
 			nickname = json.getString("username");
 		}
 		good.setNickname(nickname);
-		Log.e("@@@@", "nickname = " + nickname);
 
 		String groupName = json.getString("groupname");
 		good.setGroupname(groupName);
-		Log.e("@@@@", "groupName = " + groupName);
 
 		String path = json.getString("path");
 		String face = json.getString("face");
@@ -161,7 +155,6 @@ public class SecondHandGoods {
 					+ path + face);
 		}
 
-		Log.e("@@@@", "upload add");
 		return good;
 	}
 }
