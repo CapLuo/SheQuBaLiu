@@ -81,7 +81,8 @@ public class AdapterMessage extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		Date date = new Date(Long.parseLong(mList.get(position).getTime()));
+		Date date = new Date(
+				Long.parseLong(mList.get(position).getTime()) * 1000);
 		Date nowDate = new Date();
 		long timelong = nowDate.getTime() - date.getTime();
 		if (timelong < 60 * 60 * 24 * 1000) {

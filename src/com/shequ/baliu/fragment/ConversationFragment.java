@@ -273,7 +273,8 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 		info.setReceiveid(mTouserid);
 		info.setSendid(mUserid);
 		info.setSendname(mName);
-		info.setTime(String.valueOf(new Date().getTime()));
+		long time = new Date().getTime();
+		info.setTime(String.valueOf((long) (time / 1000)));
 		return info;
 	}
 
