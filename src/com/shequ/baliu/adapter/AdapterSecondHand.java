@@ -91,7 +91,7 @@ public class AdapterSecondHand extends BaseAdapter {
 		holder.img.setImageBitmap(null);
 		ImageLoader.getInstance().displayImage(goods.get(position).getPhoto(),
 				holder.img, mOptions);
-		holder.head.setImageBitmap(null);
+		holder.head.setImageResource(R.drawable.user_head_default);
 		ImageLoader.getInstance().displayImage(
 				goods.get(position).getHeadphoto(), holder.head, mOptions);
 		holder.title.setText(goods.get(position).getTitle());
