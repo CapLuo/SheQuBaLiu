@@ -1,7 +1,10 @@
 package com.shequ.baliu.adapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -95,18 +98,17 @@ public class AdapterSecondHand extends BaseAdapter {
 		holder.name.setText(goods.get(position).getNickname());
 		holder.groupname.setText(goods.get(position).getGroupname());
 
-		/*
-		 * Date date = new
-		 * Date(Long.parseLong(goods.get(position).getAddTime())); Date nowDate
-		 * = new Date(); long timelong = nowDate.getTime() - date.getTime(); if
-		 * (timelong < 60 * 60 * 24 * 1000) { SimpleDateFormat sdf = new
-		 * SimpleDateFormat("HH:mm");
-		 * sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
-		 * holder.time.setText(sdf.format(date)); } else { SimpleDateFormat sdf
-		 * = new SimpleDateFormat("yyyy-MM-dd");
-		 * sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
-		 * holder.time.setText(sdf.format(date)); }
-		 */
+		Date date = new Date(
+				Long.parseLong(goods.get(position).getUpdateTime()));
+		Date nowDate = new Date();
+		long timelong = nowDate.getTime() - date.getTime();
+		if (timelong < 60 * 60 * 24 * 1000) {
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+			sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+			holder.time.setText(sdf.format(date));
+		} else {
+			holder.time.setText(R.string.second_hand_time);
+		}
 
 		return convertView;
 	}

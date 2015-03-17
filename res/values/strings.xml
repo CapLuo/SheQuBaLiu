@@ -33,6 +33,7 @@
     <string name="user_about_us">关于我们</string>
     <string name="user_no_group">暂无小区</string>
     <string name="user_shequ_change">更改</string>
+    <string name="user_clear_master">清除缓存</string>
 
     <!-- 登录页面 -->
     <string name="login_title">登录86区</string>
@@ -80,5 +81,6 @@
     <string name="about_email">邮箱:</string>
     <string name="about_email_c">1790286208@qq.com</string>
 
-    <!--  -->
+    <!-- 二手市場 -->
+    <string name="second_hand_time">半年前</string>
 </resources>
