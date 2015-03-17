@@ -1,16 +1,21 @@
 package com.shequ.baliu.fragment;
 
+import java.io.File;
+
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -42,10 +47,29 @@ public class PersionFragment extends Fragment implements OnClickListener {
 	private View mMessageBox;
 	private View mFeedback;
 	private View mAboutUs;
+	private View mClear;
 
 	private DBManager mDBManager;
 
 	private DisplayImageOptions mOptions;
+
+	private Dialog mDialog;
+
+	private static final int SHOW_DIALOG = 101;
+	private static final int DIMISS_DIALOG = 102;
+	private Handler mHandler = new Handler() {
+
+		@Override
+		public void dispatchMessage(Message msg) {
+			if (msg.what == 101) {
+				mDialog.show();
+			}
+			if (msg.what == 102) {
+				mDialog.dismiss();
+			}
+		}
+
+	};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -83,7 +107,23 @@ public class PersionFragment extends Fragment implements OnClickListener {
 		mFeedback.setOnClickListener(this);
 		mAboutUs = mContentView.findViewById(R.id._user_aboutus);
 		mAboutUs.setOnClickListener(this);
+		mClear = mContentView.findViewById(R.id._user_clear_master);
+		mClear.setOnClickListener(this);
 
+		mDialog = new Dialog(getActivity()) {
+			@Override
+			public void onBackPressed() {
+				// 屏蔽返回建
+			}
+		};
+		View dialogContent = LayoutInflater.from(getActivity()).inflate(
+				R.layout.dialog_login_layout, null);
+		TextView content = (TextView) dialogContent
+				.findViewById(R.id.dialog_content);
+		content.setText(R.string.user_clearing);
+		mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		mDialog.setCanceledOnTouchOutside(false);
+		mDialog.setContentView(dialogContent);
 	}
 
 	private void initData() {
@@ -173,6 +213,22 @@ public class PersionFragment extends Fragment implements OnClickListener {
 					ChoiceSequActivity.class);
 			getActivity().startActivity(intentCommunityChange);
 			break;
+		case R.id._user_clear_master:
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						mHandler.sendEmptyMessage(SHOW_DIALOG);
+						clearMaster();
+						Thread.sleep(2000);
+						mHandler.sendEmptyMessage(DIMISS_DIALOG);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+			break;
 		default:
 			break;
 		}
@@ -189,6 +245,27 @@ public class PersionFragment extends Fragment implements OnClickListener {
 		app.setLogin(false);
 		initData();
 		v.setVisibility(View.GONE);
+	}
+
+	private void clearMaster() {
+		File file = new File(ShequTools.getExternalStoragePath(),
+				StaticVariableSet.TAG);
+		if (file.exists()) {
+			deleteAllFiles(file);
+		}
+	}
+
+	private void deleteAllFiles(File file) {
+		if (file.isDirectory()) {
+			File[] files = file.listFiles();
+			for (File f : files) {
+				deleteAllFiles(f);
+			}
+		} else {
+			if (!file.getPath().endsWith("nomedia")) {
+				file.delete();
+			}
+		}
 	}
 
 }

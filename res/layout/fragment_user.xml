@@ -200,4 +200,35 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_textline_height"
+        android:background="@color/light_gray" />
+
+    <RelativeLayout
+        android:id="@+id/_user_clear_master"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/login_textline_margintop"
+        android:paddingLeft="@dimen/login_textline_marginleft"
+        android:paddingRight="@dimen/login_textline_marginleft"
+        android:paddingTop="@dimen/login_textline_margintop" >
+
+        <ImageView
+            android:id="@+id/_user_clear_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:contentDescription="@drawable/user_clear_master"
+            android:src="@drawable/user_clear_master" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_textline_marginleft"
+            android:layout_toRightOf="@id/_user_clear_img"
+            android:text="@string/user_clear_master"
+            android:textSize="@dimen/message_content_textsize" />
+    </RelativeLayout>
+
 </LinearLayout>

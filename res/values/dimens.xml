@@ -109,4 +109,9 @@
     <dimen name="about_layout_margin_top">15dp</dimen>
     <dimen name="about_layout_text_margin_top">10dp</dimen>
 
+    <!-- show dialog -->
+    <dimen name="dialog_paddingtop">10dp</dimen>
+    <dimen name="dialog_paddingleft">15dp</dimen>
+    <dimen name="dialog_marginleft">10dp</dimen>
+
 </resources>
