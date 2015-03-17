@@ -5,13 +5,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -72,6 +75,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 	private int mCurrentPosition = 0;
 
 	private boolean isLogin = false;
+	private Dialog mDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +155,15 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		// view.setLayoutParams(params);
 		// }
 		// 初始化home页面onCreate
+
+		mDialog = new Dialog(this, R.style.dialog);
+		View dialogContent = LayoutInflater.from(this).inflate(
+				R.layout.dialog_network, null);
+		dialogContent.findViewById(R.id.dialog_ok).setOnClickListener(this);
+		mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		mDialog.setCanceledOnTouchOutside(false);
+		mDialog.setContentView(dialogContent);
+
 		setChoiceFragmentContent(0);
 	}
 
@@ -252,6 +265,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 				mCommunityMode.setImageResource(R.drawable.mode_grid);
 			}
 			break;
+		case R.id.dialog_ok:
+			mDialog.dismiss();
+			break;
 		default:
 			break;
 		}
@@ -347,6 +363,10 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		super.onResume();
 
 		StatService.onPageStart(this, "SheQuActivity");
+
+		if (!ShequTools.isNetworkAvailable(this)) {
+			mDialog.show();
+		}
 
 		ShequApplication app = (ShequApplication) getApplication();
 		isLogin = app.getLogin();

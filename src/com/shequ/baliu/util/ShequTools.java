@@ -21,6 +21,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 
@@ -194,7 +196,7 @@ public class ShequTools {
 		}
 	}
 
-	//获得随机字符串对密码加密
+	// 获得随机字符串对密码加密
 	public static String getRandomString(int length) {
 		String base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		Random random = new Random();
@@ -204,6 +206,22 @@ public class ShequTools {
 			sb.append(base.charAt(number));
 		}
 		return sb.toString();
+	}
+
+	public static boolean isNetworkAvailable(Context context) {
+		ConnectivityManager cm = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (cm != null) {
+			NetworkInfo[] info = cm.getAllNetworkInfo();
+			if (info != null) {
+				for (int i = 0; i < info.length; i++) {
+					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	public static void parserHtmlContent() {

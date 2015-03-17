@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_net_background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/home_dialog_margin_top"
+        android:layout_marginLeft="@dimen/home_dialog_margin_left"
+        android:layout_marginRight="@dimen/home_dialog_margin_left"
+        android:layout_marginTop="@dimen/home_dialog_margin_top"
+        android:text="@string/home_dialog_net_verify"
+        android:textColor="@color/black"
+        android:textSize="@dimen/home_dialog_textsize" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_line_height"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/dialog_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_ok_button"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/home_dialog_padding_top"
+        android:paddingTop="@dimen/home_dialog_padding_top"
+        android:text="@string/home_dialog_ok"
+        android:textColor="@color/black"
+        android:textSize="@dimen/home_dialog_button_textsize" />
+
+</LinearLayout>
