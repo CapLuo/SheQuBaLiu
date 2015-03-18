@@ -88,7 +88,7 @@ public class AdapterSecondHand extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.img.setImageBitmap(null);
+		holder.img.setImageResource(R.drawable.goods_loading);
 		ImageLoader.getInstance().displayImage(goods.get(position).getPhoto(),
 				holder.img, mOptions);
 		holder.head.setImageResource(R.drawable.user_head_default);
@@ -99,7 +99,7 @@ public class AdapterSecondHand extends BaseAdapter {
 		holder.groupname.setText(goods.get(position).getGroupname());
 
 		Date date = new Date(
-				Long.parseLong(goods.get(position).getUpdateTime()));
+				Long.parseLong(goods.get(position).getUpdateTime()) * 1000);
 		Date nowDate = new Date();
 		long timelong = nowDate.getTime() - date.getTime();
 		if (timelong < 60 * 60 * 24 * 1000) {
