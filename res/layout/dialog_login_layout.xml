@@ -24,6 +24,7 @@
         android:layout_marginLeft="@dimen/dialog_marginleft"
         android:layout_toRightOf="@id/dialog_progress"
         android:text="@string/login_loading"
+        android:textColor="@color/white"
         android:textSize="@dimen/login_button_textsize" />
 
 </RelativeLayout>
