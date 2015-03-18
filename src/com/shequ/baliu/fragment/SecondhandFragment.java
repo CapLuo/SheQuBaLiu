@@ -14,7 +14,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -33,8 +32,7 @@ import com.shequ.baliu.holder.SecondHandGoods;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
 
-public class SecondhandFragment extends Fragment implements
-		OnItemClickListener, OnClickListener {
+public class SecondhandFragment extends Fragment implements OnItemClickListener {
 
 	private View mContentView;
 
@@ -44,6 +42,13 @@ public class SecondhandFragment extends Fragment implements
 	private static final int PRINTSCREEN = 10;
 	private int start = 0;
 	private boolean isRefreshing = false;
+
+	private OnClickGoodDetail mClickGoodDetail = new OnClickGoodDetail() {
+
+		@Override
+		public void setGoodDetailClick(SecondHandGoods good) {
+		}
+	};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -126,14 +131,18 @@ public class SecondhandFragment extends Fragment implements
 
 	}
 
+	public void setOnClickGoodDetail(OnClickGoodDetail goodDetailListen) {
+		mClickGoodDetail = goodDetailListen;
+	}
+
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-
+		SecondHandGoods good = (SecondHandGoods) mAdatper.getItem(position - 1);
+		mClickGoodDetail.setGoodDetailClick(good);
 	}
 
-	@Override
-	public void onClick(View v) {
+	public interface OnClickGoodDetail {
+		public void setGoodDetailClick(SecondHandGoods good);
 	}
-
 }

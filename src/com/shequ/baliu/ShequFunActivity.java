@@ -14,7 +14,10 @@ import com.baidu.mobstat.StatService;
 import com.shequ.baliu.fragment.BankFragment;
 import com.shequ.baliu.fragment.NeighbourFragment;
 import com.shequ.baliu.fragment.RepairExpressFragment;
+import com.shequ.baliu.fragment.SecondGoodDetailFragment;
 import com.shequ.baliu.fragment.SecondhandFragment;
+import com.shequ.baliu.fragment.SecondhandFragment.OnClickGoodDetail;
+import com.shequ.baliu.holder.SecondHandGoods;
 import com.shequ.baliu.util.ShequFunEnum;
 
 public class ShequFunActivity extends FragmentActivity {
@@ -30,6 +33,7 @@ public class ShequFunActivity extends FragmentActivity {
 	private SecondhandFragment mSecondhandFragment;
 	private RepairExpressFragment mRepairExpressFragment;
 	private BankFragment mBankFragment;
+	private SecondGoodDetailFragment mSecondGoodDetailFragment;
 
 	private FragmentManager mFragmentManager;
 
@@ -107,6 +111,25 @@ public class ShequFunActivity extends FragmentActivity {
 			mFun = ShequFunEnum.SECONDHAND;
 			if (mSecondhandFragment == null) {
 				mSecondhandFragment = new SecondhandFragment();
+				mSecondhandFragment
+						.setOnClickGoodDetail(new OnClickGoodDetail() {
+							@Override
+							public void setGoodDetailClick(SecondHandGoods good) {
+								FragmentTransaction transaction = mFragmentManager
+										.beginTransaction();
+								hideAllFragment(transaction);
+								mFun = ShequFunEnum.SECONDDETAILS;
+								if (mSecondGoodDetailFragment == null) {
+									mSecondGoodDetailFragment = new SecondGoodDetailFragment();
+									transaction.add(R.id._content_main,
+											mSecondGoodDetailFragment);
+								}
+								mSecondGoodDetailFragment.setGoodDetail(good);
+								transaction.addToBackStack(null);
+								transaction.show(mSecondGoodDetailFragment);
+								transaction.commit();
+							}
+						});
 				transaction.add(R.id._content_main, mSecondhandFragment);
 			}
 			transaction.show(mSecondhandFragment);
@@ -172,5 +195,22 @@ public class ShequFunActivity extends FragmentActivity {
 		if (mBankFragment != null) {
 			transaction.hide(mBankFragment);
 		}
+		if (mSecondGoodDetailFragment != null) {
+			transaction.hide(mSecondGoodDetailFragment);
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (ShequFunEnum.SECONDDETAILS == mFun) {
+			FragmentTransaction transaction = mFragmentManager
+					.beginTransaction();
+			if (mSecondGoodDetailFragment != null) {
+				transaction.remove(mSecondGoodDetailFragment);
+				mSecondGoodDetailFragment = null;
+			}
+			transaction.commit();
+		}
+		super.onBackPressed();
 	}
 }

@@ -80,6 +80,9 @@
     <dimen name="second_good_title_size">18sp</dimen>
     <dimen name="second_good_title_margin_left">60dp</dimen>
     <dimen name="second_good_title_margin_top">8dp</dimen>
+    <dimen name="second_good_line_height">1dp</dimen>
+    <dimen name="second_good_detail_paddingleft">20dp</dimen>
+    <dimen name="second_good_detail_head_margin">15dp</dimen>
 
     <!-- neighbour page -->
     <dimen name="neighbour_page_paddingleft">20dp</dimen>

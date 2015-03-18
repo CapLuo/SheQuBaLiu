@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:orientation="horizontal" >
+
+            <com.shequ.baliu.view.CircularImage
+                android:id="@+id/second_hand_head_img"
+                android:layout_width="@dimen/second_good_head_width"
+                android:layout_height="@dimen/second_good_head_width"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/second_good_detail_head_margin"
+                android:layout_marginLeft="@dimen/second_good_detail_head_margin"
+                android:layout_marginTop="@dimen/second_good_detail_head_margin"
+                android:contentDescription="@drawable/user_head_default"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/second_good_detail_head_margin"
+                android:layout_marginLeft="@dimen/second_good_page_paddingleft"
+                android:layout_marginTop="@dimen/second_good_detail_head_margin"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/second_hand_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/second_good_name_textsize" />
+
+                <TextView
+                    android:id="@+id/second_hand_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/second_good_name_textsize" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/second_good_detail_paddingleft"
+            android:paddingRight="@dimen/second_good_detail_paddingleft" >
+
+            <TextView
+                android:id="@+id/second_hand_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/second_good_detail_head_margin"
+                android:layout_marginTop="@dimen/second_good_detail_head_margin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/second_good_title_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/second_good_line_height"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/second_good_page_paddingTop"
+                android:layout_marginTop="@dimen/second_good_page_paddingTop"
+                android:text="@string/second_hand_good_img"
+                android:textSize="@dimen/second_good_name_textsize" />
+
+            <ImageView
+                android:id="@+id/second_hand_browsing"
+                android:layout_width="@dimen/second_good_page_width"
+                android:layout_height="@dimen/second_good_page_width"
+                android:contentDescription="@drawable/goods_loading"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/second_good_line_height"
+                android:layout_marginBottom="@dimen/second_good_page_paddingTop"
+                android:layout_marginTop="@dimen/second_good_page_paddingTop"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/second_hand_summary"
+                android:textSize="@dimen/second_good_name_textsize" />
+
+            <TextView
+                android:id="@+id/second_hand_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/second_good_page_paddingTop"
+                android:layout_marginTop="@dimen/second_good_page_paddingTop"
+                android:textColor="@color/black"
+                android:textSize="@dimen/second_good_name_textsize" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/second_good_line_height"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/second_good_page_paddingTop"
+                android:layout_marginTop="@dimen/second_good_page_paddingTop"
+                android:text="@string/second_hand_location"
+                android:textSize="@dimen/second_good_name_textsize" />
+
+            <TextView
+                android:id="@+id/second_hand_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/second_good_page_paddingleft"
+                android:textColor="@color/black"
+                android:textSize="@dimen/second_good_name_textsize" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

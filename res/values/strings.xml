@@ -86,5 +86,9 @@
 
     <!-- 二手市場 -->
     <string name="second_hand_time">半年前</string>
+    <string name="second_hand_good_img">商品图片</string>
+    <string name="second_hand_summary">简介</string>
+    <string name="second_hand_location">地点</string>
+    <string name="second_hand_detail_time">发布时间:</string>
 
 </resources>

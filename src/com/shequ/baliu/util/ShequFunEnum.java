@@ -10,7 +10,8 @@ public enum ShequFunEnum {
 	PROPERTY, // 物业
 	TOGHTER, // 爱拼一族
 	MEDIA, // 社区媒体
-	BANKING, // 票查询
+	BANKING, // 银行
+	SECONDDETAILS, //二手交易详情
 	;
 
 	public static ShequFunEnum getIntToEnum(int value) {
@@ -33,6 +34,8 @@ public enum ShequFunEnum {
 			return MEDIA;
 		case 8:
 			return BANKING;
+		case 9:
+			return SECONDDETAILS;
 		default:
 			break;
 		}
@@ -59,6 +62,8 @@ public enum ShequFunEnum {
 			return 7;
 		case BANKING:
 			return 8;
+		case SECONDDETAILS:
+			return 9;
 		default:
 			break;
 		}

@@ -4,10 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.shequ.baliu.util.StaticVariableSet;
 
+/*
+ * 存储的时间是 php的时间格式 10为long 转的string java 为13位 取出去要转为long *1000
+ */
 public class SecondHandGoods {
 
 	private String userid;
