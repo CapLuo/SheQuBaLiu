@@ -79,9 +79,9 @@
 
     <!-- 关于界面 -->
     <string name="about_content">&#160;&#160;&#160;&#160;南昌86区网-城市社区生活服务平台(www.86qu.cn/www.86qu.com)是江西弘奋实业有限公司旗下专注城市社区服务，为居民和商户搭建的在线交流互通的社交网络。\n&#160;&#160;&#160;&#160;86区成立于2014年8月6日。是江西省内首家城市社区生活服务平台。\n&#160;&#160;&#160;&#160;网站提供社区便民服务、社交活动和生活百货等生活服务，同时提供旅游、汽车、金融、餐饮、文化等栏目，为社区生活提供全方位服务。\n&#160;&#160;&#160;&#160;2015年86区将会在6月份启动九江站，并陆续开通省内其他站点。实现省内资讯零距离互通。</string>
-    <string name="about_author">作者:</string>
-    <string name="about_author_c">cap</string>
-    <string name="about_email">邮箱:</string>
+    <string name="about_author">作&#160;&#160;者:</string>
+    <string name="about_author_c">南昌86区网</string>
+    <string name="about_email">邮&#160;&#160;箱:</string>
     <string name="about_email_c">1790286208@qq.com</string>
 
     <!-- 二手市場 -->

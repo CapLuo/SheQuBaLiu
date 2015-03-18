@@ -53,8 +53,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/about_layout_text_margin_left"
                 android:layout_toRightOf="@id/about_author"
-                android:gravity="center_horizontal"
                 android:text="@string/about_author_c"
                 android:textSize="@dimen/about_text_size" />
         </RelativeLayout>
@@ -81,8 +81,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/about_layout_text_margin_left"
                 android:layout_toRightOf="@id/about_email"
-                android:gravity="center_horizontal"
                 android:text="@string/about_email_c"
                 android:textSize="@dimen/about_text_size" />
         </RelativeLayout>
