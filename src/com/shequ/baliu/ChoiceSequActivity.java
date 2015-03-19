@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.adapter.AdapterShequChoice;
 import com.shequ.baliu.holder.ShequSortModelHolder;
@@ -144,6 +145,9 @@ public class ChoiceSequActivity extends Activity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		StatService.onPageStart(this, "ChoiceSequActivity");
+
 		// 根据a-z进行排序源数据
 		mList = mDBManager.queryGroups();
 		if (mList.size() == 0) {
@@ -157,6 +161,13 @@ public class ChoiceSequActivity extends Activity implements
 		mListView.requestFocus();
 		mListView.setOnItemClickListener(this);
 		getShequListCount();
+	}
+
+	
+	@Override
+	protected void onPause() {
+		StatService.onPageEnd(this, "ChoiceSequActivity");
+		super.onPause();
 	}
 
 	private void getShequListCount() {
@@ -312,8 +323,8 @@ public class ChoiceSequActivity extends Activity implements
 		app.getInfo().setGroupId(groupid);
 		app.getInfo().setGroupName(groupname);
 		if (!TextUtils.isEmpty(userid)) {
-			SqlHelper.update(StaticVariableSet.SHEQU_GROUP_RELATION, "`groupid` = "
-					+ groupid, "`userid` = " + userid);
+			SqlHelper.update(StaticVariableSet.SHEQU_GROUP_RELATION,
+					"`groupid` = " + groupid, "`userid` = " + userid);
 		}
 	}
 

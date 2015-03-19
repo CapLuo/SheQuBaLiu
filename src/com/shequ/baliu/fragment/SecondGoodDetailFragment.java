@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.baidu.mobstat.StatService;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -56,6 +57,18 @@ public class SecondGoodDetailFragment extends Fragment {
 		initView();
 		initData();
 		return mContentView;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "SecondGoodDetailFragment");
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "SecondGoodDetailFragment");
+		super.onPause();
 	}
 
 	private void initView() {

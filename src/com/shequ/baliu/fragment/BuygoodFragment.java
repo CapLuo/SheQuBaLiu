@@ -1,5 +1,6 @@
 package com.shequ.baliu.fragment;
 
+import com.baidu.mobstat.StatService;
 import com.shequ.baliu.R;
 
 import android.os.Bundle;
@@ -26,6 +27,18 @@ public class BuygoodFragment extends Fragment {
 
 		initView();
 		return mContentView;
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "BuygoodFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "BuygoodFragment");
 	}
 
 	private void initView() {

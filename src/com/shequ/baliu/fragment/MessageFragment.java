@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.R;
 import com.shequ.baliu.ShequApplication;
@@ -88,6 +89,18 @@ public class MessageFragment extends Fragment implements OnItemClickListener {
 	public void onDestroyView() {
 		getActivity().unregisterReceiver(mBroadCast);
 		super.onDestroyView();
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "MessageFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "MessageFragment");
 	}
 
 	private void initView() {

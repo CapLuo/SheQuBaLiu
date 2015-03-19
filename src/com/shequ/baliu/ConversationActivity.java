@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.baidu.mobstat.StatService;
 import com.shequ.baliu.fragment.ConversationFragment;
 
 public class ConversationActivity extends FragmentActivity implements
@@ -35,6 +36,18 @@ public class ConversationActivity extends FragmentActivity implements
 
 		initView();
 		initData();
+	}
+
+	@Override
+	protected void onPause() {
+		StatService.onPageEnd(this, "ConversationActivity");
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		StatService.onPageStart(this, "ConversationActivity");
 	}
 
 	private void initView() {

@@ -174,7 +174,7 @@ public class PersionFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onPause() {
 
-		StatService.onPageStart(getActivity(), "PersionFragment");
+		StatService.onPageEnd(getActivity(), "PersionFragment");
 
 		mDBManager.closeDB();
 		super.onPause();

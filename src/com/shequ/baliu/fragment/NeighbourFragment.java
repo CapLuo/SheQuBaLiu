@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.baidu.mobstat.StatService;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
@@ -69,6 +70,18 @@ public class NeighbourFragment extends Fragment implements OnItemClickListener {
 		ShequApplication app = (ShequApplication) getActivity()
 				.getApplication();
 		mUserId = app.getInfo().getUserId();
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "NeighbourFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "NeighbourFragment");
 	}
 
 	private void initView(LayoutInflater inflater) {

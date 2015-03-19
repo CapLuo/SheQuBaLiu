@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.baidu.mobstat.StatService;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.R;
@@ -66,6 +67,18 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 		}
 
 	};
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "ConversationFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "ConversationFragment");
+	}
 
 	public ConversationFragment(String userid, String id, String name) {
 		mTouserid = id;

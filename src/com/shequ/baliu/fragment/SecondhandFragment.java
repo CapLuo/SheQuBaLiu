@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.baidu.mobstat.StatService;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
@@ -65,6 +66,18 @@ public class SecondhandFragment extends Fragment implements OnItemClickListener 
 		initData();
 
 		return mContentView;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "SecondhandFragment");
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "SecondhandFragment");
+		super.onPause();
 	}
 
 	private void initView() {

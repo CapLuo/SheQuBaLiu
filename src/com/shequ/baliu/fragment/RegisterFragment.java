@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.R;
 import com.shequ.baliu.ShequApplication;
@@ -72,6 +73,18 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 		initView();
 		initData();
 		return mContentView;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "RegisterFragment");
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "RegisterFragment");
+		super.onPause();
 	}
 
 	private void initView() {
@@ -400,8 +413,9 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 						int count = Integer.parseInt(json.getString("COUNT(*)"));
 						if (count == 0) {
 							mEmailError.setText(R.string.register_confirmation);
-							mEmailError.setTextColor(getActivity()
-									.getResources().getColor(R.color.word_blue));
+							mEmailError
+									.setTextColor(getActivity().getResources()
+											.getColor(R.color.word_blue));
 							if (isClickRegister) {
 								if (isPwdNull()) {
 									mPassword.requestFocus();

@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.ShequApplication;
 import com.shequ.baliu.ShequUserActivity;
@@ -59,6 +60,18 @@ public class LoginFragment extends Fragment {
 		initView();
 		initData();
 		return mContentView;
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "LoginFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "LoginFragment");
 	}
 
 	private void initView() {

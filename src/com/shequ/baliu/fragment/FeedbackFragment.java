@@ -2,6 +2,7 @@ package com.shequ.baliu.fragment;
 
 import java.util.Date;
 
+import com.baidu.mobstat.StatService;
 import com.shequ.baliu.R;
 import com.shequ.baliu.ShequApplication;
 import com.shequ.baliu.util.SqlHelper;
@@ -44,6 +45,18 @@ public class FeedbackFragment extends Fragment {
 				.findViewById(R.id.feedback_content_edittext);
 		mEditContact = (EditText) mContentView
 				.findViewById(R.id.feedback_contact_edittext);
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "FeedbackFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "FeedbackFragment");
 	}
 
 	private void initData() {

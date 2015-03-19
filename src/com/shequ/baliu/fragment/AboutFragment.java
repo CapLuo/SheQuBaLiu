@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.baidu.mobstat.StatService;
 import com.shequ.baliu.R;
 import com.shequ.baliu.util.StaticVariableSet;
 
@@ -32,6 +33,18 @@ public class AboutFragment extends Fragment {
 		initView();
 		initData();
 		return mContentView;
+	}
+
+	@Override
+	public void onPause() {
+		StatService.onPageEnd(getActivity(), "AboutFragment");
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		StatService.onPageStart(getActivity(), "AboutFragment");
 	}
 
 	private void initView() {
