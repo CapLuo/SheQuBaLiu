@@ -19,7 +19,7 @@
                 android:layout_height="@dimen/user_info_image_witdh"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="@dimen/login_textline_margintop"
-                android:layout_marginLeft="@dimen/login_textline_marginleft"
+                android:layout_marginLeft="@dimen/message_head_img_margin_left"
                 android:layout_marginTop="@dimen/login_textline_margintop"
                 android:contentDescription="@drawable/user_head_default"
                 android:scaleType="centerCrop"
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="@dimen/login_textline_marginleft"
+                android:layout_marginLeft="@dimen/message_head_img_margin_left"
                 android:layout_toRightOf="@id/_user_img"
                 android:orientation="vertical" >
 
@@ -37,7 +37,7 @@
                     android:id="@+id/_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/message_content_textsize" />
+                    android:textSize="@dimen/message_user_name_size" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                         android:id="@+id/_user_shequ_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/message_content_textsize" />
+                        android:textSize="@dimen/message_user_name_size" />
 
                     <Button
                         android:id="@+id/_user_shequ_change"
@@ -57,7 +57,8 @@
                         android:layout_marginLeft="@dimen/login_textline_margintop"
                         android:background="@drawable/change_community_button"
                         android:text="@string/user_shequ_change"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/message_user_name_size" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

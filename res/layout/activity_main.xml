@@ -22,8 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_bar_height"
-            android:baselineAligned="false"
-            android:background="@color/white" >
+            android:background="@color/white"
+            android:baselineAligned="false" >
 
             <RelativeLayout
                 android:id="@+id/_layout_home"
@@ -41,9 +41,9 @@
                         android:id="@+id/_layout_home_image"
                         android:layout_width="@dimen/bottom_bar_img_width"
                         android:layout_height="@dimen/bottom_bar_img_width"
-                        android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@drawable/ic_tabbar_course_normal"
+                        android:scaleType="fitXY"
                         android:src="@drawable/ic_tabbar_course_normal" />
 
                     <TextView
@@ -72,9 +72,9 @@
                         android:id="@+id/_layout_community_image"
                         android:layout_width="@dimen/bottom_bar_img_width"
                         android:layout_height="@dimen/bottom_bar_img_width"
-                        android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@drawable/ic_tabbar_found_normal"
+                        android:scaleType="fitXY"
                         android:src="@drawable/ic_tabbar_found_normal" />
 
                     <TextView
@@ -91,22 +91,25 @@
                 android:id="@+id/_layout_bussiness"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:orientation="vertical" >
+                    android:orientation="vertical"
+                    android:visibility="gone" >
 
                     <ImageView
                         android:id="@+id/_layout_bussiness_image"
                         android:layout_width="@dimen/bottom_bar_img_width"
                         android:layout_height="@dimen/bottom_bar_img_width"
-                        android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@drawable/ic_tabbar_business_normal"
-                        android:src="@drawable/ic_tabbar_business_normal" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_tabbar_business_normal"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/_layout_bussiness_text"
@@ -114,7 +117,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="@string/business"
-                        android:textColor="@color/bottom_bar_blue" />
+                        android:textColor="@color/bottom_bar_blue"
+                        android:visibility="gone" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -134,9 +138,9 @@
                         android:id="@+id/_layout_person_image"
                         android:layout_width="@dimen/bottom_bar_img_width"
                         android:layout_height="@dimen/bottom_bar_img_width"
-                        android:scaleType="fitXY"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@drawable/ic_tabbar_settings_normal"
+                        android:scaleType="fitXY"
                         android:src="@drawable/ic_tabbar_settings_normal" />
 
                     <TextView

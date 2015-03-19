@@ -35,7 +35,8 @@
                 android:layout_marginTop="@dimen/choice_margin_top"
                 android:layout_toRightOf="@id/_return"
                 android:background="@drawable/choice_edittext_background"
-                android:hint="@string/choice_page_editext_tips" />
+                android:hint="@string/choice_page_editext_tips"
+                android:singleLine="true" />
 
             <ImageView
                 android:id="@+id/_shequ_choice_cancel"

@@ -26,7 +26,9 @@
     <!-- user message page -->
     <dimen name="message_name_textsize">22sp</dimen>
     <dimen name="message_content_textsize">20sp</dimen>
+    <dimen name="message_user_name_size">18sp</dimen>
     <dimen name="message_item_margintop">4dp</dimen>
+    <dimen name="message_head_img_margin_left">10dp</dimen>
 
     <!-- feedback page -->
     <dimen name="feedback_content_hight">120dp</dimen>
