@@ -83,11 +83,11 @@ public class RepairExpressFragment extends Fragment implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		DataHolder holder = (DataHolder) (view.getTag());
-		String phone = holder.phone;
-		Intent intent = new Intent(Intent.ACTION_CALL,
-				Uri.parse("tel:" + phone));
-		getActivity().startActivity(intent);
+		/*
+		 * DataHolder holder = (DataHolder) (view.getTag()); String phone =
+		 * holder.phone; Intent intent = new Intent(Intent.ACTION_CALL,
+		 * Uri.parse("tel:" + phone)); getActivity().startActivity(intent);
+		 */
 	}
 
 }
