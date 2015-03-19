@@ -13,8 +13,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,6 +23,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.DisplayMetrics;
+import android.util.Log;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class ShequTools {
 
@@ -40,7 +41,8 @@ public class ShequTools {
 		context.getWindowManager().getDefaultDisplay().getMetrics(dm);
 		mDisplayMetricsHeight = dm.heightPixels;
 		mDisplayMetricsWidth = dm.widthPixels;
-		mDensity = dm.density;
+		mDensity = dm.densityDpi;
+		Log.e("@@@@", " " + mDensity);
 		createAppDir();
 	}
 

@@ -9,150 +9,144 @@
 
     <LinearLayout
         android:id="@+id/_bottom_bar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/bottom_bar_height"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical" >
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_bar_line_height"
-            android:background="@color/gray" />
+        <RelativeLayout
+            android:id="@+id/_layout_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_bar_line_height"
+            android:layout_weight="1" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_bar_height"
-            android:background="@color/white"
-            android:baselineAligned="false" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_bar_height"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
 
-            <RelativeLayout
-                android:id="@+id/_layout_home"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
+                <ImageView
+                    android:id="@+id/_layout_home_image"
+                    android:layout_width="@dimen/bottom_bar_img_width"
+                    android:layout_height="@dimen/bottom_bar_img_width"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@drawable/ic_tabbar_course_normal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_tabbar_course_normal" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/_layout_home_text"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical" >
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/home"
+                    android:textSize="@dimen/bottom_bar_text_size" />
+            </LinearLayout>
+        </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/_layout_home_image"
-                        android:layout_width="@dimen/bottom_bar_img_width"
-                        android:layout_height="@dimen/bottom_bar_img_width"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@drawable/ic_tabbar_course_normal"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_tabbar_course_normal" />
+        <RelativeLayout
+            android:id="@+id/_layout_community"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_bar_line_height"
+            android:layout_weight="1" >
 
-                    <TextView
-                        android:id="@+id/_layout_home_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/home"
-                        android:textColor="@color/bottom_bar_blue" />
-                </LinearLayout>
-            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_bar_height"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
 
-            <RelativeLayout
-                android:id="@+id/_layout_community"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
+                <ImageView
+                    android:id="@+id/_layout_community_image"
+                    android:layout_width="@dimen/bottom_bar_img_width"
+                    android:layout_height="@dimen/bottom_bar_img_width"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@drawable/ic_tabbar_found_normal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_tabbar_found_normal" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/_layout_community_text"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical" >
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/community"
+                    android:textSize="@dimen/bottom_bar_text_size" />
+            </LinearLayout>
+        </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/_layout_community_image"
-                        android:layout_width="@dimen/bottom_bar_img_width"
-                        android:layout_height="@dimen/bottom_bar_img_width"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@drawable/ic_tabbar_found_normal"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_tabbar_found_normal" />
+        <RelativeLayout
+            android:id="@+id/_layout_bussiness"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_bar_line_height"
+            android:layout_weight="1"
+            android:visibility="gone" >
 
-                    <TextView
-                        android:id="@+id/_layout_community_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/community"
-                        android:textColor="@color/bottom_bar_blue" />
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/_layout_bussiness"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_bar_height"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
                 android:visibility="gone" >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/_layout_bussiness_image"
+                    android:layout_width="@dimen/bottom_bar_img_width"
+                    android:layout_height="@dimen/bottom_bar_img_width"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@drawable/ic_tabbar_business_normal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_tabbar_business_normal"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/_layout_bussiness_text"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical"
-                    android:visibility="gone" >
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/business"
+                    android:textSize="@dimen/bottom_bar_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/_layout_bussiness_image"
-                        android:layout_width="@dimen/bottom_bar_img_width"
-                        android:layout_height="@dimen/bottom_bar_img_width"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@drawable/ic_tabbar_business_normal"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_tabbar_business_normal"
-                        android:visibility="gone" />
+        <RelativeLayout
+            android:id="@+id/_layout_person"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_bar_line_height"
+            android:layout_weight="1" >
 
-                    <TextView
-                        android:id="@+id/_layout_bussiness_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/business"
-                        android:textColor="@color/bottom_bar_blue"
-                        android:visibility="gone" />
-                </LinearLayout>
-            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_bar_height"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
 
-            <RelativeLayout
-                android:id="@+id/_layout_person"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
+                <ImageView
+                    android:id="@+id/_layout_person_image"
+                    android:layout_width="@dimen/bottom_bar_img_width"
+                    android:layout_height="@dimen/bottom_bar_img_width"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@drawable/ic_tabbar_settings_normal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_tabbar_settings_normal" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/_layout_person_text"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:id="@+id/_layout_person_image"
-                        android:layout_width="@dimen/bottom_bar_img_width"
-                        android:layout_height="@dimen/bottom_bar_img_width"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@drawable/ic_tabbar_settings_normal"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_tabbar_settings_normal" />
-
-                    <TextView
-                        android:id="@+id/_layout_person_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/center"
-                        android:textColor="@color/bottom_bar_blue" />
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/center"
+                    android:textSize="@dimen/bottom_bar_text_size" />
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <FrameLayout

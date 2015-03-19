@@ -1,83 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <RelativeLayout
-            android:id="@+id/_user_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <ImageView
-                android:id="@+id/_user_img"
-                android:layout_width="@dimen/user_info_image_witdh"
-                android:layout_height="@dimen/user_info_image_witdh"
-                android:layout_centerVertical="true"
-                android:layout_marginBottom="@dimen/login_textline_margintop"
-                android:layout_marginLeft="@dimen/message_head_img_margin_left"
-                android:layout_marginTop="@dimen/login_textline_margintop"
-                android:contentDescription="@drawable/user_head_default"
-                android:scaleType="centerCrop"
-                android:src="@drawable/user_head_default" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="@dimen/message_head_img_margin_left"
-                android:layout_toRightOf="@id/_user_img"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/_user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/message_user_name_size" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        android:id="@+id/_user_shequ_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/message_user_name_size" />
-
-                    <Button
-                        android:id="@+id/_user_shequ_change"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/login_textline_margintop"
-                        android:background="@drawable/change_community_button"
-                        android:text="@string/user_shequ_change"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/message_user_name_size" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/_user_registr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:text="@string/user_login"
-            android:textSize="@dimen/message_content_textsize"
-            android:visibility="invisible" />
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/user_square_content"
-        android:background="@color/light_gray" />
+    android:layout_height="wrap_content" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,89 +9,212 @@
         android:orientation="vertical" >
 
         <RelativeLayout
-            android:id="@+id/_user_message"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/login_textline_margintop"
-            android:paddingLeft="@dimen/login_textline_marginleft"
-            android:paddingRight="@dimen/login_textline_marginleft"
-            android:paddingTop="@dimen/login_textline_margintop" >
+            android:layout_height="wrap_content" >
 
-            <ImageView
-                android:id="@+id/_user_message_img"
+            <RelativeLayout
+                android:id="@+id/_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/_user_img"
+                    android:layout_width="@dimen/user_info_image_witdh"
+                    android:layout_height="@dimen/user_info_image_witdh"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/login_textline_margintop"
+                    android:layout_marginLeft="@dimen/message_head_img_margin_left"
+                    android:layout_marginTop="@dimen/login_textline_margintop"
+                    android:contentDescription="@drawable/user_head_default"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user_head_default" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/message_head_img_margin_left"
+                    android:layout_toRightOf="@id/_user_img"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/message_user_name_size" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/_user_shequ_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/message_user_name_size" />
+
+                        <Button
+                            android:id="@+id/_user_shequ_change"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/login_textline_margintop"
+                            android:background="@drawable/change_community_button"
+                            android:text="@string/user_shequ_change"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/message_user_name_size" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/_user_registr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:contentDescription="@drawable/user_message"
-                android:src="@drawable/user_message" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/login_textline_marginleft"
-                android:layout_toRightOf="@id/_user_message_img"
-                android:text="@string/user_message"
-                android:textSize="@dimen/message_content_textsize" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@drawable/ic_list_arrow"
-                android:src="@drawable/ic_list_arrow" />
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:text="@string/user_login"
+                android:textSize="@dimen/message_content_textsize"
+                android:visibility="invisible" />
         </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/login_textline_height"
-            android:layout_marginLeft="@dimen/login_textline_marginleft"
-            android:layout_marginRight="@dimen/login_textline_marginleft"
+            android:layout_height="@dimen/user_square_content"
             android:background="@color/light_gray" />
 
-        <RelativeLayout
-            android:id="@+id/_user_feedback"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/login_textline_margintop"
-            android:paddingLeft="@dimen/login_textline_marginleft"
-            android:paddingRight="@dimen/login_textline_marginleft"
-            android:paddingTop="@dimen/login_textline_margintop" >
+            android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/_user_feedback_img"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/_user_message"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:contentDescription="@drawable/user_feedback"
-                android:src="@drawable/user_feedback" />
+                android:paddingBottom="@dimen/login_textline_margintop"
+                android:paddingLeft="@dimen/login_textline_marginleft"
+                android:paddingRight="@dimen/login_textline_marginleft"
+                android:paddingTop="@dimen/login_textline_margintop" >
+
+                <ImageView
+                    android:id="@+id/_user_message_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@drawable/user_message"
+                    android:src="@drawable/user_message" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/login_textline_marginleft"
+                    android:layout_toRightOf="@id/_user_message_img"
+                    android:text="@string/user_message"
+                    android:textSize="@dimen/message_content_textsize" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@drawable/ic_list_arrow"
+                    android:src="@drawable/ic_list_arrow" />
+            </RelativeLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_textline_height"
                 android:layout_marginLeft="@dimen/login_textline_marginleft"
-                android:layout_toRightOf="@id/_user_feedback_img"
-                android:text="@string/user_feedback"
-                android:textSize="@dimen/message_content_textsize" />
+                android:layout_marginRight="@dimen/login_textline_marginleft"
+                android:background="@color/light_gray" />
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/_user_feedback"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@drawable/ic_list_arrow"
-                android:src="@drawable/ic_list_arrow" />
-        </RelativeLayout>
+                android:paddingBottom="@dimen/login_textline_margintop"
+                android:paddingLeft="@dimen/login_textline_marginleft"
+                android:paddingRight="@dimen/login_textline_marginleft"
+                android:paddingTop="@dimen/login_textline_margintop" >
+
+                <ImageView
+                    android:id="@+id/_user_feedback_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@drawable/user_feedback"
+                    android:src="@drawable/user_feedback" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/login_textline_marginleft"
+                    android:layout_toRightOf="@id/_user_feedback_img"
+                    android:text="@string/user_feedback"
+                    android:textSize="@dimen/message_content_textsize" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@drawable/ic_list_arrow"
+                    android:src="@drawable/ic_list_arrow" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_textline_height"
+                android:layout_marginLeft="@dimen/login_textline_marginleft"
+                android:layout_marginRight="@dimen/login_textline_marginleft"
+                android:background="@color/light_gray" />
+
+            <RelativeLayout
+                android:id="@+id/_user_aboutus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/login_textline_margintop"
+                android:paddingLeft="@dimen/login_textline_marginleft"
+                android:paddingRight="@dimen/login_textline_marginleft"
+                android:paddingTop="@dimen/login_textline_margintop" >
+
+                <ImageView
+                    android:id="@+id/_user_aboutus_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@drawable/user_about"
+                    android:src="@drawable/user_about" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/login_textline_marginleft"
+                    android:layout_toRightOf="@id/_user_aboutus_img"
+                    android:text="@string/user_about_us"
+                    android:textSize="@dimen/message_content_textsize" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@drawable/ic_list_arrow"
+                    android:src="@drawable/ic_list_arrow" />
+            </RelativeLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_textline_height"
-            android:layout_marginLeft="@dimen/login_textline_marginleft"
-            android:layout_marginRight="@dimen/login_textline_marginleft"
             android:background="@color/light_gray" />
 
         <RelativeLayout
-            android:id="@+id/_user_aboutus"
+            android:id="@+id/_user_clear_master"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/login_textline_margintop"
@@ -176,60 +223,22 @@
             android:paddingTop="@dimen/login_textline_margintop" >
 
             <ImageView
-                android:id="@+id/_user_aboutus_img"
+                android:id="@+id/_user_clear_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:contentDescription="@drawable/user_about"
-                android:src="@drawable/user_about" />
+                android:contentDescription="@drawable/user_clear_master"
+                android:src="@drawable/user_clear_master" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/login_textline_marginleft"
-                android:layout_toRightOf="@id/_user_aboutus_img"
-                android:text="@string/user_about_us"
-                android:textSize="@dimen/message_content_textsize" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:contentDescription="@drawable/ic_list_arrow"
-                android:src="@drawable/ic_list_arrow" />
+                android:layout_marginLeft="@dimen/login_textline_marginleft"
+                android:layout_toRightOf="@id/_user_clear_img"
+                android:text="@string/user_clear_master"
+                android:textSize="@dimen/message_content_textsize" />
         </RelativeLayout>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/login_textline_height"
-        android:background="@color/light_gray" />
-
-    <RelativeLayout
-        android:id="@+id/_user_clear_master"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/login_textline_margintop"
-        android:paddingLeft="@dimen/login_textline_marginleft"
-        android:paddingRight="@dimen/login_textline_marginleft"
-        android:paddingTop="@dimen/login_textline_margintop" >
-
-        <ImageView
-            android:id="@+id/_user_clear_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:contentDescription="@drawable/user_clear_master"
-            android:src="@drawable/user_clear_master" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/login_textline_marginleft"
-            android:layout_toRightOf="@id/_user_clear_img"
-            android:text="@string/user_clear_master"
-            android:textSize="@dimen/message_content_textsize" />
-    </RelativeLayout>
-
-</LinearLayout>
+</ScrollView>

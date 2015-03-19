@@ -25,10 +25,11 @@
 
                 <com.shequ.baliu.view.CirclePageIndicator
                     android:id="@+id/_home_image_indicator"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="@dimen/top_indicator_margin_bottom" />
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="@dimen/top_indicator_margin_bottom"
+                    android:layout_marginRight="@dimen/home_page_index_margin_right" />
             </FrameLayout>
 
             <com.shequ.baliu.view.ShequGridView
@@ -42,26 +43,49 @@
                 android:listSelector="@android:color/transparent"
                 android:numColumns="auto_fit"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="@dimen/gridview_spacing" />
+                android:verticalSpacing="@dimen/gridview_vertical_spacing" />
 
             <TextView
-                android:id="@+id/_listview_activity_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/light_gray"
-                android:paddingBottom="@dimen/login_textline_paddingtop"
-                android:paddingLeft="@dimen/login_textline_marginleft"
-                android:paddingTop="@dimen/login_textline_paddingtop"
-                android:text="@string/home_hot_talk"
-                android:textSize="@dimen/home_eye_city_title" />
+                android:layout_height="@dimen/home_eye_city_up_title_height"
+                android:layout_marginTop="@dimen/home_eye_city_up_margin_top"
+                android:background="@color/eye_city_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/home_eye_city_title_height"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/eye_city_up" />
+
+                <TextView
+                    android:id="@+id/_listview_activity_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/home_dialog_padding_top"
+                    android:text="@string/home_hot_talk"
+                    android:textSize="@dimen/home_eye_city_title" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/home_line_height"
+                android:layout_marginBottom="@dimen/home_line_height"
+                android:background="@color/list_gray" />
 
             <com.shequ.baliu.view.EyeCityListView
                 android:id="@+id/_listview_activity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:divider="@null"
-                android:listSelector="@android:color/transparent" />
+                android:divider="@drawable/divider"
+                android:listSelector="@android:color/transparent"
+                android:paddingLeft="@dimen/home_dialog_margin_left"
+                android:paddingRight="@dimen/home_dialog_margin_left" />
         </LinearLayout>
     </com.shequ.baliu.view.ShequScrollView>
 

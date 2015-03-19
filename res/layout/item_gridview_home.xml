@@ -8,8 +8,7 @@
         android:layout_width="@dimen/gridview_item_img_width"
         android:layout_height="@dimen/gridview_item_img_width"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/gridview_item_text_marginbottom"
-        android:layout_marginTop="@dimen/gridview_item_text_margintop" >
+        android:layout_marginTop="@dimen/gridview_item_img_margintop" >
     </ImageView>
 
     <TextView
@@ -18,7 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/_item_img"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/gridview_item_text_marginbottom"
         android:layout_marginTop="@dimen/gridview_item_text_margintop"
         android:textSize="@dimen/gridview_textsize" >
     </TextView>

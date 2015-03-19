@@ -56,13 +56,6 @@ public class AdpterEyeCity extends BaseAdapter {
 		TextView text = (TextView) convertView.findViewById(R.id.content);
 		text.setText(mList.get(position).getTitle());
 
-		TextView line = (TextView) convertView.findViewById(R.id.line);
-		if (position == getCount() - 1) {
-			line.setVisibility(View.INVISIBLE);
-		} else {
-			//line.setVisibility(View.VISIBLE);
-		}
-
 		convertView.setTag(mList.get(position));
 		return convertView;
 	}

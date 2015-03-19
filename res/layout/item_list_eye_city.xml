@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="@dimen/home_eye_city_list_item_height"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@drawable/eye_city_list_img"
+        android:src="@drawable/eye_city_list_img" />
 
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
+        android:layout_marginBottom="@dimen/home_eye_city_list_item_margin"
+        android:layout_marginLeft="@dimen/home_dialog_padding_top"
+        android:layout_marginTop="@dimen/home_eye_city_list_item_margin"
         android:singleLine="true"
         android:textSize="@dimen/listview_textsize" />
-
-    <TextView
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@color/gray"
-        android:visibility="gone" />
 
 </LinearLayout>
