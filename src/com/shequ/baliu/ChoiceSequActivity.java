@@ -26,7 +26,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.geocode.GeoCodeOption;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.adapter.AdapterShequChoice;
@@ -41,7 +55,7 @@ import com.shequ.baliu.view.SlideBar;
 import com.shequ.baliu.view.SlideBar.OnTouchLetterChangeListenner;
 
 public class ChoiceSequActivity extends Activity implements
-		OnItemClickListener, OnClickListener {
+		OnItemClickListener, OnClickListener, OnGetGeoCoderResultListener {
 
 	private ListView mListView;
 	private SlideBar mSlideBar;
@@ -57,6 +71,8 @@ public class ChoiceSequActivity extends Activity implements
 
 	private boolean isNeedRefresh = false;
 	private Dialog mDialog;
+
+	private LocationClient mLocationClinet;
 	/**
 	 * 汉字转换成拼音的类
 	 */
@@ -67,11 +83,21 @@ public class ChoiceSequActivity extends Activity implements
 	 */
 	private PinyinComparator pinyinComparator;
 
+	GeoCoder mSearch = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_choice_shequ);
+
+		mLocationClinet = new LocationClient(this);
+		mLocationClinet.registerLocationListener(new MyLocationListener());
+		LocationClientOption option = new LocationClientOption();
+		option.setLocationMode(LocationMode.Battery_Saving);// 设置定位模式
+		option.setCoorType("gcj02");// 返回的定位结果是百度经纬度，默认值gcj02
+		option.setIsNeedAddress(true);
+		mLocationClinet.setLocOption(option);
 
 		characterParser = CharacterParser.getInstance();
 		pinyinComparator = new PinyinComparator();
@@ -147,6 +173,10 @@ public class ChoiceSequActivity extends Activity implements
 		super.onResume();
 
 		StatService.onPageStart(this, "ChoiceSequActivity");
+		// 初始化搜索模块，注册事件监听
+		mSearch = GeoCoder.newInstance();
+		mSearch.setOnGetGeoCodeResultListener(this);
+		mLocationClinet.start();
 
 		// 根据a-z进行排序源数据
 		mList = mDBManager.queryGroups();
@@ -163,9 +193,10 @@ public class ChoiceSequActivity extends Activity implements
 		getShequListCount();
 	}
 
-	
 	@Override
 	protected void onPause() {
+		mSearch.destroy();
+		mLocationClinet.stop();
 		StatService.onPageEnd(this, "ChoiceSequActivity");
 		super.onPause();
 	}
@@ -352,6 +383,49 @@ public class ChoiceSequActivity extends Activity implements
 	private void dismiss() {
 		if (mDialog.isShowing()) {
 			mDialog.dismiss();
+		}
+	}
+
+	/**
+	 * 实现实位回调监听
+	 */
+	public class MyLocationListener implements BDLocationListener {
+
+		@Override
+		public void onReceiveLocation(BDLocation location) {
+			mSearch.geocode(new GeoCodeOption().address(location.getAddrStr())
+					.city(location.getCity()));
+		}
+	}
+
+	@Override
+	public void onGetGeoCodeResult(GeoCodeResult result) {
+		if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+			Toast.makeText(this, "抱歉，未能找到结果", Toast.LENGTH_LONG).show();
+			return;
+		}
+		String strInfo = String.format("纬度：%f 经度：%f",
+				result.getLocation().latitude, result.getLocation().longitude);
+		// Log.e("@@@@", "info = " + strInfo);
+		LatLng ptCenter = new LatLng(result.getLocation().latitude,
+				result.getLocation().longitude);
+		mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(ptCenter));
+	}
+
+	@Override
+	public void onGetReverseGeoCodeResult(ReverseGeoCodeResult result) {
+		if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+			Toast.makeText(this, "抱歉，未能找到结果", Toast.LENGTH_LONG).show();
+			return;
+		}
+		Toast.makeText(this, result.getAddress(), Toast.LENGTH_LONG).show();
+		List<PoiInfo> list = result.getPoiList();
+		if (list == null) {
+			return;
+		}
+		for (PoiInfo info : list) {
+			// Log.e("@@@@", info.name + " " + (info.type == null ? "" :
+			// info.type.toString()));
 		}
 	}
 }

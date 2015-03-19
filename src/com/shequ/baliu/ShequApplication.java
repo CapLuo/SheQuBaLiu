@@ -1,5 +1,6 @@
 package com.shequ.baliu;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -15,6 +16,9 @@ public class ShequApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		// 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+		SDKInitializer.initialize(this);
 
 		// 创建默认的ImageLoader配置参数
 		ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(
