@@ -160,10 +160,25 @@ public class ShequFunActivity extends FragmentActivity {
 			break;
 		case DISTRIBUTION:
 			mFun = ShequFunEnum.DISTRIBUTION;
+			if (mBankFragment == null) {
+				mBankFragment = new BankFragment();
+				transaction.add(R.id._content_main, mBankFragment);
+			}
+			transaction.show(mBankFragment);
 		case PROPERTY:
 			mFun = ShequFunEnum.PROPERTY;
+			if (mBankFragment == null) {
+				mBankFragment = new BankFragment();
+				transaction.add(R.id._content_main, mBankFragment);
+			}
+			transaction.show(mBankFragment);
 		case MEDIA:
 			mFun = ShequFunEnum.MEDIA;
+			if (mBankFragment == null) {
+				mBankFragment = new BankFragment();
+				transaction.add(R.id._content_main, mBankFragment);
+			}
+			transaction.show(mBankFragment);
 		case BANKING:
 			mFun = ShequFunEnum.BANKING;
 			if (mBankFragment == null) {
@@ -173,6 +188,12 @@ public class ShequFunActivity extends FragmentActivity {
 			transaction.show(mBankFragment);
 			break;
 		default:
+			mFun = ShequFunEnum.NONE;
+			if (mBankFragment == null) {
+				mBankFragment = new BankFragment();
+				transaction.add(R.id._content_main, mBankFragment);
+			}
+			transaction.show(mBankFragment);
 			break;
 		}
 		transaction.commit();

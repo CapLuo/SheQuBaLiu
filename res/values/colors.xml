@@ -18,5 +18,6 @@
     <color name="transparent">#00000000</color>
     <color name="oranger">#FF9C21</color>
     <color name="eye_city_gray">#EEEEEE</color>
+    <color name="title_blue">#17b6ed</color>
 
 </resources>

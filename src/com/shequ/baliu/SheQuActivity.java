@@ -429,6 +429,15 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+		if (0 == mCurrentPosition) {
+			super.onBackPressed();
+		} else {
+			setChoiceFragmentContent(0);
+		}
+	}
+
 	// private void businessTextHighLight() {
 	// int index = ShequBusinessEnum.getValues(mDataHolder
 	// .getCurrentBusiness());
