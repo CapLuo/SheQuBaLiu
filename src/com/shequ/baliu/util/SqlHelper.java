@@ -27,7 +27,6 @@ public class SqlHelper extends SQLiteOpenHelper {
 		try {
 			paramsValue = new String(Base64.encode(("SELECT * FROM `"
 					+ tableName + "` WHERE " + where).getBytes("utf-8"), 0));
-			Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
 			params.put("r", paramsValue);
 			HttpUtil.get(StaticVariableSet.DATA_URL, params, jsonHttpHandler);
 		} catch (UnsupportedEncodingException e) {
@@ -132,7 +131,6 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 	private static void get(String paramsValue, JsonHttpResponseHandler handler) {
 		RequestParams params = new RequestParams();
-		Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
 		params.put("r", paramsValue);
 		HttpUtil.get(StaticVariableSet.DATA_URL, params, handler);
 	}
@@ -142,7 +140,6 @@ public class SqlHelper extends SQLiteOpenHelper {
 		RequestParams params = new RequestParams();
 		String paramsValue = new String(Base64.encode(("INSERT INTO "
 				+ tableName + values).getBytes(), 0));
-		Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
 		params.put("r", paramsValue);
 		HttpUtil.post(StaticVariableSet.DATA_URL, params,
 				new AsyncHttpResponseHandler() {
@@ -167,7 +164,6 @@ public class SqlHelper extends SQLiteOpenHelper {
 		RequestParams params = new RequestParams();
 		String paramsValue = new String(Base64.encode(("INSERT INTO "
 				+ tableName + values).getBytes(), 0));
-		Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
 		params.put("r", paramsValue);
 		HttpUtil.post(StaticVariableSet.DATA_URL, params, responseHandler);
 	}
@@ -176,7 +172,6 @@ public class SqlHelper extends SQLiteOpenHelper {
 		RequestParams params = new RequestParams();
 		String paramsValue = new String(Base64.encode(("UPDATE `" + tableName
 				+ "` SET " + values + " WHERE " + where).getBytes(), 0));
-		Log.i(StaticVariableSet.TAG, "---> " + paramsValue);
 		params.put("r", paramsValue);
 		HttpUtil.post(StaticVariableSet.DATA_URL, params,
 				new AsyncHttpResponseHandler() {
