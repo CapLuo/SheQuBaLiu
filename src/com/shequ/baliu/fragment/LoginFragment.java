@@ -244,6 +244,7 @@ public class LoginFragment extends Fragment {
 						if (statusCode == 200) {
 							if (response.length() == 0) {
 								mDialog.dismiss();
+								getActivity().setResult(201);
 								getActivity().finish();
 								return;
 							}
@@ -252,6 +253,7 @@ public class LoginFragment extends Fragment {
 								mInfo = PersonInfo.parseJson(object);
 								setAppLoginInfo();
 								mDialog.dismiss();
+								getActivity().setResult(201);
 								getActivity().finish();
 							} catch (JSONException e) {
 								Log.e(StaticVariableSet.TAG, e.getMessage());

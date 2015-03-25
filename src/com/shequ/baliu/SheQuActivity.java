@@ -427,6 +427,11 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		if (resultCode == 400) {
 			setChoiceFragmentContent(3);
 		}
+		if (resultCode == 201 && mCurrentPosition == 3) {
+			mTextButton.setVisibility(View.VISIBLE);
+			mTextButton.setText("退出");
+			mTextButton.setOnClickListener(this);
+		}
 	}
 
 	@Override

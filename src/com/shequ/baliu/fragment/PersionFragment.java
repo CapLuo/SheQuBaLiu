@@ -27,6 +27,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.shequ.baliu.ChoiceSequActivity;
 import com.shequ.baliu.R;
+import com.shequ.baliu.SheQuActivity;
 import com.shequ.baliu.ShequApplication;
 import com.shequ.baliu.ShequUserActivity;
 import com.shequ.baliu.holder.PersonInfo;
@@ -187,7 +188,8 @@ public class PersionFragment extends Fragment implements OnClickListener {
 			Intent intentRegistr = new Intent();
 			intentRegistr.putExtra("index", 0);
 			intentRegistr.setClass(getActivity(), ShequUserActivity.class);
-			getActivity().startActivity(intentRegistr);
+			getActivity().startActivityForResult(intentRegistr,
+					SheQuActivity.request_code);
 			break;
 		case R.id._user_message:
 			Intent intentMessage = new Intent();

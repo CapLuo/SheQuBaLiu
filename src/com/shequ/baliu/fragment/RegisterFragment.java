@@ -528,6 +528,7 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 							app.setInfo(info);
 							app.setLogin(true);
 							dismiss();
+							getActivity().setResult(201);
 							getActivity().finish();
 						} catch (JSONException e) {
 							Log.e(StaticVariableSet.TAG, e.getMessage());
