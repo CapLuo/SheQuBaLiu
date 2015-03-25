@@ -8,7 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,6 +28,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.R;
 import com.shequ.baliu.ShequApplication;
 import com.shequ.baliu.ShequUserActivity;
+import com.shequ.baliu.dialog.ShequDialog;
 import com.shequ.baliu.holder.PersonInfo;
 import com.shequ.baliu.util.ShequTools;
 import com.shequ.baliu.util.SqlHelper;
@@ -57,7 +57,7 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 	private String mPasswordText;
 	private String mSaltText;
 
-	private Dialog mDialog;
+	private ShequDialog mDialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -114,7 +114,7 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 		mRegisterToLogin = (TextView) mContentView
 				.findViewById(R.id.register_to_login);
 
-		mDialog = new Dialog(getActivity()) {
+		mDialog = new ShequDialog(getActivity()) {
 
 			@Override
 			public void onBackPressed() {
