@@ -333,7 +333,8 @@ public class ChoiceSequActivity extends Activity implements
 		}
 		// 根据a-z进行排序
 		Collections.sort(filterDateList, pinyinComparator);
-		mAdapter.updateListView(filterDateList);
+		if (mAdapter != null)
+			mAdapter.updateListView(filterDateList);
 	}
 
 	@Override
@@ -393,6 +394,10 @@ public class ChoiceSequActivity extends Activity implements
 
 		@Override
 		public void onReceiveLocation(BDLocation location) {
+			if (TextUtils.isEmpty(location.getAddrStr())
+					|| TextUtils.isEmpty(location.getCity())) {
+				return;
+			}
 			mSearch.geocode(new GeoCodeOption().address(location.getAddrStr())
 					.city(location.getCity()));
 		}

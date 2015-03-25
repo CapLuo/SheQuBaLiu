@@ -5,7 +5,6 @@ import org.json.JSONObject;
 
 import com.shequ.baliu.util.StaticVariableSet;
 
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
 public class PersonInfo {

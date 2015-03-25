@@ -46,6 +46,8 @@ public class LoginFragment extends Fragment {
 	private String mUsernameText;
 	private String mPasswordText;
 
+	private PersonInfo mInfo;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -101,6 +103,7 @@ public class LoginFragment extends Fragment {
 	}
 
 	private void initData() {
+		mInfo = new PersonInfo();
 		mLogin.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -179,9 +182,14 @@ public class LoginFragment extends Fragment {
 									Toast.LENGTH_SHORT).show();
 						} else {
 							JSONObject object = response.getJSONObject(0);
-							String salt = object.getString("salt");
-							String pwd = object.getString("pwd");
-							if (pwd.equals(ShequTools.md5(salt + mPasswordText))) {
+							String saltText = object.getString("salt");
+							String pwdText = object.getString("pwd");
+							String userid = object.getString("userid");
+							if (pwdText.equals(ShequTools.md5(saltText
+									+ mPasswordText))) {
+								parseInfo(object);
+								saveUserInfo(saltText, userid);
+								setAppLoginInfo();
 								loginSucess();
 							} else {
 								// 用户名密码错误
@@ -234,22 +242,15 @@ public class LoginFragment extends Fragment {
 					public void onSuccess(int statusCode, Header[] headers,
 							JSONArray response) {
 						if (statusCode == 200) {
+							if (response.length() == 0) {
+								mDialog.dismiss();
+								getActivity().finish();
+								return;
+							}
 							try {
 								JSONObject object = response.getJSONObject(0);
-								PersonInfo info = PersonInfo.parseJson(object);
-								String salt = object.getString("salt");
-								ShequApplication app = (ShequApplication) (getActivity()
-										.getApplication());
-								app.setInfo(info);
-								app.setLogin(true);
-								ShequTools tool = new ShequTools(getActivity());
-								tool.writeSharedPreferences(
-										StaticVariableSet.SHARE_USER,
-										info.getUserId());
-								String pwd = ShequTools.md5(salt
-										+ info.getUserId());
-								tool.writeSharedPreferences(
-										StaticVariableSet.SHARE_PWD, pwd);
+								mInfo = PersonInfo.parseJson(object);
+								setAppLoginInfo();
 								mDialog.dismiss();
 								getActivity().finish();
 							} catch (JSONException e) {
@@ -259,5 +260,28 @@ public class LoginFragment extends Fragment {
 					}
 
 				});
+	}
+
+	private void saveUserInfo(String salt, String userid) {
+		ShequTools tool = new ShequTools(getActivity());
+		tool.writeSharedPreferences(StaticVariableSet.SHARE_USER, userid);
+		String pwd = ShequTools.md5(salt + userid);
+		tool.writeSharedPreferences(StaticVariableSet.SHARE_PWD, pwd);
+	}
+
+	private void parseInfo(JSONObject object) throws JSONException {
+		if (mInfo == null) {
+			mInfo = new PersonInfo();
+		}
+		mInfo.setUserId(object.getString("userid"));
+		mInfo.setUsername(object.getString("username"));
+		mInfo.setEmail(object.getString("email"));
+	}
+
+	private void setAppLoginInfo() {
+		ShequApplication app = (ShequApplication) (getActivity()
+				.getApplication());
+		app.setInfo(mInfo);
+		app.setLogin(true);
 	}
 }
