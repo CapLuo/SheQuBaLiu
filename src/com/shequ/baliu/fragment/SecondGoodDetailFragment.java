@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,6 +114,12 @@ public class SecondGoodDetailFragment extends Fragment {
 	}
 
 	private void fillContent() {
-		mContent.setText(Html.fromHtml(mGood.getContent()));
+		String str = mGood.getContent().replaceAll("&lt;", "<");
+		str = str.replaceAll("&gt;", ">");
+		str = str.replaceAll("&apm;", "&");
+		String contentStr = Html.fromHtml(str).toString();
+		contentStr = contentStr.replace("&nbsp;", "");
+		contentStr = contentStr.replace("￼", "");
+		mContent.setText(contentStr);
 	}
 }

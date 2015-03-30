@@ -19,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -431,6 +432,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			mTextButton.setVisibility(View.VISIBLE);
 			mTextButton.setText("退出");
 			mTextButton.setOnClickListener(this);
+		}
+		if (resultCode == 401 && mCurrentPosition == 3) {
+			Toast.makeText(this, R.string.login_error_none, Toast.LENGTH_SHORT).show();
 		}
 	}
 

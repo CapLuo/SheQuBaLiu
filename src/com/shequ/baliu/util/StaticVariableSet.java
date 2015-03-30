@@ -42,4 +42,6 @@ public class StaticVariableSet {
 	// google map host
 	public static final String LOCATION_HOST = "maps.google.com";
 	public static final String LOCATION_URL = "http://www.google.com/loc/json";
+
+	public static final String DOWNLOAD_NET = "http://shouji.baidu.com/soft/item?docid=7598747";
 }

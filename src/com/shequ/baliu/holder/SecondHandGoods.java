@@ -71,6 +71,7 @@ public class SecondHandGoods {
 	}
 
 	public String getContent() {
+		
 		return content;
 	}
 
