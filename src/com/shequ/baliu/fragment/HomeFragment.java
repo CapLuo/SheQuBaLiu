@@ -157,8 +157,8 @@ public class HomeFragment extends Fragment {
 				intent.setClass(getActivity(), ShequShowActivity.class);
 				intent.putExtra("PATH",
 						((ShequEyeCityHolder) view.getTag()).getUrl());
-				//getActivity().startActivity(intent);
-				//暂时不做跳转
+				// getActivity().startActivity(intent);
+				// 暂时不做跳转
 			}
 
 		});
@@ -175,6 +175,7 @@ public class HomeFragment extends Fragment {
 	@Override
 	public void onPause() {
 		scheduledExecutorService.shutdown();
+		scheduledExecutorService = null;
 
 		StatService.onPageEnd(getActivity(), "HomeFragment");
 
@@ -187,7 +188,14 @@ public class HomeFragment extends Fragment {
 
 		StatService.onPageStart(getActivity(), "HomeFragment");
 
-		scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+		if (scheduledExecutorService == null) {
+			scheduledExecutorService = Executors
+					.newSingleThreadScheduledExecutor();
+		}
+		if (mAdvertAdapter != null && mAdvertAdapter.getCount() > 0) {
+			scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1,
+					3, TimeUnit.SECONDS);
+		}
 	}
 
 	private void getEyeCityDataFromNet() {
@@ -230,8 +238,15 @@ public class HomeFragment extends Fragment {
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 				try {
-					mAdvertAdapter = new AdapterHomeAdvertImage(
-							parserImageUrl(response));
+					ArrayList<ImageView> listView = (ArrayList<ImageView>) parserImageUrl(response);
+					if (listView.size() <= 0) {
+						return;
+					}
+					if (scheduledExecutorService == null) {
+						scheduledExecutorService = Executors
+								.newSingleThreadScheduledExecutor();
+					}
+					mAdvertAdapter = new AdapterHomeAdvertImage(listView);
 					mImagePagerView.setAdapter(mAdvertAdapter);
 					scheduledExecutorService.scheduleAtFixedRate(
 							new ScrollTask(), 1, 3, TimeUnit.SECONDS);
