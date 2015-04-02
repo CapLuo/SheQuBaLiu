@@ -405,6 +405,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 				try {
+					if (response.length() <= 0) {
+						return;
+					}
 					JSONObject object = response.getJSONObject(0);
 					PersonInfo info = PersonInfo.parseJson(object);
 					String salt = object.getString("salt");
@@ -434,7 +437,8 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			mTextButton.setOnClickListener(this);
 		}
 		if (resultCode == 401 && mCurrentPosition == 3) {
-			Toast.makeText(this, R.string.login_error_none, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.login_error_none, Toast.LENGTH_SHORT)
+					.show();
 		}
 	}
 
