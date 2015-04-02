@@ -28,6 +28,7 @@ public class ShequFunActivity extends FragmentActivity {
 	private View mTitleBar;
 	private TextView mTitle;
 	private View mReturn;
+	private TextView mTextButton;
 
 	private NeighbourFragment mNeighbourFragment;
 	private SecondhandFragment mSecondhandFragment;
@@ -66,6 +67,7 @@ public class ShequFunActivity extends FragmentActivity {
 
 		mTitleBar = findViewById(R.id._title_bar);
 		mTitle = (TextView) mTitleBar.findViewById(R.id._text_title);
+		mTextButton = (TextView) mTitleBar.findViewById(R.id._text_button);
 		mReturn = findViewById(R.id._return);
 		mReturn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -96,6 +98,7 @@ public class ShequFunActivity extends FragmentActivity {
 				return;
 			}
 		}
+		mTextButton.setVisibility(View.INVISIBLE);
 		FragmentTransaction transaction = mFragmentManager.beginTransaction();
 		hideAllFragment(transaction);
 		switch (fun) {
@@ -109,6 +112,17 @@ public class ShequFunActivity extends FragmentActivity {
 			break;
 		case SECONDHAND:
 			mFun = ShequFunEnum.SECONDHAND;
+			mTextButton.setText(R.string.second_hand_release);
+			mTextButton.setVisibility(View.VISIBLE);
+			mTextButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent();
+					intent.setClass(ShequFunActivity.this,
+							ShequReleaseActivity.class);
+					ShequFunActivity.this.startActivity(intent);
+				}
+			});
 			if (mSecondhandFragment == null) {
 				mSecondhandFragment = new SecondhandFragment();
 				mSecondhandFragment
