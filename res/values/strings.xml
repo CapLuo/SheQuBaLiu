@@ -91,5 +91,6 @@
     <string name="second_hand_summary">简介</string>
     <string name="second_hand_location">地点</string>
     <string name="second_hand_detail_time">发布时间:</string>
+    <string name="second_hand_release">发布</string>
 
 </resources>
