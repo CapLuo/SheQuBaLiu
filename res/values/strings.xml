@@ -37,6 +37,7 @@
     <string name="user_shequ_change">更改</string>
     <string name="user_clear_master">清除缓存</string>
     <string name="user_clearing">正在清除&#8230;请稍等</string>
+    <string name="user_drop_out">退出</string>
 
     <!-- 登录页面 -->
     <string name="login_title">登录86区</string>

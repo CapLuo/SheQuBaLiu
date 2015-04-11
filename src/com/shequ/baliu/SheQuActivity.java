@@ -319,7 +319,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 					.setImageResource(R.drawable.ic_tabbar_settings_pressed);
 			if (isLogin) {
 				mTextButton.setVisibility(View.VISIBLE);
-				mTextButton.setText("退出");
+				mTextButton.setText(R.string.user_drop_out);
 				mTextButton.setOnClickListener(this);
 			}
 			if (mPersion == null) {
@@ -381,7 +381,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			}
 		} else {
 			if (mCurrentPosition == 2) {
-				mTextButton.setText("退出");
+				mTextButton.setText(R.string.user_drop_out);
 				mTextButton.setOnClickListener(this);
 				mTextButton.setVisibility(View.VISIBLE);
 			}
@@ -433,7 +433,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		}
 		if (resultCode == 201 && mCurrentPosition == 3) {
 			mTextButton.setVisibility(View.VISIBLE);
-			mTextButton.setText("退出");
+			mTextButton.setText(R.string.user_drop_out);
 			mTextButton.setOnClickListener(this);
 		}
 		if (resultCode == 401 && mCurrentPosition == 3) {
