@@ -102,7 +102,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
 		TypedArray a = context.obtainStyledAttributes(attrs,
 				R.styleable.CirclePageIndicator, defStyle, 0);
 
-		mCentered = a.getBoolean(R.styleable.CirclePageIndicator_centered,
+		mCentered = a.getBoolean(R.styleable.CirclePageIndicator_centered_,
 				defaultCentered);
 		mOrientation = a.getInt(
 				R.styleable.CirclePageIndicator_android_orientation,
@@ -114,13 +114,13 @@ public class CirclePageIndicator extends View implements PageIndicator {
 		mPaintStroke.setColor(a
 				.getColor(R.styleable.CirclePageIndicator_strokeColor,
 						defaultStrokeColor));
-		mPaintStroke.setStrokeWidth(a
-				.getDimension(R.styleable.CirclePageIndicator_strokeWidth,
-						defaultStrokeWidth));
+		mPaintStroke.setStrokeWidth(a.getDimension(
+				R.styleable.CirclePageIndicator_strokeWidth_,
+				defaultStrokeWidth));
 		mPaintFill.setStyle(Style.FILL);
 		mPaintFill.setColor(a.getColor(
 				R.styleable.CirclePageIndicator_fillColor, defaultFillColor));
-		mRadius = a.getDimension(R.styleable.CirclePageIndicator_radius,
+		mRadius = a.getDimension(R.styleable.CirclePageIndicator_radius_,
 				defaultRadius);
 		mSnap = a.getBoolean(R.styleable.CirclePageIndicator_snap, defaultSnap);
 
