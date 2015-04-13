@@ -242,6 +242,7 @@ public class PersionFragment extends Fragment implements OnClickListener {
 				.getApplication());
 		tool.writeSharedPreferences(StaticVariableSet.SHARE_USER, "");
 		tool.writeSharedPreferences(StaticVariableSet.SHARE_PWD, "");
+		tool.writeSharedPreferences(StaticVariableSet.SHARE_TOKEN, "");
 		mDBManager.deleteAllData(SqlHelper.MESSAGE_TABLE_NAME);
 		app.setInfo(new PersonInfo());
 		app.setLogin(false);

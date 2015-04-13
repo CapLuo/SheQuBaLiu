@@ -248,4 +248,5 @@ public class ShequFunActivity extends FragmentActivity {
 		}
 		super.onBackPressed();
 	}
+
 }

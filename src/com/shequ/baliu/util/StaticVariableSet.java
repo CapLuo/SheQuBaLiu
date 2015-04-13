@@ -9,6 +9,7 @@ public class StaticVariableSet {
 	public static String SHARE_NAME = "shequ_share";
 	public static String SHARE_USER = "shequ_user";
 	public static String SHARE_PWD = "shequ_pwd";
+	public static String SHARE_TOKEN = "shequ_token";
 
 	// get advert image url from internet
 	public static String AD_URL = "";
@@ -17,6 +18,14 @@ public class StaticVariableSet {
 	public static String DATA_URL = "http://www.86qu.cn/api.php";
 	// get img url frim internet
 	public static String IMG_URL = "http://www.86qu.cn";
+
+	// get im url from internet
+	public static String IM_DATA_URL = "http://shequbaliuim.duapp.com/coreServlet";
+	// server token
+	public static String IM_SERVER_TOKEN = "shequIM";
+	// default head img
+	public static String DEFAULT_HEAD_IMG = "http://www.86qu.cn/Public/Static/images/user_large.jpg";
+	public static String ACTION_DMEO_RECEIVE_MESSAGE = "action_demo_receive_message";
 
 	// json get sql data name
 	public static String SQL_DATA = "";

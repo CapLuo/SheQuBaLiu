@@ -42,7 +42,6 @@ public class ShequTools {
 		mDisplayMetricsHeight = dm.heightPixels;
 		mDisplayMetricsWidth = dm.widthPixels;
 		mDensity = dm.densityDpi;
-		Log.e("@@@@", " " + mDensity);
 		createAppDir();
 	}
 

@@ -1,8 +1,11 @@
 package com.shequ.baliu.util;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +16,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.Base64;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
 import com.shequ.baliu.net.HttpUtil;
 
 public class SqlHelper extends SQLiteOpenHelper {
@@ -192,11 +196,29 @@ public class SqlHelper extends SQLiteOpenHelper {
 				});
 	}
 
+	public static void getImToken(Context context, JSONObject object,
+			ResponseHandlerInterface responseHandler) throws JSONException,
+			UnsupportedEncodingException {
+
+		String timestamp = String.valueOf(new Date().getTime());
+		String nonce = ShequTools.getRandomString(5);
+		String echostr = ShequTools.getRandomString(4);
+		String signature = SignUtil.getSignature(timestamp, nonce);
+
+		object.put("signature", signature);
+		object.put("timestamp", timestamp);
+		object.put("nonce", nonce);
+		object.put("echostr", echostr);
+
+		HttpUtil.post(context, StaticVariableSet.IM_DATA_URL, object,
+				"application/json", responseHandler);
+	}
+
 	/*
 	 * 本地数据库查询
 	 */
 	// 数据库版本号
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// 数据库名
 	private static final String DATABASE_NAME = "BaliuDB.db";
@@ -220,6 +242,12 @@ public class SqlHelper extends SQLiteOpenHelper {
 	public static final String _MessageContent = "content";
 	public static final String _MessageType = "type";
 	public static final String _MessageTime = "time";
+
+	public static final String FRIEND_TABLE_NAME = "Club_friend";
+
+	public static final String _FriendID = "id";
+	public static final String _FriendUserId = "userId";
+	public static final String _FriendPortraitUri = "portraitUri";
 
 	/*
 	 * SQLiteOpenHelper的构造函数参数： // context：上下文环境 // name：数据库名字 //
@@ -267,6 +295,16 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 		db.execSQL(buffer.toString());
 		// 即便程序修改重新运行，只要数据库已经创建过，就不会再进入这个onCreate方法
+
+		StringBuffer friend_buffer = new StringBuffer();
+
+		friend_buffer.append("CREATE TABLE [" + FRIEND_TABLE_NAME + "] (");
+		friend_buffer.append("[" + _FriendID
+				+ "] INTEGER NOT NULL PRIMARY KEY, ");
+		friend_buffer.append("[" + _FriendUserId + "] TEXT,");
+		friend_buffer.append("[" + _FriendPortraitUri + "] TEXT)");
+
+		db.execSQL(friend_buffer.toString());
 	}
 
 	@Override
@@ -281,6 +319,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 		db.execSQL("DROP TABLE IF EXISTS " + GROUP_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + MESSAGE_TABLE_NAME);
+		db.execSQL("DROP TABLE IF EXISTS " + FRIEND_TABLE_NAME);
 		onCreate(db);
 		// 上述做法简单来说就是，通过检查常量值来决定如何，升级时删除旧表，然后调用onCreate来创建新表
 		// 一般在实际项目中是不能这么做的，正确的做法是在更新数据表结构时，还要考虑用户存放于数据库中的数据不丢失

@@ -25,6 +25,7 @@ public class PersonInfo {
 	private String mAddress;
 	private String mISMerchant;
 	private String mPhoto;
+	private String mToken;
 
 	public String getUserId() {
 		return mUserId;
@@ -157,7 +158,18 @@ public class PersonInfo {
 	}
 
 	public String getPhoto() {
+		if (TextUtils.isEmpty(mPhoto)) {
+			return StaticVariableSet.DEFAULT_HEAD_IMG;
+		}
 		return mPhoto;
+	}
+
+	public String getMToken() {
+		return mToken;
+	}
+
+	public void setToken(String token) {
+		mToken = token;
 	}
 
 	public static PersonInfo parseJson(JSONObject json) throws JSONException {

@@ -6,9 +6,10 @@ import java.util.List;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
+import com.shequ.baliu.holder.FriendInfo;
 import com.shequ.baliu.holder.MessageInfo;
+import com.shequ.baliu.holder.PersonInfo;
 import com.shequ.baliu.holder.ShequSortModelHolder;
 
 public class DBManager {
@@ -150,6 +151,56 @@ public class DBManager {
 		}
 		c.close();
 		return list;
+	}
+
+	public void addFriendInfo(PersonInfo info) {
+		db.execSQL("REPLACE INTO " + SqlHelper.FRIEND_TABLE_NAME
+				+ " VALUES(?,?,?)",
+				new Object[] { null, info.getUserId(), info.getPhoto() });
+	}
+
+	public void addFriendInfos(List<PersonInfo> infos) {
+		if (infos.size() < 1) {
+			return;
+		}
+		db.beginTransaction();
+		try {
+			for (PersonInfo info : infos) {
+				db.execSQL(
+						"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
+								+ " VALUES(?,?,?)",
+						new Object[] { null, info.getUserId(), info.getPhoto() });
+			}
+			db.setTransactionSuccessful();
+		} finally {
+			db.endTransaction();
+		}
+	}
+
+	public void deleteOldFriend(String id) {
+		db.delete(SqlHelper.MESSAGE_TABLE_NAME, "id == ?", new String[] { id });
+	}
+
+	public ArrayList<FriendInfo> queryFriend() {
+		Cursor c = db.rawQuery("SELECT * FROM " + SqlHelper.FRIEND_TABLE_NAME,
+				null);
+		return parseFriend(c);
+	}
+
+	private ArrayList<FriendInfo> parseFriend(Cursor c) {
+		ArrayList<FriendInfo> infos = new ArrayList<FriendInfo>();
+		c.moveToFirst();
+		while (!c.isAfterLast()) {
+			FriendInfo info = new FriendInfo();
+			info.setUserid(c.getString(c
+					.getColumnIndex(SqlHelper._FriendUserId)));
+			info.setPortraitUri(c.getString(c
+					.getColumnIndex(SqlHelper._FriendPortraitUri)));
+			infos.add(info);
+			c.moveToNext();
+		}
+		c.close();
+		return infos;
 	}
 
 	// 用完必须close

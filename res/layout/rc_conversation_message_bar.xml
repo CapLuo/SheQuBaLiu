@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RcTheme.Toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/RcTheme.Toolbar"
     android:orientation="vertical" >
 
     <io.rong.imkit.view.MessageBar
@@ -52,15 +52,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/rc_rich_text_icon_margin"
-            android:layout_toRightOf="@id/camertRichIcon" />
+            android:layout_toRightOf="@id/camertRichIcon"
+            android:visibility="gone" />
 
         <io.rong.imkit.view.RichIconTextView
             android:id="@+id/locationRichIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/rc_rich_text_icon_margin"
-            android:layout_toRightOf="@id/voipRichIcon" />
-
+            android:layout_toRightOf="@id/voipRichIcon"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </LinearLayout>

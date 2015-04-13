@@ -1,10 +1,13 @@
 package com.shequ.baliu;
 
+import io.rong.imkit.RongIM;
+
 import com.baidu.mapapi.SDKInitializer;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.shequ.baliu.holder.PersonInfo;
+import com.shequ.baliu.rong.RongCloudEvent;
 
 import android.app.Application;
 
@@ -27,6 +30,11 @@ public class ShequApplication extends Application {
 
 		// Initialize ImageLoader with configuration.
 		ImageLoader.getInstance().init(configuration);
+
+		// 初始化 融云
+		RongIM.init(this);
+		RongCloudEvent.init(this);
+
 		isLogin = false;
 		mInfo = new PersonInfo();
 	}
