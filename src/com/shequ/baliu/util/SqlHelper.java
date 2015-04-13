@@ -247,6 +247,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 	public static final String _FriendID = "id";
 	public static final String _FriendUserId = "userId";
+	public static final String _FriendName = "name";
 	public static final String _FriendPortraitUri = "portraitUri";
 
 	/*
@@ -302,6 +303,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 		friend_buffer.append("[" + _FriendID
 				+ "] INTEGER NOT NULL PRIMARY KEY, ");
 		friend_buffer.append("[" + _FriendUserId + "] TEXT,");
+		friend_buffer.append("[" + _FriendName + "] TEXT,");
 		friend_buffer.append("[" + _FriendPortraitUri + "] TEXT)");
 
 		db.execSQL(friend_buffer.toString());

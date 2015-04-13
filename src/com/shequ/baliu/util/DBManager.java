@@ -155,8 +155,8 @@ public class DBManager {
 
 	public void addFriendInfo(PersonInfo info) {
 		db.execSQL("REPLACE INTO " + SqlHelper.FRIEND_TABLE_NAME
-				+ " VALUES(?,?,?)",
-				new Object[] { null, info.getUserId(), info.getPhoto() });
+				+ " VALUES(?,?,?,?)", new Object[] { null, info.getUserId(),
+				info.getNickName(), info.getPhoto() });
 	}
 
 	public void addFriendInfos(List<PersonInfo> infos) {
@@ -168,8 +168,9 @@ public class DBManager {
 			for (PersonInfo info : infos) {
 				db.execSQL(
 						"REPLACE INTO " + SqlHelper.MESSAGE_TABLE_NAME
-								+ " VALUES(?,?,?)",
-						new Object[] { null, info.getUserId(), info.getPhoto() });
+								+ " VALUES(?,?,?,?)",
+						new Object[] { null, info.getUserId(),
+								info.getNickName(), info.getPhoto() });
 			}
 			db.setTransactionSuccessful();
 		} finally {
@@ -194,6 +195,7 @@ public class DBManager {
 			FriendInfo info = new FriendInfo();
 			info.setUserid(c.getString(c
 					.getColumnIndex(SqlHelper._FriendUserId)));
+			info.setName(c.getString(c.getColumnIndex(SqlHelper._FriendName)));
 			info.setPortraitUri(c.getString(c
 					.getColumnIndex(SqlHelper._FriendPortraitUri)));
 			infos.add(info);
