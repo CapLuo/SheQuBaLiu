@@ -157,7 +157,7 @@ public class HomeFragment extends Fragment {
 							Log.e(StaticVariableSet.TAG, e.getMessage());
 							dismiss();
 						} catch (JSONException e) {
-							e.printStackTrace();
+							Log.e(StaticVariableSet.TAG, e.getMessage());
 						}
 					} else {
 						try {
@@ -165,7 +165,7 @@ public class HomeFragment extends Fragment {
 
 							startSingleChat();
 						} catch (Exception e) {
-							e.printStackTrace();
+							Log.e(StaticVariableSet.TAG, e.getMessage());
 						}
 					}
 
@@ -289,7 +289,7 @@ public class HomeFragment extends Fragment {
 								}
 								mDynamicAdapter.addData(list, mDynamicListView);
 							} catch (JSONException e) {
-								e.printStackTrace();
+								Log.e(StaticVariableSet.TAG, e.getMessage());
 							}
 						}
 					}
@@ -469,9 +469,9 @@ public class HomeFragment extends Fragment {
 							loadMoreData();
 							startSingleChat();
 						} catch (JSONException e) {
-							e.printStackTrace();
+							Log.e(StaticVariableSet.TAG, e.getMessage());
 						} catch (Exception e) {
-							e.printStackTrace();
+							Log.e(StaticVariableSet.TAG, e.getMessage());
 						}
 					}
 
