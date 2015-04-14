@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <FrameLayout
+            <RelativeLayout
                 android:id="@+id/_home_image_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -28,10 +28,11 @@
                     android:id="@+id/_home_image_indicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
                     android:layout_marginBottom="@dimen/top_indicator_margin_bottom"
                     android:layout_marginRight="@dimen/home_page_index_margin_right" />
-            </FrameLayout>
+            </RelativeLayout>
 
             <com.shequ.baliu.view.ShequGridView
                 android:id="@+id/_gridview_home_business"
