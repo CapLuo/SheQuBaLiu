@@ -7,6 +7,13 @@
         android:id="@+id/_title_bar"
         layout="@layout/title_bar" />
 
+    <FrameLayout
+        android:id="@+id/_content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/_title_bar" >
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/_bottom_bar"
         android:layout_width="wrap_content"
@@ -148,13 +155,5 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/_content_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/_bottom_bar"
-        android:layout_below="@id/_title_bar" >
-    </FrameLayout>
 
 </RelativeLayout>

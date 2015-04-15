@@ -29,7 +29,7 @@
     <string name="home_connection_server_error">连接不上服务器,请稍后再试.</string>
 
     <!-- user info -->
-    <string name="user_login">登入/注册</string>
+    <string name="user_login">登录注册</string>
     <string name="user_shequ">所在社区：</string>
     <string name="user_message">我的信箱</string>
     <string name="user_feedback">意见反馈</string>
@@ -38,7 +38,7 @@
     <string name="user_shequ_change">更改</string>
     <string name="user_clear_master">清除缓存</string>
     <string name="user_clearing">正在清除&#8230;请稍等</string>
-    <string name="user_drop_out">退出</string>
+    <string name="user_drop_out">退出登录</string>
     <string name="user_login_first">请先登入</string>
 
     <!-- 登录页面 -->

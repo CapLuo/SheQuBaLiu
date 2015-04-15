@@ -35,8 +35,21 @@
     <dimen name="feedback_content_hight">120dp</dimen>
 
     <!-- user page -->
-    <dimen name="user_square_content">30dp</dimen>
-    <dimen name="user_info_image_witdh">85dp</dimen>
+    <dimen name="user_square_content">10dp</dimen>
+    <dimen name="user_info_image_witdh">48dp</dimen>
+    <dimen name="user_title_height">140dp</dimen>
+    <dimen name="user_face_margin_top">29dp</dimen>
+    <dimen name="user_text_size">11sp</dimen>
+    <dimen name="user_item_height">26dp</dimen>
+    <dimen name="user_line_width">300dp</dimen>
+    <dimen name="user_item_width">320dp</dimen>
+    <dimen name="user_text_margin">19dp</dimen>
+    <dimen name="user_line_margin">36dp</dimen>
+    <dimen name="user_button_margin">64dp</dimen>
+    <dimen name="user_button_width">300dp</dimen>
+    <dimen name="user_button_height">32dp</dimen>
+    <dimen name="user_info_image_background_width">50dp</dimen>
+    <dimen name="user_face_background_margin">28dp</dimen>
 
     <!-- home page -->
     <dimen name="top_indicator_margin_bottom">5dp</dimen>

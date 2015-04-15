@@ -17,8 +17,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baidu.mobstat.StatService;
@@ -35,13 +33,13 @@ import com.shequ.baliu.util.DBManager;
 import com.shequ.baliu.util.ShequTools;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
+import com.shequ.baliu.view.CircularImage;
 
 public class PersionFragment extends Fragment implements OnClickListener {
 
 	private View mContentView;
-	private RelativeLayout mUserInfoLayout;
 	private Button inLogin;
-	private ImageView mPersionFace;
+	private CircularImage mPersionFace;
 	private TextView mUserName;
 	private TextView mUserShequName;
 	private Button mChangeCommunity;
@@ -55,6 +53,8 @@ public class PersionFragment extends Fragment implements OnClickListener {
 	private DisplayImageOptions mOptions;
 
 	private Dialog mDialog;
+
+	private boolean isLogin = false;
 
 	private static final int SHOW_DIALOG = 101;
 	private static final int DIMISS_DIALOG = 102;
@@ -88,13 +88,12 @@ public class PersionFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
-		mUserInfoLayout = (RelativeLayout) mContentView
-				.findViewById(R.id._user_info);
 
 		inLogin = (Button) mContentView.findViewById(R.id._user_registr);
 		inLogin.setOnClickListener(this);
 
-		mPersionFace = (ImageView) mContentView.findViewById(R.id._user_img);
+		mPersionFace = (CircularImage) mContentView
+				.findViewById(R.id._user_img);
 		mUserName = (TextView) mContentView.findViewById(R.id._user_name);
 		mUserShequName = (TextView) mContentView
 				.findViewById(R.id._user_shequ_name);
@@ -137,9 +136,7 @@ public class PersionFragment extends Fragment implements OnClickListener {
 		if (getActivity().getApplication() instanceof ShequApplication) {
 			ShequApplication app = (ShequApplication) (getActivity()
 					.getApplication());
-			if (app.getLogin()) {
-				mUserInfoLayout.setVisibility(View.VISIBLE);
-				inLogin.setVisibility(View.INVISIBLE);
+			if (isLogin = app.getLogin()) {
 				mUserName.setText(app.getInfo().getNickName());
 				String groupName = app.getInfo().getGroupName();
 				if (groupName == null || groupName.equals("")) {
@@ -155,9 +152,15 @@ public class PersionFragment extends Fragment implements OnClickListener {
 					ImageLoader.getInstance().displayImage(
 							app.getInfo().getPhoto(), mPersionFace, mOptions);
 				}
+				inLogin.setText(R.string.user_drop_out);
+				mUserShequName.setVisibility(View.VISIBLE);
+				mChangeCommunity.setVisibility(View.VISIBLE);
 			} else {
-				inLogin.setVisibility(View.VISIBLE);
-				mUserInfoLayout.setVisibility(View.INVISIBLE);
+				inLogin.setText(R.string.user_login);
+				mPersionFace.setImageResource(R.drawable.user_head_default);
+				mUserName.setText("86区");
+				mUserShequName.setVisibility(View.INVISIBLE);
+				mChangeCommunity.setVisibility(View.INVISIBLE);
 			}
 		}
 	}
@@ -185,6 +188,10 @@ public class PersionFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id._user_registr:
+			if (isLogin) {
+				loginOut();
+				return;
+			}
 			Intent intentRegistr = new Intent();
 			intentRegistr.putExtra("index", 0);
 			intentRegistr.setClass(getActivity(), ShequUserActivity.class);
@@ -236,7 +243,7 @@ public class PersionFragment extends Fragment implements OnClickListener {
 		}
 	}
 
-	public void loginOut(View v) {
+	public void loginOut() {
 		ShequTools tool = new ShequTools(getActivity());
 		ShequApplication app = (ShequApplication) (getActivity()
 				.getApplication());
@@ -246,8 +253,8 @@ public class PersionFragment extends Fragment implements OnClickListener {
 		mDBManager.deleteAllData(SqlHelper.MESSAGE_TABLE_NAME);
 		app.setInfo(new PersonInfo());
 		app.setLogin(false);
+		isLogin = false;
 		initData();
-		v.setVisibility(View.GONE);
 	}
 
 	private void clearMaster() {

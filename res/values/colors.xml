@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="red">#DF3031</color>
+    <color name="red">#DE504F</color>
     <color name="dark_red">#BD1E1F</color>
     <color name="black">#000000</color>
     <color name="transport_black">#080808</color>

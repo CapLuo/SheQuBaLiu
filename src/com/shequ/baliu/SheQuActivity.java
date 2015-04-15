@@ -252,7 +252,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			break;
 		case R.id._text_button:
 			if (mPersion != null) {
-				mPersion.loginOut(view);
+				mPersion.loginOut();
 			}
 			break;
 		case R.id.community_mode:
@@ -275,6 +275,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	public void setChoiceFragmentContent(int position) {
+		mTitleBar.setVisibility(View.VISIBLE);
 		mTextButton.setVisibility(View.INVISIBLE);
 		mCommunityMode.setVisibility(View.INVISIBLE);
 		mTransaction = mFragmentManager.beginTransaction();
@@ -314,14 +315,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			mTransaction.show(mBussiness);
 			break;
 		case 3:
-			mTitle.setText(getResources().getString(R.string.title_center));
+			mTitleBar.setVisibility(View.GONE);
 			mPersionLayoutImage
 					.setImageResource(R.drawable.ic_tabbar_settings_pressed);
-			if (isLogin) {
-				mTextButton.setVisibility(View.VISIBLE);
-				mTextButton.setText(R.string.user_drop_out);
-				mTextButton.setOnClickListener(this);
-			}
 			if (mPersion == null) {
 				mPersion = new PersionFragment();
 				mTransaction.add(R.id._content_main, mPersion);
