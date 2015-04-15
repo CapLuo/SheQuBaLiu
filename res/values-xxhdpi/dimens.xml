@@ -2,9 +2,9 @@
 <resources>
 
     <!-- title -->
-    <dimen name="_title_size">19sp</dimen>
+    <dimen name="_title_size">15sp</dimen>
     <dimen name="_title_business_size">17sp</dimen>
-    <dimen name="title_icon_width">32dp</dimen>
+    <dimen name="title_icon_width">24dp</dimen>
     <dimen name="title_padding">10dp</dimen>
     <dimen name="title_img_padding_right">15dp</dimen>
     <dimen name="bottom_bar_img_width">24dp</dimen>
