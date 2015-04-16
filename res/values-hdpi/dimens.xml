@@ -13,16 +13,19 @@
     <dimen name="bottom_bar_text_size">11sp</dimen>
 
     <!-- user login page -->
-    <dimen name="login_layout_margin">20dp</dimen>
-    <dimen name="login_edittext_margin">10dp</dimen>
-    <dimen name="login_edittext_texsize">24sp</dimen>
+    <dimen name="login_layout_margin">38dp</dimen>
+    <dimen name="login_edittext_margin">15dp</dimen>
+    <dimen name="login_edittext_img_margin">7dp</dimen>
+    <dimen name="login_edittext_texsize">10sp</dimen>
     <dimen name="login_textline_margintop">10dp</dimen>
-    <dimen name="login_textline_paddingtop">5dp</dimen>
     <dimen name="login_textline_marginleft">20dp</dimen>
     <dimen name="login_textline_height">1dp</dimen>
-    <dimen name="login_textregister_marginleft">8dp</dimen>
-    <dimen name="login_textregister_textsize">20sp</dimen>
+    <dimen name="login_register_margintop">10dp</dimen>
+    <dimen name="login_login_margintop">25dp</dimen>
+    <dimen name="login_textregister_textsize">15sp</dimen>
     <dimen name="login_button_textsize">24sp</dimen>
+    <dimen name="login_edittext_layout_width">250dp</dimen>
+    <dimen name="login_edittext_layout_height">32dp</dimen>
 
     <!-- user message page -->
     <dimen name="message_name_textsize">22sp</dimen>

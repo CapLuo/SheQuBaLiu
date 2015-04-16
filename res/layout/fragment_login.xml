@@ -1,22 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/eye_city_gray" >
+
+    <RelativeLayout
+        android:id="@+id/login_up_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/login_up_image_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@drawable/login_background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_background" />
+
+        <com.shequ.baliu.view.CircularImage
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_up_image_background"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-32dp"
+            android:contentDescription="@drawable/login_background_flag"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_background_flag" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/login_username_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/login_edittext_layout_width"
+        android:layout_height="@dimen/login_edittext_layout_height"
+        android:layout_below="@id/login_up_background"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/login_layout_margin"
-        android:layout_marginRight="@dimen/login_layout_margin"
         android:layout_marginTop="@dimen/login_layout_margin"
+        android:background="@drawable/login_edittext_background"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_edittext_img_margin"
             android:contentDescription="@drawable/login_user"
             android:src="@drawable/login_user" />
 
@@ -31,31 +57,21 @@
             android:textSize="@dimen/login_edittext_texsize" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/login_textline_height"
-        android:layout_below="@id/login_username_layout"
-        android:layout_marginBottom="@dimen/login_textline_margintop"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@color/gray" />
-
     <LinearLayout
         android:id="@+id/login_password_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line1"
+        android:layout_width="@dimen/login_edittext_layout_width"
+        android:layout_height="@dimen/login_edittext_layout_height"
+        android:layout_below="@id/login_username_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/login_layout_margin"
-        android:layout_marginRight="@dimen/login_layout_margin"
+        android:layout_marginTop="@dimen/login_edittext_margin"
+        android:background="@drawable/login_edittext_background"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_edittext_img_margin"
             android:contentDescription="@drawable/login_password"
             android:src="@drawable/login_password" />
 
@@ -70,40 +86,28 @@
             android:textSize="@dimen/login_edittext_texsize" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/line2"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/login_textline_height"
-        android:layout_below="@id/login_password_layout"
-        android:layout_marginBottom="@dimen/login_textline_margintop"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@color/gray" />
-
-    <TextView
-        android:id="@+id/login_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/line2"
-        android:layout_marginBottom="@dimen/login_textline_margintop"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textregister_marginleft"
-        android:text="@string/register_new"
-        android:textSize="@dimen/login_textregister_textsize" />
-
     <Button
         android:id="@+id/login_button"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/login_edittext_layout_width"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_register"
+        android:layout_below="@id/login_password_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/login_layout_margin"
-        android:layout_marginRight="@dimen/login_layout_margin"
+        android:layout_marginTop="@dimen/login_login_margintop"
         android:background="@drawable/login_button"
         android:text="@string/login"
         android:textColor="@color/white"
-        android:textSize="@dimen/login_button_textsize" />
+        android:textSize="@dimen/login_textregister_textsize" />
+
+    <Button
+        android:id="@+id/login_register"
+        android:layout_width="@dimen/login_edittext_layout_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/login_register_margintop"
+        android:background="@drawable/register_intent_button"
+        android:text="@string/register_new"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_textregister_textsize" />
 
 </RelativeLayout>

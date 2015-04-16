@@ -226,7 +226,7 @@
         android:layout_height="@dimen/user_button_height"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/user_button_margin"
-        android:background="@drawable/login_button"
+        android:background="@drawable/login_intent_button"
         android:text="@string/user_login"
         android:textColor="@color/white"
         android:textSize="@dimen/message_content_textsize" />
