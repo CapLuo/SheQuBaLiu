@@ -11,10 +11,10 @@
         android:color="@color/white" />
 
     <padding
-        android:bottom="8dp"
+        android:bottom="4dp"
         android:left="10dp"
         android:right="10dp"
-        android:top="8dp" />
+        android:top="4dp" />
 
     <corners android:radius="2dp" />
 

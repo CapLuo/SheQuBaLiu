@@ -61,7 +61,7 @@ public class AdapterShequChoice extends BaseAdapter implements SectionIndexer {
 			holder.title.setVisibility(View.VISIBLE);
 			holder.title.setText(list.get(position).getSortLetters());
 			holder.title.setBackgroundColor(mContext.getResources().getColor(
-					R.color.list_gray));
+					R.color.eye_city_gray));
 		} else {
 			holder.title.setVisibility(View.GONE);
 		}

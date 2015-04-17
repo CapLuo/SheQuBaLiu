@@ -8,7 +8,7 @@
         android:id="@+id/_lable_item_list_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/choice_margin_left"
+        android:paddingLeft="@dimen/choice_margin_top"
         android:textSize="@dimen/choice_item_size" />
 
     <TextView
@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/choice_margin_left"
-        android:layout_marginTop="@dimen/choice_margin_top"
         android:textSize="@dimen/choice_item_size" />
 
 </LinearLayout>

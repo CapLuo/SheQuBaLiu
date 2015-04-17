@@ -140,7 +140,7 @@
     <!-- choice community page -->
     <dimen name="choice_margin_left">20dp</dimen>
     <dimen name="choice_margin_top">10dp</dimen>
-    <dimen name="choice_item_size">18sp</dimen>
+    <dimen name="choice_item_size">12sp</dimen>
     <dimen name="choice_slide_height">460dp</dimen>
     <dimen name="choice_slide_width">30dp</dimen>
 

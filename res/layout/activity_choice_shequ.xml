@@ -10,9 +10,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/bottom_bar_height"
             android:layout_gravity="top"
-            android:background="@color/red"
+            android:background="@color/title_blue"
             android:orientation="horizontal" >
 
             <ImageView
@@ -36,7 +36,8 @@
                 android:layout_toRightOf="@id/_return"
                 android:background="@drawable/choice_edittext_background"
                 android:hint="@string/choice_page_editext_tips"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="@dimen/choice_item_size" />
 
             <ImageView
                 android:id="@+id/_shequ_choice_cancel"
@@ -53,7 +54,8 @@
             android:id="@+id/_shequ_choice_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:listSelector="@drawable/item_list_selector" />
+            android:listSelector="@drawable/item_list_selector"
+            android:scrollbars="none" />
     </LinearLayout>
 
     <com.shequ.baliu.view.SlideBar
