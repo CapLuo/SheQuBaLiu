@@ -89,7 +89,7 @@
     <Button
         android:id="@+id/login_button"
         android:layout_width="@dimen/login_edittext_layout_width"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/login_button_height"
         android:layout_below="@id/login_password_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/login_login_margintop"
@@ -101,7 +101,7 @@
     <Button
         android:id="@+id/login_register"
         android:layout_width="@dimen/login_edittext_layout_width"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/login_button_height"
         android:layout_below="@id/login_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/login_register_margintop"

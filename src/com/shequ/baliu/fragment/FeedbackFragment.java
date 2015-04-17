@@ -63,7 +63,7 @@ public class FeedbackFragment extends Fragment {
 
 	}
 
-	public void getInputContent() {
+	private void getInputContent() {
 		String content = mEditContent.getText().toString();
 		if (content == null || content.equals("")) {
 			mEditContent.requestFocus();

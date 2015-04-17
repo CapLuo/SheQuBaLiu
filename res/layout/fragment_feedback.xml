@@ -5,63 +5,67 @@
     android:background="@color/eye_city_gray"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:text="@string/feedback_content"
-        android:textSize="@dimen/message_name_textsize" />
-
-    <EditText
-        android:id="@+id/feedback_content_edittext"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@null"
-        android:hint="@string/feedback_content_hint"
-        android:maxHeight="@dimen/feedback_content_hight"
-        android:textSize="@dimen/message_content_textsize" />
+        android:layout_height="@dimen/feedback_message_layout_height"
+        android:background="@color/white"
+        android:orientation="vertical" >
 
-    <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/feedback_text_margin_left"
+            android:layout_marginTop="@dimen/feedback_text_margin_top"
+            android:text="@string/feedback_content"
+            android:textSize="@dimen/feedback_text_size" />
+
+        <EditText
+            android:id="@+id/feedback_content_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/feedback_text_margin_left"
+            android:layout_marginTop="@dimen/feedback_message_margin"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/feedback_content_hint"
+            android:textSize="@dimen/feedback_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/login_textline_height"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/feedback_content_hight"
-        android:background="@color/gray" />
+        android:layout_height="@dimen/feedback_contract_layout_height"
+        android:layout_marginTop="@dimen/feedback_layout_margin"
+        android:background="@color/white"
+        android:orientation="horizontal" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:text="@string/feedback_contact"
-        android:textSize="@dimen/message_name_textsize" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/feedback_text_margin_left"
+            android:layout_marginTop="@dimen/feedback_text_margin_top"
+            android:text="@string/feedback_contact"
+            android:textSize="@dimen/feedback_text_size" />
 
-    <EditText
-        android:id="@+id/feedback_contact_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@null"
-        android:hint="@string/feedback_contact_hint"
-        android:singleLine="true"
-        android:textSize="@dimen/message_content_textsize" />
+        <EditText
+            android:id="@+id/feedback_contact_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/feedback_text_margin_top"
+            android:background="@null"
+            android:hint="@string/feedback_contact_hint"
+            android:singleLine="true"
+            android:textSize="@dimen/feedback_text_size" />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/login_textline_height"
-        android:layout_marginLeft="@dimen/login_textline_marginleft"
-        android:layout_marginRight="@dimen/login_textline_marginleft"
-        android:layout_marginTop="@dimen/login_textline_margintop"
-        android:background="@color/gray" />
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="@dimen/feedback_button_width"
+        android:layout_height="@dimen/feedback_button_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/feedback_button_margin"
+        android:background="@drawable/login_button"
+        android:text="@string/feedback_submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/feedback_button_textsize" />
 
 </LinearLayout>

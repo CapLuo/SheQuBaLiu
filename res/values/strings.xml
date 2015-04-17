@@ -56,11 +56,11 @@
     <string name="login_error_none">囧&#8230;注册失败</string>
 
     <!-- 意见反馈 -->
-    <string name="feedback_content">意见内容</string>
-    <string name="feedback_content_hint">请留下您的宝贵意见和建议</string>
-    <string name="feedback_contact">联系方式 (必填)</string>
+    <string name="feedback_content">您宝贵的意见：</string>
+    <string name="feedback_content_hint">输入内容</string>
+    <string name="feedback_contact">联系方式 (必填)：</string>
     <string name="feedback_contact_hint">请留下您的联系电话、Email或QQ</string>
-    <string name="feedback_submit">提交</string>
+    <string name="feedback_submit">确认</string>
 
     <!-- 注册页面 -->
     <string name="register">注册</string>

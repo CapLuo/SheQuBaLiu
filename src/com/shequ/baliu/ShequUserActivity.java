@@ -22,7 +22,6 @@ public class ShequUserActivity extends FragmentActivity implements
 	private View mTitleBar;
 	private TextView mTitle;
 	private View mReturn;
-	private TextView mTextButton;
 
 	private FragmentManager mFragmentManager;
 	private FragmentTransaction mTransaction;
@@ -61,12 +60,10 @@ public class ShequUserActivity extends FragmentActivity implements
 		mTitleBar = findViewById(R.id._title_bar);
 		mTitle = (TextView) mTitleBar.findViewById(R.id._text_title);
 		mReturn = mTitleBar.findViewById(R.id._return);
-		mTextButton = (TextView) mTitleBar.findViewById(R.id._text_button);
 	}
 
 	private void initData() {
 		mReturn.setOnClickListener(this);
-		mTextButton.setOnClickListener(this);
 
 		mFragmentManager = getSupportFragmentManager();
 		Intent intent = getIntent();
@@ -75,7 +72,6 @@ public class ShequUserActivity extends FragmentActivity implements
 	}
 
 	public void setChoiceFragment(int index) {
-		mTextButton.setVisibility(View.INVISIBLE);
 		mCurrentIndex = index;
 		mTransaction = mFragmentManager.beginTransaction();
 		hideAllFragment(mTransaction);
@@ -97,9 +93,6 @@ public class ShequUserActivity extends FragmentActivity implements
 		}
 		if (index == 2) {
 			mTitle.setText(R.string.user_feedback);
-			mTextButton.setVisibility(View.VISIBLE);
-			mTextButton.setText(getResources().getString(
-					R.string.feedback_submit));
 			if (mFeedBackFragment == null) {
 				mFeedBackFragment = new FeedbackFragment();
 				mTransaction.add(R.id.content_main, mFeedBackFragment);
@@ -148,11 +141,6 @@ public class ShequUserActivity extends FragmentActivity implements
 		switch (v.getId()) {
 		case R.id._return:
 			returnPage();
-			break;
-		case R.id._text_button:
-			if (mFeedBackFragment != null) {
-				mFeedBackFragment.getInputContent();
-			}
 			break;
 		default:
 			break;
