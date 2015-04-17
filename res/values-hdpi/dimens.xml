@@ -56,8 +56,8 @@
     <dimen name="user_face_margin_top">29dp</dimen>
     <dimen name="user_text_size">11sp</dimen>
     <dimen name="user_item_height">26dp</dimen>
-    <dimen name="user_line_width">300dp</dimen>
-    <dimen name="user_item_width">220dp</dimen>
+    <dimen name="user_line_width">255dp</dimen>
+    <dimen name="user_item_width">280dp</dimen>
     <dimen name="user_text_margin">19dp</dimen>
     <dimen name="user_line_margin">36dp</dimen>
     <dimen name="user_button_margin">64dp</dimen>
