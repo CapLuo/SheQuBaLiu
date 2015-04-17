@@ -63,19 +63,19 @@
     <string name="feedback_submit">提交</string>
 
     <!-- 注册页面 -->
-    <string name="register_welcome">欢迎注册86区</string>
-    <string name="register_login">直接登入</string>
     <string name="register">注册</string>
-    <string name="register_please_fill_message">请填写信息！</string>
     <string name="register_confirmation">验证通过！</string>
-    <string name="register_account">请输入您的账号</string>
+    <string name="register_account">请填写您的账号</string>
     <string name="register_already">该账号已注册！</string>
-    <string name="register_email">请输入您的邮箱</string>
+    <string name="register_email">请填写您的邮箱</string>
     <string name="register_email_wrong">邮箱地址格式不对！</string>
     <string name="register_email_register">该邮箱已注册！</string>
-    <string name="register_password">请输入您的密码</string>
+    <string name="register_password">请设置您的密码</string>
     <string name="register_repassword">请重复输入密码</string>
     <string name="register_password_not_same">两次输入的内容不一致！</string>
+    <string name="register_password_tips">*密码6~12位,由数字、字母组成</string>
+    <string name="register_agreement_gray">点击注册表示同意</string>
+    <string name="register_agreement_blue">《86区&#8212;城市社区生活服务平台软件许可及服务协议》</string>
 
     <!-- 会话页面 -->
     <string name="conversation_commit">给ta留言</string>

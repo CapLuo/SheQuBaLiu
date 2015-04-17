@@ -11,6 +11,9 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +30,6 @@ import com.baidu.mobstat.StatService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.shequ.baliu.R;
 import com.shequ.baliu.ShequApplication;
-import com.shequ.baliu.ShequUserActivity;
 import com.shequ.baliu.dialog.ShequDialog;
 import com.shequ.baliu.holder.PersonInfo;
 import com.shequ.baliu.util.ShequTools;
@@ -43,12 +45,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 	private EditText mEmail;
 	private EditText mPassword;
 	private EditText mRepeatPassword;
-	private TextView mUserError;
-	private TextView mEmailError;
-	private TextView mPasswordError;
-	private TextView mRepeatPasswordError;
-
-	private TextView mRegisterToLogin;
 
 	private Button mRegister;
 
@@ -58,6 +54,8 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 	private String mSaltText;
 
 	private ShequDialog mDialog;
+
+	private TextView mAgreementText;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -100,19 +98,10 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 		mPassword.setOnFocusChangeListener(this);
 		mRepeatPassword.setOnFocusChangeListener(this);
 
-		mUserError = (TextView) mContentView
-				.findViewById(R.id.register_user_error);
-		mEmailError = (TextView) mContentView
-				.findViewById(R.id.register_email_error);
-		mPasswordError = (TextView) mContentView
-				.findViewById(R.id.register_password_error);
-		mRepeatPasswordError = (TextView) mContentView
-				.findViewById(R.id.register_repeat_password_error);
+		mAgreementText = (TextView) mContentView
+				.findViewById(R.id.register_agreement);
 
 		mRegister = (Button) mContentView.findViewById(R.id.register_button);
-
-		mRegisterToLogin = (TextView) mContentView
-				.findViewById(R.id.register_to_login);
 
 		mDialog = new ShequDialog(getActivity()) {
 
@@ -131,7 +120,22 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 
 	private void initData() {
 		mRegister.setOnClickListener(this);
-		mRegisterToLogin.setOnClickListener(this);
+
+		String argment_gray = getActivity().getResources().getString(
+				R.string.register_agreement_gray);
+		String argment_blue = getActivity().getResources().getString(
+				R.string.register_agreement_blue);
+		SpannableStringBuilder builder = new SpannableStringBuilder(
+				argment_gray + argment_blue);
+		ForegroundColorSpan graySpan = new ForegroundColorSpan(getActivity()
+				.getResources().getColor(R.color.edit_stroke_gray));
+		ForegroundColorSpan blueSpan = new ForegroundColorSpan(getActivity()
+				.getResources().getColor(R.color.title_blue));
+		builder.setSpan(graySpan, 0, argment_gray.length(),
+				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		builder.setSpan(blueSpan, argment_gray.length(), argment_gray.length()
+				+ argment_blue.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		mAgreementText.setText(builder);
 	}
 
 	@Override
@@ -139,9 +143,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 		switch (v.getId()) {
 		case R.id.register_button:
 			getRegister();
-			break;
-		case R.id.register_to_login:
-			gotoLogin();
 			break;
 		default:
 			break;
@@ -175,9 +176,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 				if (isPwdNull()) {
 					return;
 				}
-				mPasswordError.setText(R.string.register_confirmation);
-				mPasswordError.setTextColor(getActivity().getResources()
-						.getColor(R.color.word_blue));
 			}
 			return;
 		case R.id.register_repeat_password:
@@ -195,13 +193,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 			}
 		default:
 			break;
-		}
-	}
-
-	private void gotoLogin() {
-		if (getActivity() instanceof ShequUserActivity) {
-			ShequUserActivity activity = (ShequUserActivity) getActivity();
-			activity.setChoiceFragment(0);
 		}
 	}
 
@@ -228,9 +219,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 	private boolean isUserTextNull() {
 		mUsernameText = mUser.getText().toString();
 		if (mUsernameText == null || mUsernameText.equals("")) {
-			mUserError.setText(R.string.register_please_fill_message);
-			mUserError.setTextColor(getActivity().getResources().getColor(
-					R.color.red));
 			return true;
 		}
 		return false;
@@ -239,9 +227,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 	private boolean isEmailNull() {
 		mEmailText = mEmail.getText().toString();
 		if (mEmailText == null || mEmailText.equals("")) {
-			mEmailError.setText(R.string.register_please_fill_message);
-			mEmailError.setTextColor(getActivity().getResources().getColor(
-					R.color.red));
 			return true;
 		}
 		return false;
@@ -251,9 +236,8 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 		Pattern pattern = Pattern
 				.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
 		if (!pattern.matcher(mEmailText).matches()) {
-			mEmailError.setText(R.string.register_email_wrong);
-			mEmailError.setTextColor(getActivity().getResources().getColor(
-					R.color.red));
+			Toast.makeText(getActivity(), R.string.register_email_wrong,
+					Toast.LENGTH_SHORT).show();
 			return true;
 		}
 		return false;
@@ -262,9 +246,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 	private boolean isPwdNull() {
 		mPasswordText = mPassword.getText().toString();
 		if (mPasswordText == null || mPasswordText.equals("")) {
-			mPasswordError.setText(R.string.register_please_fill_message);
-			mPasswordError.setTextColor(getActivity().getResources().getColor(
-					R.color.red));
 			return true;
 		}
 		return false;
@@ -272,9 +253,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 
 	private boolean isRePwdNull(String repeatPasswordText) {
 		if (repeatPasswordText == null || repeatPasswordText.equals("")) {
-			mRepeatPasswordError.setText(R.string.register_please_fill_message);
-			mRepeatPasswordError.setTextColor(getActivity().getResources()
-					.getColor(R.color.red));
 			return true;
 		}
 		return false;
@@ -282,14 +260,10 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 
 	private boolean isPwdSame(String repeatPasswordText) {
 		if (!repeatPasswordText.equals(mPasswordText)) {
-			mRepeatPasswordError.setText(R.string.register_password_not_same);
-			mRepeatPasswordError.setTextColor(getActivity().getResources()
-					.getColor(R.color.red));
+			Toast.makeText(getActivity(), R.string.register_password_not_same,
+					Toast.LENGTH_SHORT).show();
 			return false;
 		} else {
-			mRepeatPasswordError.setText(R.string.register_confirmation);
-			mRepeatPasswordError.setTextColor(getActivity().getResources()
-					.getColor(R.color.word_blue));
 			return true;
 		}
 	}
@@ -335,11 +309,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 								int count = Integer.parseInt(json
 										.getString("COUNT(*)"));
 								if (count == 0) {
-									mUserError
-											.setText(R.string.register_confirmation);
-									mUserError.setTextColor(getActivity()
-											.getResources().getColor(
-													R.color.word_blue));
 									if (isClickRegister) {
 										if (isEmailNull()) {
 											mEmail.requestFocus();
@@ -354,11 +323,9 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 										getEmailIsAlreadyRegister(true);
 									}
 								} else {
-									mUserError
-											.setText(R.string.register_already);
-									mUserError.setTextColor(getActivity()
-											.getResources().getColor(
-													R.color.red));
+									Toast.makeText(getActivity(),
+											R.string.register_already,
+											Toast.LENGTH_SHORT).show();
 									if (isClickRegister) {
 										mUser.requestFocus();
 									}
@@ -412,10 +379,6 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 						JSONObject json = response.getJSONObject(i);
 						int count = Integer.parseInt(json.getString("COUNT(*)"));
 						if (count == 0) {
-							mEmailError.setText(R.string.register_confirmation);
-							mEmailError
-									.setTextColor(getActivity().getResources()
-											.getColor(R.color.word_blue));
 							if (isClickRegister) {
 								if (isPwdNull()) {
 									mPassword.requestFocus();
@@ -437,10 +400,9 @@ public class RegisterFragment extends Fragment implements OnClickListener,
 								}
 							}
 						} else {
-							mEmailError
-									.setText(R.string.register_email_register);
-							mEmailError.setTextColor(getActivity()
-									.getResources().getColor(R.color.red));
+							Toast.makeText(getActivity(),
+									R.string.register_email_register,
+									Toast.LENGTH_SHORT).show();
 							if (isClickRegister) {
 								mEmail.requestFocus();
 							}

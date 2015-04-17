@@ -87,14 +87,16 @@
     <dimen name="community_item_list_text_marginLeft">20dp</dimen>
 
     <!-- resgister page -->
-    <dimen name="register_margin_left">20dp</dimen>
-    <dimen name="register_margintop">10dp</dimen>
-    <dimen name="register_line_height">1dp</dimen>
-    <dimen name="register_text_textsize">24sp</dimen>
-    <dimen name="register_edit_textsize">22sp</dimen>
+    <dimen name="register_margintop">28dp</dimen>
+    <dimen name="register_view_width">300dp</dimen>
+    <dimen name="register_view_height">33dp</dimen>
+    <dimen name="register_text_textsize">11sp</dimen>
+    <dimen name="register_edit_textsize">12sp</dimen>
     <dimen name="register_error_message_size">20sp</dimen>
-    <dimen name="register_button_textsize">22sp</dimen>
-    <dimen name="register_edit_margin_left">8dp</dimen>
+    <dimen name="register_button_textsize">15sp</dimen>
+    <dimen name="register_button_margintop">15dp</dimen>
+    <dimen name="register_edit_margin_top">8dp</dimen>
+    <dimen name="register_edit_marginLeft">9dp</dimen>
 
     <!-- second goods page -->
     <dimen name="second_good_page_paddingleft">20dp</dimen>

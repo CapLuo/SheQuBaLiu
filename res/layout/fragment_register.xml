@@ -2,218 +2,87 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/register_margin_left"
-    android:paddingRight="@dimen/register_margin_left" >
+    android:background="@color/eye_city_gray"
+    android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/register_user"
+        android:layout_width="@dimen/register_view_width"
+        android:layout_height="@dimen/register_view_height"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/register_margintop"
-        android:orientation="horizontal" >
+        android:background="@drawable/login_edittext_background"
+        android:hint="@string/register_account"
+        android:paddingLeft="@dimen/register_edit_marginLeft"
+        android:singleLine="true"
+        android:textSize="@dimen/register_edit_textsize" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register_welcome"
-            android:textSize="@dimen/register_text_textsize" />
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="@dimen/register_view_width"
+        android:layout_height="@dimen/register_view_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/register_edit_margin_top"
+        android:background="@drawable/login_edittext_background"
+        android:hint="@string/register_email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="@dimen/register_edit_marginLeft"
+        android:singleLine="true"
+        android:textSize="@dimen/register_edit_textsize" />
 
-        <TextView
-            android:id="@+id/register_to_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="@string/register_login"
-            android:textSize="@dimen/register_error_message_size" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_margintop" >
-
-        <ImageView
-            android:id="@+id/register_user_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:contentDescription="@drawable/login_user"
-            android:src="@drawable/login_user" />
-
-        <TextView
-            android:id="@+id/register_user_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:singleLine="true"
-            android:textSize="@dimen/register_error_message_size"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/register_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:layout_toLeftOf="@id/register_user_error"
-            android:layout_toRightOf="@id/register_user_img"
-            android:background="@null"
-            android:hint="@string/register_account"
-            android:singleLine="true"
-            android:textSize="@dimen/register_edit_textsize" />
-    </RelativeLayout>
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="@dimen/register_view_width"
+        android:layout_height="@dimen/register_view_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/register_edit_margin_top"
+        android:background="@drawable/login_edittext_background"
+        android:hint="@string/register_password"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/register_edit_marginLeft"
+        android:singleLine="true"
+        android:textSize="@dimen/register_edit_textsize" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/register_line_height"
-        android:layout_marginTop="@dimen/register_margintop"
-        android:background="@color/gray" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/register_view_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_margintop" >
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/register_edit_margin_top"
+        android:singleLine="true"
+        android:text="@string/register_password_tips"
+        android:textColor="@color/red"
+        android:textSize="@dimen/register_text_textsize" />
 
-        <ImageView
-            android:id="@+id/register_email_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:contentDescription="@drawable/login_password"
-            android:src="@drawable/login_password" />
-
-        <TextView
-            android:id="@+id/register_email_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:singleLine="true"
-            android:textSize="@dimen/register_error_message_size"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/register_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:layout_toLeftOf="@id/register_email_error"
-            android:layout_toRightOf="@id/register_email_img"
-            android:background="@null"
-            android:hint="@string/register_email"
-            android:inputType="textEmailAddress"
-            android:singleLine="true"
-            android:textSize="@dimen/register_edit_textsize" />
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/register_line_height"
-        android:layout_marginTop="@dimen/register_margintop"
-        android:background="@color/gray" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_margintop" >
-
-        <ImageView
-            android:id="@+id/register_password_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:contentDescription="@drawable/login_password"
-            android:src="@drawable/login_password" />
-
-        <TextView
-            android:id="@+id/register_password_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:singleLine="true"
-            android:textSize="@dimen/register_error_message_size"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/register_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:layout_toLeftOf="@id/register_password_error"
-            android:layout_toRightOf="@id/register_password_img"
-            android:background="@null"
-            android:hint="@string/register_password"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:textSize="@dimen/register_edit_textsize" />
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/register_line_height"
-        android:layout_marginTop="@dimen/register_margintop"
-        android:background="@color/gray" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_margintop" >
-
-        <ImageView
-            android:id="@+id/register_repeat_password_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:contentDescription="@drawable/login_password"
-            android:src="@drawable/login_password" />
-
-        <TextView
-            android:id="@+id/register_repeat_password_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:singleLine="true"
-            android:textSize="@dimen/register_error_message_size"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/register_repeat_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/register_edit_margin_left"
-            android:layout_toLeftOf="@id/register_repeat_password_error"
-            android:layout_toRightOf="@id/register_repeat_password_img"
-            android:background="@null"
-            android:hint="@string/register_repassword"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:textSize="@dimen/register_edit_textsize" />
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/register_line_height"
-        android:layout_marginTop="@dimen/register_margintop"
-        android:background="@color/gray" />
+    <EditText
+        android:id="@+id/register_repeat_password"
+        android:layout_width="@dimen/register_view_width"
+        android:layout_height="@dimen/register_view_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/register_edit_margin_top"
+        android:background="@drawable/login_edittext_background"
+        android:hint="@string/register_repassword"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/register_edit_marginLeft"
+        android:singleLine="true"
+        android:textSize="@dimen/register_edit_textsize" />
 
     <Button
         android:id="@+id/register_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_margintop"
+        android:layout_width="@dimen/register_view_width"
+        android:layout_height="@dimen/register_view_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/register_button_margintop"
         android:background="@drawable/login_button"
         android:text="@string/register"
+        android:textColor="@color/white"
         android:textSize="@dimen/register_button_textsize" />
+
+    <TextView
+        android:id="@+id/register_agreement"
+        android:layout_width="@dimen/register_view_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/register_button_margintop"
+        android:textSize="@dimen/register_text_textsize" />
 
 </LinearLayout>
