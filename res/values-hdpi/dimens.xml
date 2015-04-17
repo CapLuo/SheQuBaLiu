@@ -93,7 +93,7 @@
 
     <!-- community page -->
     <dimen name="community_item_paddingtop">10dp</dimen>
-    <dimen name="community_item_list_img_height">55dp</dimen>
+    <dimen name="community_item_list_img_height">48dp</dimen>
     <dimen name="community_item_list_item_size">16sp</dimen>
     <dimen name="community_item_list_img_marginleft">20dp</dimen>
     <dimen name="community_item_list_text_marginLeft">20dp</dimen>
@@ -132,8 +132,8 @@
     <dimen name="neighbour_page_textsize">20sp</dimen>
 
     <!-- repair page -->
-    <dimen name="repair_item_img_width">55dp</dimen>
-    <dimen name="repair_item_textsize">18sp</dimen>
+    <dimen name="repair_item_img_width">48dp</dimen>
+    <dimen name="repair_item_textsize">12sp</dimen>
     <dimen name="repair_item_margin_top">10dp</dimen>
     <dimen name="repair_line_height">1dp</dimen>
 

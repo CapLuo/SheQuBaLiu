@@ -14,7 +14,6 @@ import com.baidu.mobstat.StatService;
 import com.shequ.baliu.R;
 import com.shequ.baliu.ShequFunActivity;
 import com.shequ.baliu.adapter.AdapterRepairExpress;
-import com.shequ.baliu.adapter.AdapterRepairExpress.DataHolder;
 import com.shequ.baliu.util.ShequFunEnum;
 
 public class RepairExpressFragment extends Fragment implements
