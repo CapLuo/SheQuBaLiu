@@ -28,8 +28,8 @@
     <dimen name="login_edittext_layout_height">32dp</dimen>
 
     <!-- user message page -->
-    <dimen name="message_name_textsize">22sp</dimen>
-    <dimen name="message_content_textsize">16sp</dimen>
+    <dimen name="message_name_textsize">15sp</dimen>
+    <dimen name="message_content_textsize">12sp</dimen>
     <dimen name="message_user_name_size">16sp</dimen>
     <dimen name="message_item_margintop">4dp</dimen>
     <dimen name="message_head_img_margin_left">10dp</dimen>

@@ -3,6 +3,7 @@ package com.shequ.baliu.holder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.text.Html;
 import android.text.TextUtils;
 
 public class MessageInfo {
@@ -28,7 +29,8 @@ public class MessageInfo {
 	}
 
 	public void setMessage(String message) {
-		this.message = message;
+		String contentStr = Html.fromHtml(message).toString();
+		this.message = contentStr;
 	}
 
 	public String getSendid() {
