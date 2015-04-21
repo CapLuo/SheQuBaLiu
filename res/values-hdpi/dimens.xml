@@ -3,7 +3,7 @@
 
     <!-- title -->
     <dimen name="_title_size">15sp</dimen>
-    <dimen name="_title_business_size">17sp</dimen>
+    <dimen name="_title_business_size">11sp</dimen>
     <dimen name="title_icon_width">24dp</dimen>
     <dimen name="title_padding">10dp</dimen>
     <dimen name="title_img_padding_right">15dp</dimen>
@@ -111,19 +111,35 @@
     <dimen name="register_edit_marginLeft">9dp</dimen>
 
     <!-- second goods page -->
-    <dimen name="second_good_page_paddingleft">20dp</dimen>
+    <dimen name="second_good_page_paddingleft">10dp</dimen>
     <dimen name="second_good_page_paddingTop">10dp</dimen>
-    <dimen name="second_good_page_width">100dp</dimen>
+    <dimen name="second_good_page_width">40dp</dimen>
     <dimen name="second_good_head_width">45dp</dimen>
     <dimen name="second_good_name_width">80dp</dimen>
     <dimen name="second_good_group_width">120dp</dimen>
-    <dimen name="second_good_name_textsize">15sp</dimen>
-    <dimen name="second_good_title_size">18sp</dimen>
+    <dimen name="second_good_name_textsize">12sp</dimen>
+    <dimen name="second_good_shequ_textsize">9sp</dimen>
+    <dimen name="second_good_title_size">11sp</dimen>
     <dimen name="second_good_title_margin_left">60dp</dimen>
     <dimen name="second_good_title_margin_top">8dp</dimen>
     <dimen name="second_good_line_height">1dp</dimen>
     <dimen name="second_good_detail_paddingleft">20dp</dimen>
-    <dimen name="second_good_detail_head_margin">15dp</dimen>
+    <dimen name="second_good_detail_head_margin_left">15dp</dimen>
+    <dimen name="second_good_detail_head_margin_top">18dp</dimen>
+    <dimen name="second_good_detail_name_margin_left">12dp</dimen>
+    <dimen name="second_good_summary_title_layout_heigh">40dp</dimen>
+    <dimen name="second_good_summary_title_heigh">21dp</dimen>
+    <dimen name="second_good_summary_title_width">260dp</dimen>
+    <dimen name="second_good_summary_title_button_width">63dp</dimen>
+    <dimen name="second_good_summary_title_text_size">11sp</dimen>
+    <dimen name="second_good_driver_height">9dp</dimen>
+    <dimen name="second_good_list_layout_margin_top">-9dp</dimen>
+    <dimen name="second_good_summary_button_margin_right">-1dp</dimen>
+    <dimen name="second_good_price_layout_height">52dp</dimen>
+    <dimen name="second_good_price_height">25dp</dimen>
+    <dimen name="second_good_price_weight">150dp</dimen>
+    <dimen name="second_good_old_price_textsize">9sp</dimen>
+    <dimen name="second_good_new_price_textsize">12sp</dimen>
 
     <!-- neighbour page -->
     <dimen name="neighbour_page_paddingleft">20dp</dimen>
@@ -164,5 +180,9 @@
     <dimen name="dialog_paddingtop">10dp</dimen>
     <dimen name="dialog_paddingleft">15dp</dimen>
     <dimen name="dialog_marginleft">10dp</dimen>
+
+    <!-- release page -->
+    <dimen name="release_title_size">12sp</dimen>
+    <dimen name="release_input_size">11sp</dimen>
 
 </resources>

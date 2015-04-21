@@ -94,6 +94,14 @@
     <string name="second_hand_summary">简介</string>
     <string name="second_hand_location">地点</string>
     <string name="second_hand_detail_time">发布时间:</string>
-    <string name="second_hand_release">发布</string>
+    <string name="second_hand_release">我要卖闲置</string>
+    <string name="second_hand_summary_title_transfer">转让</string>
+    <string name="second_hand_summary_title_buy">求购</string>
+    <string name="second_hand_summary_title_give">免费赠送</string>
+    <string name="second_hand_summary_title_exchange">物品交换</string>
+    <string name="second_hand_price">一口价：</string>
 
+    <!-- 二手市场发布  -->
+    <string name="release_title">我要卖闲置</string>
+    <string name="release_text">发布</string>
 </resources>

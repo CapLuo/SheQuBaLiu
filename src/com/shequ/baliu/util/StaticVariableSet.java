@@ -18,6 +18,8 @@ public class StaticVariableSet {
 	public static String DATA_URL = "http://www.86qu.cn/api.php";
 	// get img url frim internet
 	public static String IMG_URL = "http://www.86qu.cn";
+	// upload img to server
+	public static String IMG_UPLOAD = "http://www.86qu.cn/app_upload.php";
 
 	// get im url from internet
 	public static String IM_DATA_URL = "http://shequbaliuim.duapp.com/coreServlet";

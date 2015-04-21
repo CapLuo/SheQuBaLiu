@@ -214,6 +214,18 @@ public class SqlHelper extends SQLiteOpenHelper {
 				"application/json", responseHandler);
 	}
 
+	public static void uploadPic(Context context, byte[] bytes, String ext,
+			ResponseHandlerInterface responseHandler) throws JSONException,
+			UnsupportedEncodingException {
+
+		JSONObject object = new JSONObject();
+		object.put("file_data", new String(Base64.encode(bytes, 0)));
+		object.put("file_ext", ext);
+
+		HttpUtil.post(context, StaticVariableSet.IMG_UPLOAD, object,
+				"application/json", responseHandler);
+	}
+
 	/*
 	 * 本地数据库查询
 	 */

@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    android:layout_height="match_parent"
+    android:background="@color/eye_city_gray" >
+
+    <RelativeLayout
+        android:id="@+id/second_good_summary_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/second_good_summary_title_layout_heigh"
+        android:background="@color/eye_city_gray" >
+
+        <LinearLayout
+            android:layout_width="@dimen/second_good_summary_title_width"
+            android:layout_height="@dimen/second_good_summary_title_heigh"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@color/eye_city_gray"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/second_good_summary_transfer"
+                android:layout_width="@dimen/second_good_summary_title_button_width"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/second_good_summary_button_margin_right"
+                android:background="@drawable/second_button_background_left_white"
+                android:text="@string/second_hand_summary_title_transfer"
+                android:textSize="@dimen/second_good_summary_title_text_size" />
+
+            <Button
+                android:id="@+id/second_good_summary_buy"
+                android:layout_width="@dimen/second_good_summary_title_button_width"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/second_good_summary_button_margin_right"
+                android:background="@drawable/second_button_background_white"
+                android:text="@string/second_hand_summary_title_buy"
+                android:textSize="@dimen/second_good_summary_title_text_size" />
+
+            <Button
+                android:id="@+id/second_good_summary_give"
+                android:layout_width="@dimen/second_good_summary_title_button_width"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/second_good_summary_button_margin_right"
+                android:background="@drawable/second_button_background_white"
+                android:text="@string/second_hand_summary_title_give"
+                android:textSize="@dimen/second_good_summary_title_text_size" />
+
+            <Button
+                android:id="@+id/second_good_summary_exchange"
+                android:layout_width="@dimen/second_good_summary_title_button_width"
+                android:layout_height="match_parent"
+                android:background="@drawable/second_button_background_right_white"
+                android:text="@string/second_hand_summary_title_exchange"
+                android:textSize="@dimen/second_good_summary_title_text_size" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/list_secondhand"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:listSelector="@drawable/item_list_selector" >
+        android:layout_below="@id/second_good_summary_title_layout"
+        android:layout_marginTop="@dimen/second_good_list_layout_margin_top"
+        android:divider="@color/eye_city_gray"
+        android:dividerHeight="@dimen/second_good_driver_height"
+        android:listSelector="@drawable/item_list_selector"
+        android:scrollbars="none" >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </RelativeLayout>

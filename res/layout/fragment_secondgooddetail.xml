@@ -12,7 +12,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_gray"
             android:orientation="horizontal" >
 
             <com.shequ.baliu.view.CircularImage
@@ -20,19 +19,17 @@
                 android:layout_width="@dimen/second_good_head_width"
                 android:layout_height="@dimen/second_good_head_width"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="@dimen/second_good_detail_head_margin"
-                android:layout_marginLeft="@dimen/second_good_detail_head_margin"
-                android:layout_marginTop="@dimen/second_good_detail_head_margin"
+                android:layout_marginLeft="@dimen/second_good_detail_head_margin_left"
+                android:layout_marginTop="@dimen/second_good_detail_head_margin_top"
                 android:contentDescription="@drawable/user_head_default"
-                android:scaleType="fitXY" />
+                android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="@dimen/second_good_detail_head_margin"
-                android:layout_marginLeft="@dimen/second_good_page_paddingleft"
-                android:layout_marginTop="@dimen/second_good_detail_head_margin"
+                android:layout_marginLeft="@dimen/second_good_detail_head_margin_left"
+                android:layout_marginTop="@dimen/second_good_detail_head_margin_top"
                 android:orientation="vertical" >
 
                 <TextView
@@ -46,13 +43,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/second_good_name_textsize" />
+                    android:textSize="@dimen/second_good_old_price_textsize" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/second_good_summary_title_layout_heigh"
             android:orientation="vertical"
             android:paddingLeft="@dimen/second_good_detail_paddingleft"
             android:paddingRight="@dimen/second_good_detail_paddingleft" >
@@ -61,8 +59,6 @@
                 android:id="@+id/second_hand_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/second_good_detail_head_margin"
-                android:layout_marginTop="@dimen/second_good_detail_head_margin"
                 android:textColor="@color/black"
                 android:textSize="@dimen/second_good_title_size" />
 

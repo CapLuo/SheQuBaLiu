@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.shequ.baliu.R;
 import com.shequ.baliu.holder.SecondHandGoods;
+import com.shequ.baliu.view.ImageBrowsingLayout;
 
 public class AdapterSecondHand extends BaseAdapter {
 
@@ -27,12 +28,15 @@ public class AdapterSecondHand extends BaseAdapter {
 	private List<SecondHandGoods> goods;
 	private DisplayImageOptions mOptions;
 
+	private AdapterInsertImageBrowsing mImageAdapter;
+
 	public AdapterSecondHand(Context context) {
 		mContext = context;
 		goods = new ArrayList<SecondHandGoods>();
 		mOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
 				.cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565)
 				.imageScaleType(ImageScaleType.IN_SAMPLE_INT).build();
+		mImageAdapter = new AdapterInsertImageBrowsing(context);
 	}
 
 	public void notifyDataListAll(List<SecondHandGoods> good) {
@@ -78,19 +82,26 @@ public class AdapterSecondHand extends BaseAdapter {
 					.findViewById(R.id._item_secondhand_name);
 			holder.groupname = (TextView) convertView
 					.findViewById(R.id._item_secondhand_group);
-			holder.img = (ImageView) convertView
-					.findViewById(R.id._item_secondhand_img);
+			holder.imgLayout = (ImageBrowsingLayout) convertView
+					.findViewById(R.id._item_secondhand_img_browsing);
 			holder.time = (TextView) convertView
 					.findViewById(R.id._item_secondhand_time);
 			holder.title = (TextView) convertView
 					.findViewById(R.id._item_secondhand_title);
+			holder.oldPrice = (TextView) convertView
+					.findViewById(R.id._item_second_old_price);
+			holder.newPrice = (TextView) convertView
+					.findViewById(R.id._item_second_price);
+			holder.priceLayout = convertView
+					.findViewById(R.id._item_secondhand_price_layout);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.img.setImageResource(R.drawable.goods_loading);
-		ImageLoader.getInstance().displayImage(goods.get(position).getPhoto(),
-				holder.img, mOptions);
+		holder.priceLayout.setVisibility(View.GONE);
+		mImageAdapter.notifyDataList(goods.get(position).getPhoto());
+		holder.imgLayout.setAdapter(mImageAdapter);
+
 		holder.head.setImageResource(R.drawable.user_head_default);
 		ImageLoader.getInstance().displayImage(
 				goods.get(position).getHeadphoto(), holder.head, mOptions);
@@ -114,12 +125,16 @@ public class AdapterSecondHand extends BaseAdapter {
 	}
 
 	static class ViewHolder {
-		public ImageView img;
+		public ImageBrowsingLayout imgLayout;
 		public ImageView head;
 		public TextView name;
 		public TextView groupname;
 		public TextView time;
 		public TextView title;
+		public TextView newPrice;
+		public TextView oldPrice;
+		// price layout
+		public View priceLayout;
 	}
 
 }

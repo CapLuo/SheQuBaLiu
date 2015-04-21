@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingBottom="@dimen/second_good_page_paddingTop"
     android:paddingLeft="@dimen/second_good_page_paddingTop"
     android:paddingRight="@dimen/second_good_page_paddingTop"
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/second_good_name_textsize" />
+                android:textSize="@dimen/second_good_shequ_textsize" />
         </LinearLayout>
 
         <TextView
@@ -53,14 +54,13 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/second_good_page_paddingleft"
             android:textColor="@color/gray"
-            android:textSize="@dimen/second_good_name_textsize" />
+            android:textSize="@dimen/second_good_shequ_textsize" />
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/_item_secondhand_user_postcard"
-        android:layout_marginLeft="@dimen/second_good_title_margin_left"
         android:layout_marginTop="@dimen/second_good_title_margin_top"
         android:orientation="vertical" >
 
@@ -72,12 +72,57 @@
             android:textColor="@color/black"
             android:textSize="@dimen/second_good_title_size" />
 
-        <ImageView
-            android:id="@+id/_item_secondhand_img"
-            android:layout_width="@dimen/second_good_page_width"
-            android:layout_height="@dimen/second_good_page_width"
-            android:contentDescription="@drawable/icon_blue"
-            android:scaleType="centerCrop" />
+        <RelativeLayout
+            android:id="@+id/_item_secondhand_price_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/second_good_price_layout_height" >
+
+            <LinearLayout
+                android:layout_width="@dimen/second_good_price_weight"
+                android:layout_height="@dimen/second_good_price_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/second_button_background_round_white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/second_hand_price"
+                    android:textSize="@dimen/second_good_old_price_textsize" />
+
+                <TextView
+                    android:id="@+id/_item_second_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="¥80"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/second_good_new_price_textsize" />
+
+                <TextView
+                    android:id="@+id/_item_second_old_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="¥160"
+                    android:textSize="@dimen/second_good_old_price_textsize" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.shequ.baliu.view.ImageBrowsingLayout
+            android:id="@+id/_item_secondhand_img_browsing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/second_good_page_width"
+            android:orientation="horizontal" >
+        </com.shequ.baliu.view.ImageBrowsingLayout>
     </LinearLayout>
 
 </RelativeLayout>

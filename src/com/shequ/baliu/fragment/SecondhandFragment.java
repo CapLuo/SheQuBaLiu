@@ -14,10 +14,12 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.baidu.mobstat.StatService;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -33,7 +35,8 @@ import com.shequ.baliu.holder.SecondHandGoods;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
 
-public class SecondhandFragment extends Fragment implements OnItemClickListener {
+public class SecondhandFragment extends Fragment implements
+		OnItemClickListener, OnClickListener {
 
 	private View mContentView;
 
@@ -43,6 +46,8 @@ public class SecondhandFragment extends Fragment implements OnItemClickListener 
 	private static final int PRINTSCREEN = 10;
 	private int start = 0;
 	private boolean isRefreshing = false;
+
+	private Button mTransfer, mBuy, mGive, mExchange;
 
 	private OnClickGoodDetail mClickGoodDetail = new OnClickGoodDetail() {
 
@@ -89,6 +94,20 @@ public class SecondhandFragment extends Fragment implements OnItemClickListener 
 		mListView.setMode(Mode.PULL_FROM_END);
 		mListView.setOnScrollListener(new PauseOnScrollListener(ImageLoader
 				.getInstance(), true, true));
+
+		mTransfer = (Button) mContentView
+				.findViewById(R.id.second_good_summary_transfer);
+		mTransfer.setBackgroundDrawable(getActivity().getResources()
+				.getDrawable(R.drawable.second_button_background_left_blue));
+		mTransfer.setOnClickListener(this);
+		mBuy = (Button) mContentView.findViewById(R.id.second_good_summary_buy);
+		mBuy.setOnClickListener(this);
+		mGive = (Button) mContentView
+				.findViewById(R.id.second_good_summary_give);
+		mGive.setOnClickListener(this);
+		mExchange = (Button) mContentView
+				.findViewById(R.id.second_good_summary_exchange);
+		mExchange.setOnClickListener(this);
 	}
 
 	private void initData() {
@@ -157,5 +176,45 @@ public class SecondhandFragment extends Fragment implements OnItemClickListener 
 
 	public interface OnClickGoodDetail {
 		public void setGoodDetailClick(SecondHandGoods good);
+	}
+
+	/*
+	 * 修改所有按钮背景 except 参数button
+	 */
+	private void onReadySummaryButton(View button) {
+		mTransfer.setBackgroundDrawable(getActivity().getResources()
+				.getDrawable(R.drawable.second_button_background_left_white));
+		mBuy.setBackgroundDrawable(getActivity().getResources().getDrawable(
+				R.drawable.second_button_background_white));
+		mGive.setBackgroundDrawable(getActivity().getResources().getDrawable(
+				R.drawable.second_button_background_white));
+		mExchange.setBackgroundDrawable(getActivity().getResources()
+				.getDrawable(R.drawable.second_button_background_right_white));
+		switch (button.getId()) {
+		case R.id.second_good_summary_transfer:
+			button.setBackgroundDrawable(getActivity().getResources()
+					.getDrawable(R.drawable.second_button_background_left_blue));
+			break;
+		case R.id.second_good_summary_buy:
+			button.setBackgroundDrawable(getActivity().getResources()
+					.getDrawable(R.drawable.second_button_background_blue));
+			break;
+		case R.id.second_good_summary_give:
+			button.setBackgroundDrawable(getActivity().getResources()
+					.getDrawable(R.drawable.second_button_background_blue));
+			break;
+		case R.id.second_good_summary_exchange:
+			button.setBackgroundDrawable(getActivity()
+					.getResources()
+					.getDrawable(R.drawable.second_button_background_right_blue));
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onClick(View view) {
+		onReadySummaryButton(view);
 	}
 }

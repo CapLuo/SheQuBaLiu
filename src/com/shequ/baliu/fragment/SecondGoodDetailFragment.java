@@ -107,9 +107,9 @@ public class SecondGoodDetailFragment extends Fragment {
 		String time = getActivity().getResources().getString(
 				R.string.second_hand_detail_time);
 		Date date = new Date(Long.parseLong(mGood.getUpdateTime()) * 1000);
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		format.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
-		time = time + format.format(date);
+		time = time + " " + format.format(date);
 		mTime.setText(time);
 	}
 
