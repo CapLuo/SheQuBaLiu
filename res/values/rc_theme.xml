@@ -39,7 +39,7 @@
     </style>
 
     <style name="RcTheme.ActionBar.Logo" >
-        <item name="android:src">@drawable/rc_bar_logo</item>
+        <item name="android:src">@null</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
