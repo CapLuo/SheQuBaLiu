@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/release_title_height"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_title_margin_left"
+            android:layout_marginTop="@dimen/release_title_margin_top"
+            android:padding="0dp"
+            android:text="@string/release_summary_title"
+            android:textSize="@dimen/release_title_size" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_input_margin_left"
+            android:layout_marginTop="@dimen/release_title_margin_top"
+            android:background="@null"
+            android:hint="@string/release_summary_title_hint"
+            android:padding="0dp"
+            android:singleLine="true"
+            android:textSize="@dimen/release_input_size" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="@dimen/release_line_width"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/edit_stroke_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/release_details_layout_height"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_title_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:padding="0dp"
+            android:text="@string/release_goods_description"
+            android:textSize="@dimen/release_title_size" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_input_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:background="@null"
+            android:hint="@string/release_goods_description_hint"
+            android:padding="0dp"
+            android:textSize="@dimen/release_input_size" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="@dimen/release_line_width"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/edit_stroke_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/release_details_layout_height"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_title_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:padding="0dp"
+            android:text="@string/release_goods_images"
+            android:textSize="@dimen/release_title_size" />
+
+        <com.shequ.baliu.view.ImageBrowsingLayout
+            android:id="@+id/release_image_browsing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/release_input_margin_left" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="@dimen/release_line_width"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/edit_stroke_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/release_goods_new_price"
+            android:textSize="@dimen/release_title_size" />
+
+        <EditText
+            android:id="@+id/release_goods_new_price"
+            android:layout_width="@dimen/release_price_edit_width"
+            android:layout_height="@dimen/release_price_edit_height" />
+    </LinearLayout>
+
+</LinearLayout>
