@@ -367,7 +367,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
 		ShequApplication app = (ShequApplication) getApplication();
 		isLogin = app.getLogin();
-		if (!app.getLogin()) {
+		if (!isLogin) {
 			String user = mShequTools.getSharePreferences(
 					StaticVariableSet.SHARE_USER, "");
 			String pwd = mShequTools.getSharePreferences(
@@ -376,11 +376,6 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 				getInfo(user, pwd);
 			}
 		} else {
-			if (mCurrentPosition == 2) {
-				mTextButton.setText(R.string.user_drop_out);
-				mTextButton.setOnClickListener(this);
-				mTextButton.setVisibility(View.VISIBLE);
-			}
 		}
 	}
 
@@ -392,7 +387,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		super.onPause();
 	}
 
-	private void getInfo(String user, final String pwd) {
+	private void getInfo(final String user, final String pwd) {
 		SqlHelper.getAllInfo("`" + StaticVariableSet.USER_MAIN
 				+ "`.`userid` = '" + user + "'", new JsonHttpResponseHandler(
 				"UTF-8") {
@@ -402,12 +397,14 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 					JSONArray response) {
 				try {
 					if (response.length() <= 0) {
+						getInfoToMain(user, pwd);
 						return;
 					}
 					JSONObject object = response.getJSONObject(0);
 					PersonInfo info = PersonInfo.parseJson(object);
 					String salt = object.getString("salt");
 					ShequApplication app = (ShequApplication) getApplication();
+
 					if (pwd.equals(ShequTools.md5(salt + info.getUserId()))) {
 						app.setLogin(true);
 						isLogin = true;
@@ -418,6 +415,34 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 				}
 			}
 
+		});
+	}
+
+	private void getInfoToMain(String user, final String pwd) {
+		SqlHelper.getInfo("`" + StaticVariableSet.USER_MAIN + "`.`userid` = '"
+				+ user + "'", new JsonHttpResponseHandler("UTF-8") {
+
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONArray response) {
+				try {
+					if (response.length() <= 0) {
+						return;
+					}
+					JSONObject object = response.getJSONObject(0);
+					PersonInfo info = PersonInfo.parseMainInfo(object);
+					String salt = object.getString("salt");
+					ShequApplication app = (ShequApplication) getApplication();
+
+					if (pwd.equals(ShequTools.md5(salt + info.getUserId()))) {
+						app.setLogin(true);
+						isLogin = true;
+						app.setInfo(info);
+					}
+				} catch (JSONException e) {
+					Log.e(StaticVariableSet.TAG, e.getMessage());
+				}
+			}
 		});
 	}
 

@@ -208,4 +208,22 @@ public class PersonInfo {
 		}
 		return info;
 	}
+
+	public static PersonInfo parseMainInfo(JSONObject json)
+			throws JSONException {
+		PersonInfo info = new PersonInfo();
+		String userid = json.getString("userid");
+		if (userid == null) {
+			return null;
+		} else {
+			info.setUserId(userid);
+		}
+		String username = json.getString("username");
+		if (username == null) {
+			return null;
+		} else {
+			info.setUsername(username);
+		}
+		return info;
+	}
 }

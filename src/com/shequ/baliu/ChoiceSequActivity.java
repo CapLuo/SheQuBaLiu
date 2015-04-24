@@ -411,7 +411,6 @@ public class ChoiceSequActivity extends Activity implements
 		}
 		String strInfo = String.format("纬度：%f 经度：%f",
 				result.getLocation().latitude, result.getLocation().longitude);
-		// Log.e("@@@@", "info = " + strInfo);
 		LatLng ptCenter = new LatLng(result.getLocation().latitude,
 				result.getLocation().longitude);
 		mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(ptCenter));

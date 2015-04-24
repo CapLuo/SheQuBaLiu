@@ -60,6 +60,13 @@ public class SqlHelper extends SQLiteOpenHelper {
 		get(paramsValue, handler);
 	}
 
+	public static void getInfo(String where, JsonHttpResponseHandler handler) {
+		String paramsValue = new String(Base64.encode(("SELECT * FROM `"
+				+ StaticVariableSet.USER_MAIN + "` WHERE " + where).getBytes(),
+				0));
+		get(paramsValue, handler);
+	}
+
 	public static void getAllInfo(String where, JsonHttpResponseHandler handler) {
 		String paramsValue = new String(Base64.encode(
 				("SELECT `" + StaticVariableSet.USER_INFO + "`.`userid`, `"
@@ -257,7 +264,6 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 	public static final String FRIEND_TABLE_NAME = "Club_friend";
 
-	public static final String _FriendID = "id";
 	public static final String _FriendUserId = "userId";
 	public static final String _FriendName = "name";
 	public static final String _FriendPortraitUri = "portraitUri";
@@ -312,9 +318,8 @@ public class SqlHelper extends SQLiteOpenHelper {
 		StringBuffer friend_buffer = new StringBuffer();
 
 		friend_buffer.append("CREATE TABLE [" + FRIEND_TABLE_NAME + "] (");
-		friend_buffer.append("[" + _FriendID
-				+ "] INTEGER NOT NULL PRIMARY KEY, ");
-		friend_buffer.append("[" + _FriendUserId + "] TEXT,");
+		friend_buffer.append("[" + _FriendUserId
+				+ "] TEXT NOT NULL PRIMARY KEY,");
 		friend_buffer.append("[" + _FriendName + "] TEXT,");
 		friend_buffer.append("[" + _FriendPortraitUri + "] TEXT)");
 

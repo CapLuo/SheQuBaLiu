@@ -53,8 +53,10 @@ import com.shequ.baliu.adapter.AdapterHomeAdvertImage;
 import com.shequ.baliu.adapter.AdapterHomeBusiness;
 import com.shequ.baliu.adapter.AdpterEyeCity;
 import com.shequ.baliu.holder.AdvertHomeInfo;
+import com.shequ.baliu.holder.FriendInfo;
 import com.shequ.baliu.holder.PersonInfo;
 import com.shequ.baliu.holder.ShequEyeCityHolder;
+import com.shequ.baliu.util.DBManager;
 import com.shequ.baliu.util.ShequTools;
 import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
@@ -88,7 +90,7 @@ public class HomeFragment extends Fragment {
 
 	private Dialog mDialog;
 
-	private ArrayList<PersonInfo> mPersonInfos = new ArrayList<PersonInfo>();
+	private DBManager mDBManager;
 
 	public HomeFragment(SheQuActivity activity) {
 		mActivity = activity;
@@ -232,6 +234,7 @@ public class HomeFragment extends Fragment {
 	}
 
 	private void initData() {
+		mDBManager = new DBManager(getActivity());
 		mOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
 				.cacheOnDisk(false).bitmapConfig(Bitmap.Config.RGB_565).build();
 		getHomeAdvertImages();
@@ -380,6 +383,11 @@ public class HomeFragment extends Fragment {
 	private void loadMoreData() { // 加载更多数据
 		String groupid = ((ShequApplication) (getActivity().getApplication()))
 				.getInfo().getGroupId();
+		if (TextUtils.isEmpty(groupid)) {
+			showToast("加入小区才能看到邻里圈的朋友");
+			dismiss();
+			return;
+		}
 		mUserId = ((ShequApplication) (getActivity().getApplication()))
 				.getInfo().getUserId();
 		if (groupid != null && !groupid.equals("")) {
@@ -420,7 +428,7 @@ public class HomeFragment extends Fragment {
 										people.add(info);
 									}
 								}
-								mPersonInfos = people;
+								mDBManager.addFriendInfos(people);
 								setFrined();
 								// 启动会话列表
 								RongIM.getInstance().startConversationList(
@@ -517,7 +525,7 @@ public class HomeFragment extends Fragment {
 
 			@Override
 			public void onError(ErrorCode errorCode) {
-				// 此处处理连接成功。
+				// 此处处理连接不成功。
 				Log.e(StaticVariableSet.TAG, "Login faile. " + errorCode);
 				dismiss();
 				showToast(R.string.home_connection_server_error);
@@ -542,10 +550,14 @@ public class HomeFragment extends Fragment {
 			public ArrayList<RongIMClient.UserInfo> getFriends() {
 				// 返回 App 的好友列表给 IMKit 界面组件，供会话列表页中选择好友时使用。
 				ArrayList<RongIMClient.UserInfo> list = new ArrayList<RongIMClient.UserInfo>();
-
-				for (PersonInfo info : mPersonInfos) {
+				if (mDBManager == null) {
+					mDBManager = new DBManager(HomeFragment.this.getActivity());
+				}
+				ArrayList<FriendInfo> mPeopele = mDBManager
+						.queryFriend(getActivity());
+				for (FriendInfo info : mPeopele) {
 					RongIMClient.UserInfo user = new RongIMClient.UserInfo(info
-							.getUserId(), info.getNickName(), info.getPhoto());
+							.getUserid(), info.getName(), info.getPortraitUri());
 					list.add(user);
 				}
 
@@ -555,17 +567,21 @@ public class HomeFragment extends Fragment {
 	}
 
 	private UserInfo getUserInfoFromLocalCache(String userId) {
-		PersonInfo person = null;
-		for (PersonInfo personInfo : mPersonInfos) {
-			if (personInfo.getUserId() == userId) {
+		FriendInfo person = null;
+		if (mDBManager == null) {
+			mDBManager = new DBManager(HomeFragment.this.getActivity());
+		}
+		ArrayList<FriendInfo> mPeopele = mDBManager.queryFriend(getActivity());
+		for (FriendInfo personInfo : mPeopele) {
+			if (personInfo.getUserid().equals(userId)) {
 				person = personInfo;
 			}
 		}
 		if (person == null) {
 			return null;
 		}
-		UserInfo info = new UserInfo(userId, person.getNickName(),
-				person.getPhoto());
+		UserInfo info = new UserInfo(userId, person.getName(),
+				person.getPortraitUri());
 		return info;
 	}
 
