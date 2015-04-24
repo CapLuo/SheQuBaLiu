@@ -181,4 +181,18 @@
     <dimen name="dialog_paddingleft">15dp</dimen>
     <dimen name="dialog_marginleft">10dp</dimen>
 
+    <!-- release page -->
+    <dimen name="release_title_size">12sp</dimen>
+    <dimen name="release_input_size">11sp</dimen>
+    <dimen name="release_title_height">65dp</dimen>
+    <dimen name="release_title_margin_top">42dp</dimen>
+    <dimen name="release_title_margin_left">20dp</dimen>
+    <dimen name="release_description_margin_top">17dp</dimen>
+    <dimen name="release_line_width">330dp</dimen>
+    <dimen name="release_img_width">66dp</dimen>
+    <dimen name="release_price_edit_width">65dp</dimen>
+    <dimen name="release_price_edit_height">17dp</dimen>
+    <dimen name="release_details_layout_height">105dp</dimen>
+    <dimen name="release_input_margin_left">20dp</dimen>
+
 </resources>

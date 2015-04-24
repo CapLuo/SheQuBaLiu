@@ -113,7 +113,7 @@ public class ShequFunActivity extends FragmentActivity {
 		case SECONDHAND:
 			mFun = ShequFunEnum.SECONDHAND;
 			mTextButton.setText(R.string.second_hand_release);
-			mTextButton.setVisibility(View.VISIBLE);
+			mTextButton.setVisibility(View.INVISIBLE);
 			mTextButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View view) {

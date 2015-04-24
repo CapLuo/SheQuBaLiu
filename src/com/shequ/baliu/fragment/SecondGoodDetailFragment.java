@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.mobstat.StatService;
@@ -21,8 +19,10 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.shequ.baliu.R;
+import com.shequ.baliu.adapter.AdapterInsertImageBrowsing;
 import com.shequ.baliu.holder.SecondHandGoods;
 import com.shequ.baliu.view.CircularImage;
+import com.shequ.baliu.view.ImageBrowsingLayout;
 
 public class SecondGoodDetailFragment extends Fragment {
 
@@ -32,7 +32,8 @@ public class SecondGoodDetailFragment extends Fragment {
 	private TextView mName;
 	private TextView mTime;
 	private TextView mTitle;
-	private ImageView mBrowsingImage;
+	private ImageBrowsingLayout mBrowsingImage;
+	private AdapterInsertImageBrowsing mImageAdapter;
 	private TextView mContent;
 	private TextView mShequ;
 
@@ -78,7 +79,7 @@ public class SecondGoodDetailFragment extends Fragment {
 		mName = (TextView) mContentView.findViewById(R.id.second_hand_name);
 		mTime = (TextView) mContentView.findViewById(R.id.second_hand_time);
 		mTitle = (TextView) mContentView.findViewById(R.id.second_hand_title);
-		mBrowsingImage = (ImageView) mContentView
+		mBrowsingImage = (ImageBrowsingLayout) mContentView
 				.findViewById(R.id.second_hand_browsing);
 		mContent = (TextView) mContentView
 				.findViewById(R.id.second_hand_summary);
@@ -90,12 +91,12 @@ public class SecondGoodDetailFragment extends Fragment {
 	}
 
 	private void initData() {
+		mImageAdapter = new AdapterInsertImageBrowsing(getActivity());
 		mHeadImage.setImageResource(R.drawable.user_head_default);
 		ImageLoader.getInstance().displayImage(mGood.getHeadphoto(),
 				mHeadImage, mOptions);
-		mBrowsingImage.setImageResource(R.drawable.goods_loading);
-		ImageLoader.getInstance().displayImage(mGood.getPhoto(),
-				mBrowsingImage, mOptions);
+		mImageAdapter.notifyDataList(mGood.getPhoto());
+		mBrowsingImage.setAdapter(mImageAdapter);
 		mName.setText(mGood.getNickname());
 		fillTime();
 		mTitle.setText(mGood.getTitle());

@@ -12,7 +12,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/second_good_detail_head_margin_top" >
 
             <com.shequ.baliu.view.CircularImage
                 android:id="@+id/second_hand_head_img"
@@ -20,16 +21,14 @@
                 android:layout_height="@dimen/second_good_head_width"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/second_good_detail_head_margin_left"
-                android:layout_marginTop="@dimen/second_good_detail_head_margin_top"
                 android:contentDescription="@drawable/user_head_default"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/second_good_detail_head_margin_left"
-                android:layout_marginTop="@dimen/second_good_detail_head_margin_top"
                 android:orientation="vertical" >
 
                 <TextView
@@ -75,12 +74,13 @@
                 android:text="@string/second_hand_good_img"
                 android:textSize="@dimen/second_good_name_textsize" />
 
-            <ImageView
+            <com.shequ.baliu.view.ImageBrowsingLayout
                 android:id="@+id/second_hand_browsing"
-                android:layout_width="@dimen/second_good_page_width"
-                android:layout_height="@dimen/second_good_page_width"
-                android:contentDescription="@drawable/goods_loading"
-                android:scaleType="fitXY" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/second_good_page_width"
+                android:orientation="horizontal" >
+            </com.shequ.baliu.view.ImageBrowsingLayout>
 
             <TextView
                 android:layout_width="match_parent"
