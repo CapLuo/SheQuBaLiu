@@ -106,6 +106,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
+            android:name=".ImageShowerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImageScale" />
+        <activity
             android:name="io.rong.imkit.RongActivity"
             android:screenOrientation="portrait" >
             <intent-filter>

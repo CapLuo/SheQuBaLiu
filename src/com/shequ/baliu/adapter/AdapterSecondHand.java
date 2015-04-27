@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,11 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.shequ.baliu.ImageShowerActivity;
 import com.shequ.baliu.R;
 import com.shequ.baliu.holder.SecondHandGoods;
 import com.shequ.baliu.view.ImageBrowsingLayout;
+import com.shequ.baliu.view.ImageBrowsingLayout.ShowInsertImg;
 
 public class AdapterSecondHand extends BaseAdapter {
 
@@ -101,7 +104,16 @@ public class AdapterSecondHand extends BaseAdapter {
 		holder.priceLayout.setVisibility(View.GONE);
 		mImageAdapter.notifyDataList(goods.get(position).getPhoto());
 		holder.imgLayout.setAdapter(mImageAdapter);
+		holder.imgLayout.setShowImgInterface(new ShowInsertImg() {
 
+			@Override
+			public void showImg(String uri) {
+				Intent intent = new Intent();
+				intent.setClass(mContext, ImageShowerActivity.class);
+				intent.putExtra("IMG_URI", uri);
+				mContext.startActivity(intent);
+			}
+		});
 		holder.head.setImageResource(R.drawable.user_head_default);
 		ImageLoader.getInstance().displayImage(
 				goods.get(position).getHeadphoto(), holder.head, mOptions);

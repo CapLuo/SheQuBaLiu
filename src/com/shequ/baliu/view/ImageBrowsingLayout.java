@@ -3,7 +3,6 @@ package com.shequ.baliu.view;
 import com.shequ.baliu.R;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -19,7 +18,7 @@ public class ImageBrowsingLayout extends LinearLayout {
 	private ShowInsertImg mShowInsertImg = new ShowInsertImg() {
 
 		@Override
-		public void showImg(Uri uri, View v) {
+		public void showImg(String uri) {
 		}
 	};
 
@@ -58,8 +57,8 @@ public class ImageBrowsingLayout extends LinearLayout {
 
 				@Override
 				public void onClick(View view) {
-					Uri uri = (Uri) view.getTag();
-					mShowInsertImg.showImg(uri, view);
+					String net_address = (String) view.getTag();
+					mShowInsertImg.showImg(net_address);
 				}
 			});
 			((ImageView) v).setScaleType(ScaleType.CENTER_CROP);
@@ -68,6 +67,6 @@ public class ImageBrowsingLayout extends LinearLayout {
 	}
 
 	public interface ShowInsertImg {
-		public void showImg(Uri uri, View v);
+		public void showImg(String uri);
 	}
 }

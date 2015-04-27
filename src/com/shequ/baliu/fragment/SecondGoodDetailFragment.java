@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,11 +19,13 @@ import com.baidu.mobstat.StatService;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.shequ.baliu.ImageShowerActivity;
 import com.shequ.baliu.R;
 import com.shequ.baliu.adapter.AdapterInsertImageBrowsing;
 import com.shequ.baliu.holder.SecondHandGoods;
 import com.shequ.baliu.view.CircularImage;
 import com.shequ.baliu.view.ImageBrowsingLayout;
+import com.shequ.baliu.view.ImageBrowsingLayout.ShowInsertImg;
 
 public class SecondGoodDetailFragment extends Fragment {
 
@@ -81,6 +84,16 @@ public class SecondGoodDetailFragment extends Fragment {
 		mTitle = (TextView) mContentView.findViewById(R.id.second_hand_title);
 		mBrowsingImage = (ImageBrowsingLayout) mContentView
 				.findViewById(R.id.second_hand_browsing);
+		mBrowsingImage.setShowImgInterface(new ShowInsertImg() {
+
+			@Override
+			public void showImg(String uri) {
+				Intent intent = new Intent();
+				intent.setClass(getActivity(), ImageShowerActivity.class);
+				intent.putExtra("IMG_URI", uri);
+				getActivity().startActivity(intent);
+			}
+		});
 		mContent = (TextView) mContentView
 				.findViewById(R.id.second_hand_summary);
 		mShequ = (TextView) mContentView
