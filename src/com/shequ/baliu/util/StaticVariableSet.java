@@ -11,6 +11,8 @@ public class StaticVariableSet {
 	public static String SHARE_PWD = "shequ_pwd";
 	public static String SHARE_TOKEN = "shequ_token";
 
+	public static String SHARE_VERSION = "shequ_version";
+
 	// get advert image url from internet
 	public static String AD_URL = "";
 

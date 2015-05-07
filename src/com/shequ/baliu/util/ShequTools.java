@@ -64,11 +64,27 @@ public class ShequTools {
 		editor.commit();
 	}
 
+	public void writeSharedPreferences(String key, int value) {
+		SharedPreferences sharedPreferences = mContext.getSharedPreferences(
+				StaticVariableSet.SHARE_NAME, Context.MODE_PRIVATE);
+		Editor editor = sharedPreferences.edit();
+		editor.putInt(key, value);
+		editor.commit();
+	}
+
 	public String getSharePreferences(String key, String default_value) {
 		String value;
 		SharedPreferences sharedPreferences = mContext.getSharedPreferences(
 				StaticVariableSet.SHARE_NAME, Context.MODE_PRIVATE);
 		value = sharedPreferences.getString(key, default_value);
+		return value;
+	}
+
+	public int getSharePreferences(String key, int default_value) {
+		int value;
+		SharedPreferences sharedPreferences = mContext.getSharedPreferences(
+				StaticVariableSet.SHARE_NAME, Context.MODE_PRIVATE);
+		value = sharedPreferences.getInt(key, default_value);
 		return value;
 	}
 

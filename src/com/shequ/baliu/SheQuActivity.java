@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -103,6 +105,24 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 
 		initView();
 		// mDataHolder.setShequBussiness(ShequBusinessEnum.HOME);
+
+		try {
+			int version_code = mShequTools.getSharePreferences(
+					StaticVariableSet.SHARE_VERSION, 0);
+			PackageInfo info = getPackageManager().getPackageInfo(
+					this.getPackageName(), 0);
+			int version_code_package = info.versionCode;
+			if (version_code == 0 || version_code < version_code_package) {
+				mShequTools.writeSharedPreferences(
+						StaticVariableSet.SHARE_VERSION, version_code_package);
+				Intent intent = new Intent();
+				intent.setClass(SheQuActivity.this, ShequAdDialogActivity.class);
+				this.startActivity(intent);
+			}
+		} catch (NameNotFoundException e) {
+			Log.e(StaticVariableSet.TAG, e.getMessage());
+		}
+
 	}
 
 	private void initView() {
@@ -168,73 +188,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		setChoiceFragmentContent(0);
 	}
 
-	// private void setDataPager() {
-	// View view = null;
-	// switch (mDataHolder.getCurrentBusiness()) {
-	// case COMMUNITY:
-	// view = LayoutInflater.from(this).inflate(
-	// R.layout.activity_community, null);
-	// break;
-	// case BUSINESS:
-	// view = LayoutInflater.from(this).inflate(
-	// R.layout.activity_business, null);
-	// break;
-	// case LIFE:
-	// view = LayoutInflater.from(this).inflate(R.layout.activity_life,
-	// null);
-	// mList = (ListView) view.findViewById(R.id._list_car_activity);
-	// break;
-	// case CARS:
-	// view = LayoutInflater.from(this).inflate(R.layout.activity_cars,
-	// null);
-	// mList = (ListView) view.findViewById(R.id._list_car_activity);
-	// break;
-	// case ACTIVITY:
-	// view = LayoutInflater.from(this).inflate(
-	// R.layout.activity_activity, null);
-	// break;
-	// case NEWS:
-	// view = LayoutInflater.from(this).inflate(R.layout.activity_news,
-	// null);
-	// break;
-	// case HOME:
-	// default:
-	// view = LayoutInflater.from(this).inflate(R.layout.activity_home,
-	// null);
-	// break;
-	// }
-	// if (null != view) {
-	// mScrollView.removeAllViews();
-	// mScrollView.addView(view);
-	// }
-	// businessTextHighLight();
-	// fitBusinessScroll();
-	// }
-
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		// case R.id._lable_home:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.HOME);
-		// break;
-		// case R.id._lable_community:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.COMMUNITY);
-		// break;
-		// case R.id._lable_business:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.BUSINESS);
-		// break;
-		// case R.id._lable_life:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.LIFE);
-		// break;
-		// case R.id._lable_activity:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.ACTIVITY);
-		// break;
-		// case R.id._lable_cars:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.CARS);
-		// break;
-		// case R.id._lable_news:
-		// mDataHolder.setShequBussiness(ShequBusinessEnum.NEWS);
-		// break;
 		case R.id._return:
 			this.onBackPressed();
 			break;
