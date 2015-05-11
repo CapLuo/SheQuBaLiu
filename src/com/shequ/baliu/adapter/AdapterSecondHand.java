@@ -9,6 +9,7 @@ import java.util.TimeZone;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,23 +116,19 @@ public class AdapterSecondHand extends BaseAdapter {
 			}
 		});
 		holder.head.setImageResource(R.drawable.user_head_default);
-		ImageLoader.getInstance().displayImage(
-				goods.get(position).getHeadphoto(), holder.head, mOptions);
+		if (!TextUtils.isEmpty(goods.get(position).getHeadphoto())) {
+			ImageLoader.getInstance().displayImage(
+					goods.get(position).getHeadphoto(), holder.head, mOptions);
+		}
 		holder.title.setText(goods.get(position).getTitle());
 		holder.name.setText(goods.get(position).getNickname());
 		holder.groupname.setText(goods.get(position).getGroupname());
 
 		Date date = new Date(
 				Long.parseLong(goods.get(position).getUpdateTime()) * 1000);
-		Date nowDate = new Date();
-		long timelong = nowDate.getTime() - date.getTime();
-		if (timelong < 60 * 60 * 24 * 1000) {
-			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-			sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
-			holder.time.setText(sdf.format(date));
-		} else {
-			holder.time.setText(R.string.second_hand_time);
-		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		format.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+		holder.time.setText(format.format(date));
 
 		return convertView;
 	}

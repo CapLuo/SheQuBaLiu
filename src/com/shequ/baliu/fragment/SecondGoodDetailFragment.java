@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,8 +107,10 @@ public class SecondGoodDetailFragment extends Fragment {
 	private void initData() {
 		mImageAdapter = new AdapterInsertImageBrowsing(getActivity());
 		mHeadImage.setImageResource(R.drawable.user_head_default);
-		ImageLoader.getInstance().displayImage(mGood.getHeadphoto(),
-				mHeadImage, mOptions);
+		if (!TextUtils.isEmpty(mGood.getHeadphoto())) {
+			ImageLoader.getInstance().displayImage(mGood.getHeadphoto(),
+					mHeadImage, mOptions);
+		}
 		mImageAdapter.notifyDataList(mGood.getPhoto());
 		mBrowsingImage.setAdapter(mImageAdapter);
 		mName.setText(mGood.getNickname());
@@ -132,8 +135,9 @@ public class SecondGoodDetailFragment extends Fragment {
 		str = str.replaceAll("&gt;", ">");
 		str = str.replaceAll("&apm;", "&");
 		String contentStr = Html.fromHtml(str).toString();
-		contentStr = contentStr.replace("&nbsp;", "");
-		contentStr = contentStr.replace("￼", "");
+		contentStr = contentStr.replaceAll("&nbsp;", "");
+		contentStr = contentStr.replaceAll("￼", "");
+		contentStr = contentStr.replaceAll((char) (10) + "", "");
 		mContent.setText(contentStr);
 	}
 }
