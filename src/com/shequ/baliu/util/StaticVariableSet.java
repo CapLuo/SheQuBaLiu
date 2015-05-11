@@ -47,6 +47,7 @@ public class StaticVariableSet {
 	public static String SHEQU_GROUP = "club_group";
 	public static String SHEQU_GROUP_RELATION = "club_group_user";
 	public static String SECOND_MARKET = "club_flea";
+	public static String SECOND_MARKET_CATE = "club_flea_cate";
 	public static String USER_MESSAGE = "club_message";
 	public static String ADVERT_MAIN = "club_advert";
 	public static String ADVERT_INFO = "club_advert_data";

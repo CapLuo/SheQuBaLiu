@@ -1,10 +1,15 @@
 package com.shequ.baliu.holder;
 
+import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.shequ.baliu.util.SqlHelper;
 import com.shequ.baliu.util.StaticVariableSet;
 
 /*
@@ -71,7 +76,7 @@ public class SecondHandGoods {
 	}
 
 	public String getContent() {
-		
+
 		return content;
 	}
 
@@ -97,7 +102,7 @@ public class SecondHandGoods {
 
 	public static SecondHandGoods parseJson(JSONObject json)
 			throws JSONException {
-		SecondHandGoods good = new SecondHandGoods();
+		final SecondHandGoods good = new SecondHandGoods();
 
 		String userid = json.getString("userid");
 		if (userid == null || userid.equals("")) {
@@ -130,6 +135,50 @@ public class SecondHandGoods {
 			good.setPrice(price);
 		}
 
+		String grounpid = json.getString("groupid");
+		if (Integer.valueOf(grounpid) == 0) {
+			// String groupName = json.getString("groupname");
+			good.setGroupname("博泰江滨");
+		} else {
+			SqlHelper.getRow(StaticVariableSet.SHEQU_GROUP,
+					"groupid, groupname", "1", new JsonHttpResponseHandler(
+							"UTF-8") {
+						@Override
+						public void onFailure(int statusCode, Header[] headers,
+								String responseString, Throwable throwable) {
+							good.setGroupname("博泰江滨");
+						}
+
+						@Override
+						public void onFailure(int statusCode, Header[] headers,
+								Throwable throwable, JSONArray errorResponse) {
+							good.setGroupname("博泰江滨");
+						}
+
+						@Override
+						public void onFailure(int statusCode, Header[] headers,
+								Throwable throwable, JSONObject errorResponse) {
+							good.setGroupname("博泰江滨");
+						}
+
+						@Override
+						public void onSuccess(int statusCode, Header[] headers,
+								JSONArray response) {
+							try {
+								for (int i = 0; i < response.length(); i++) {
+									JSONObject json = response.getJSONObject(i);
+									String name = json.getString("groupname");
+									if (name != null && !name.equals("")) {
+										good.setGroupname(name);
+									}
+								}
+							} catch (JSONException e) {
+								Log.e(StaticVariableSet.TAG, e.getMessage());
+							}
+						}
+
+					});
+		}
 		String content = json.getString("content");
 		if (content == null || content.equals("")) {
 			return null;
@@ -145,9 +194,6 @@ public class SecondHandGoods {
 			nickname = json.getString("username");
 		}
 		good.setNickname(nickname);
-
-		String groupName = json.getString("groupname");
-		good.setGroupname(groupName);
 
 		String path = json.getString("path");
 		String face = json.getString("face");

@@ -134,7 +134,7 @@
     <dimen name="second_good_summary_title_text_size">11sp</dimen>
     <dimen name="second_good_driver_height">9dp</dimen>
     <dimen name="second_good_list_layout_margin_top">-9dp</dimen>
-    <dimen name="second_good_summary_button_margin_right">-1dp</dimen>
+    <dimen name="second_good_summary_button_margin_right">-1px</dimen>
     <dimen name="second_good_price_layout_height">52dp</dimen>
     <dimen name="second_good_price_height">25dp</dimen>
     <dimen name="second_good_price_weight">150dp</dimen>
