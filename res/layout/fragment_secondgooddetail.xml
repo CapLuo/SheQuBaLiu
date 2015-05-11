@@ -58,6 +58,7 @@
                 android:id="@+id/second_hand_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/second_good_page_paddingTop"
                 android:textColor="@color/black"
                 android:textSize="@dimen/second_good_title_size" />
 
