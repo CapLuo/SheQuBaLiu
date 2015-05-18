@@ -198,6 +198,10 @@ public class SqlHelper extends SQLiteOpenHelper {
 				});
 	}
 
+	public static void getVersionCode(AsyncHttpResponseHandler response) {
+		HttpUtil.get(StaticVariableSet.IM_DATA_URL, response);
+	}
+
 	public static void getImToken(Context context, JSONObject object,
 			ResponseHandlerInterface responseHandler) throws JSONException,
 			UnsupportedEncodingException {
