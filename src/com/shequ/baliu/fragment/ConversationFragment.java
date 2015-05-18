@@ -91,8 +91,6 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		if (mContentView == null) {
-			mContentView = inflater.inflate(R.layout.fragment_conversation,
-					container, false);
 		}
 		if (mContentView.getParent() != null) {
 			((ViewGroup) mContentView.getParent()).removeView(mContentView);
@@ -119,14 +117,6 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
-		mSendMessage = mContentView.findViewById(R.id.conversation_commit);
-		mSendMessage.setOnClickListener(this);
-
-		mEditText = (EditText) mContentView
-				.findViewById(R.id.conversation_edit);
-
-		mContentMain = (LinearLayout) mContentView
-				.findViewById(R.id.conversation_content_main);
 	}
 
 	private void initData() {
@@ -144,13 +134,6 @@ public class ConversationFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		case R.id.conversation_commit:
-			String content = mEditText.getText().toString();
-			addChildeInContentMain(content, true);
-			MessageInfo info = fullSendMessage(content);
-			insertMessageForNet(info);
-			mEditText.setText("");
-			break;
 		default:
 			break;
 		}
