@@ -283,7 +283,7 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 		default:
 			break;
 		}
-		mTransaction.commit();
+		mTransaction.commitAllowingStateLoss();
 	}
 
 	private void clearAllSelector() {
@@ -406,6 +406,8 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
 		if (resultCode == 400) {
+			Toast.makeText(this, R.string.user_login_first, Toast.LENGTH_SHORT)
+					.show();
 			setChoiceFragmentContent(3);
 		}
 		if (resultCode == 201 && mCurrentPosition == 3) {

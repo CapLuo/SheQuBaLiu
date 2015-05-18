@@ -92,7 +92,6 @@ public class ShequFunActivity extends FragmentActivity {
 		if (fun == ShequFunEnum.NEIGHBOUR) {
 			ShequApplication app = (ShequApplication) getApplication();
 			if (!app.getLogin()) {
-				Toast.makeText(this, "请先登入", Toast.LENGTH_SHORT).show();
 				setResult(result_notlogin);
 				onBackPressed();
 				return;
@@ -117,6 +116,12 @@ public class ShequFunActivity extends FragmentActivity {
 			mTextButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View view) {
+					ShequApplication app = (ShequApplication) getApplication();
+					if (!app.getLogin()) {
+						setResult(result_notlogin);
+						onBackPressed();
+						return;
+					}
 					Intent intent = new Intent();
 					intent.setClass(ShequFunActivity.this,
 							ShequReleaseActivity.class);
