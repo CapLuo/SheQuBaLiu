@@ -19,6 +19,7 @@
             android:textSize="@dimen/release_title_size" />
 
         <EditText
+            android:id="@+id/release_goods_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/release_input_margin_left"
@@ -28,6 +29,53 @@
             android:padding="0dp"
             android:singleLine="true"
             android:textSize="@dimen/release_input_size" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="@dimen/release_line_width"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/edit_stroke_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/release_cate_margin_top"
+            android:layout_marginLeft="@dimen/release_title_margin_left"
+            android:layout_marginTop="@dimen/release_cate_margin_top"
+            android:padding="0dp"
+            android:text="@string/release_goods_cate"
+            android:textSize="@dimen/release_title_size" />
+
+        <RelativeLayout
+            android:id="@+id/release_cate_layout"
+            android:layout_width="@dimen/release_cate_text_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/release_input_margin_left"
+            android:background="@drawable/release_second_edittext_background"
+            android:padding="@dimen/release_cate_text_padding" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@drawable/drap_down_flag"
+                android:src="@drawable/drap_down_flag" />
+
+            <TextView
+                android:id="@+id/release_cate_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textSize="@dimen/release_title_size" />
+        </RelativeLayout>
     </LinearLayout>
 
     <TextView
@@ -51,6 +99,7 @@
             android:textSize="@dimen/release_title_size" />
 
         <EditText
+            android:id="@+id/release_description_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/release_input_margin_left"
@@ -86,7 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/release_input_margin_left" />
+            android:layout_marginLeft="@dimen/release_browsing_image_margin_left" />
     </LinearLayout>
 
     <TextView
@@ -103,13 +152,53 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_title_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:padding="0dp"
             android:text="@string/release_goods_new_price"
             android:textSize="@dimen/release_title_size" />
 
         <EditText
             android:id="@+id/release_goods_new_price"
             android:layout_width="@dimen/release_price_edit_width"
-            android:layout_height="@dimen/release_price_edit_height" />
+            android:layout_height="@dimen/release_price_edit_height"
+            android:layout_marginLeft="@dimen/release_input_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:background="@drawable/release_second_edittext_background"
+            android:inputType="number"
+            android:padding="0dp"
+            android:textSize="@dimen/release_title_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/release_title_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:padding="0dp"
+            android:text="@string/release_goods_old_price"
+            android:textSize="@dimen/release_title_size" />
+
+        <EditText
+            android:id="@+id/release_goods_old_price"
+            android:layout_width="@dimen/release_price_edit_width"
+            android:layout_height="@dimen/release_price_edit_height"
+            android:layout_marginLeft="@dimen/release_input_margin_left"
+            android:layout_marginTop="@dimen/release_description_margin_top"
+            android:background="@drawable/release_second_edittext_background"
+            android:inputType="number"
+            android:padding="0dp"
+            android:textSize="@dimen/release_title_size" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/release_goods_button"
+        android:layout_width="@dimen/login_edittext_layout_width"
+        android:layout_height="@dimen/login_button_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/login_login_margintop"
+        android:background="@drawable/login_button"
+        android:text="@string/release_text"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_textregister_textsize" />
 
 </LinearLayout>

@@ -68,7 +68,6 @@ public class SecondhandFragment extends Fragment implements
 		}
 
 		initView();
-		initData();
 
 		return mContentView;
 	}
@@ -76,6 +75,7 @@ public class SecondhandFragment extends Fragment implements
 	@Override
 	public void onResume() {
 		super.onResume();
+		initData();
 		StatService.onPageStart(getActivity(), "SecondhandFragment");
 	}
 

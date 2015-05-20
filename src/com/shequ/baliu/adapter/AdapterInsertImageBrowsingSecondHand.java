@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.shequ.baliu.R;
+import com.shequ.baliu.util.ShequTools;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,15 +15,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-public class AdapterInsertImageBrowsing extends BaseAdapter {
-
+public class AdapterInsertImageBrowsingSecondHand extends BaseAdapter {
 	private Context mContext;
 
 	private ArrayList<String> mList;
 	private DisplayImageOptions mOptions;
 
-	public AdapterInsertImageBrowsing(Context context) {
+	public AdapterInsertImageBrowsingSecondHand(Context context) {
 		mContext = context;
+
 		mList = new ArrayList<String>();
 		mOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
 				.cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565)
@@ -32,14 +34,13 @@ public class AdapterInsertImageBrowsing extends BaseAdapter {
 		mList = list;
 	}
 
-	public void notifyDataList(String str) {
-		mList = new ArrayList<String>();
-		mList.add(str);
-	}
-
 	@Override
 	public int getCount() {
-		return mList.size();
+		int size = mList.size();
+		if (size >= 1) {
+			return size;
+		}
+		return mList.size() + 1;
 	}
 
 	@Override
@@ -57,10 +58,21 @@ public class AdapterInsertImageBrowsing extends BaseAdapter {
 		if (view == null) {
 			view = new ImageView(mContext);
 		}
-		ImageLoader.getInstance().displayImage(mList.get(position),
-				((ImageView) view), mOptions);
-		view.setTag(mList.get(position));
+		if (position == mList.size()) {
+			((ImageView) view).setImageResource(R.drawable.add_release_pic);
+			view.setTag("");
+		} else {
+			String photo_url = mList.get(position);
+			if (photo_url.startsWith("content")) {
+				ImageLoader.getInstance().displayImage(mList.get(position),
+						((ImageView) view), mOptions);
+			} else {
+				ImageView view_image = (ImageView) view;
+				view_image
+						.setImageBitmap(ShequTools.getLoacalBitmap(photo_url));
+			}
+			view.setTag(mList.get(position));
+		}
 		return view;
 	}
-
 }

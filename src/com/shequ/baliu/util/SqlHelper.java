@@ -1,5 +1,9 @@
 package com.shequ.baliu.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
@@ -95,24 +99,25 @@ public class SqlHelper extends SQLiteOpenHelper {
 	}
 
 	public static void getFleaDeal(String limit, JsonHttpResponseHandler handler) {
-		String paramsValue = new String(Base64.encode(("SELECT `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`userid`, `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`title`, `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`price`, `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`content`, `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`photo`, `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`updatetime`, `"
-				+ StaticVariableSet.USER_INFO + "`.`username`, `"
-				+ StaticVariableSet.USER_INFO + "`.`groupid`, `"
-				+ StaticVariableSet.USER_INFO + "`.`path`, `"
-				+ StaticVariableSet.USER_INFO + "`.`face`, `"
-				+ StaticVariableSet.USER_INFO + "`.`nickname` FROM `"
-				+ StaticVariableSet.SECOND_MARKET + "` JOIN `"
-				+ StaticVariableSet.USER_INFO + "` ON `"
-				+ StaticVariableSet.SECOND_MARKET + "`.`userid` = `"
-				+ StaticVariableSet.USER_INFO + "`.`userid` WHERE 1 ORDER BY `"
-				+ StaticVariableSet.SECOND_MARKET
-				+ "`.`updatetime` DESC LIMIT " + limit).getBytes(), 0));
+		String paramsValue = new String(Base64.encode(
+				("SELECT `" + StaticVariableSet.SECOND_MARKET + "`.`userid`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`title`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`price`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`content`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`photo`, `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`addtime`, `"
+						+ StaticVariableSet.USER_INFO + "`.`username`, `"
+						+ StaticVariableSet.USER_INFO + "`.`groupid`, `"
+						+ StaticVariableSet.USER_INFO + "`.`path`, `"
+						+ StaticVariableSet.USER_INFO + "`.`face`, `"
+						+ StaticVariableSet.USER_INFO + "`.`nickname` FROM `"
+						+ StaticVariableSet.SECOND_MARKET + "` JOIN `"
+						+ StaticVariableSet.USER_INFO + "` ON `"
+						+ StaticVariableSet.SECOND_MARKET + "`.`userid` = `"
+						+ StaticVariableSet.USER_INFO
+						+ "`.`userid` WHERE 1 ORDER BY `"
+						+ StaticVariableSet.SECOND_MARKET
+						+ "`.`addtime` DESC LIMIT " + limit).getBytes(), 0));
 		get(paramsValue, handler);
 	}
 
@@ -224,12 +229,12 @@ public class SqlHelper extends SQLiteOpenHelper {
 			ResponseHandlerInterface responseHandler) throws JSONException,
 			UnsupportedEncodingException {
 
-		JSONObject object = new JSONObject();
-		object.put("file_data", new String(Base64.encode(bytes, 0)));
-		object.put("file_ext", ext);
+		RequestParams params = new RequestParams();
 
-		HttpUtil.post(context, StaticVariableSet.IMG_UPLOAD, object,
-				"application/json", responseHandler);
+		params.put("file_data", new String(Base64.encode(bytes, 0)));
+		params.put("file_ext", ext);
+
+		HttpUtil.post(StaticVariableSet.IMG_UPLOAD, params, responseHandler);
 	}
 
 	public static void getSencondCate(JsonHttpResponseHandler responseHandler) {

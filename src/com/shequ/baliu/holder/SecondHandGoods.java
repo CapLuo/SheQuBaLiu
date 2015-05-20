@@ -117,6 +117,12 @@ public class SecondHandGoods {
 		} else {
 			if (!photo.startsWith("http")) {
 				photo = StaticVariableSet.IMG_URL + photo;
+				if (!photo.endsWith("jpg")) {
+					if (photo.contains("jpg")) {
+						photo = photo.substring(0, photo.indexOf("jpg"));
+						photo = photo + "jpg";
+					}
+				}
 			}
 			good.setPhoto(photo);
 		}
@@ -141,8 +147,8 @@ public class SecondHandGoods {
 			good.setGroupname("博泰江滨");
 		} else {
 			SqlHelper.getRow(StaticVariableSet.SHEQU_GROUP,
-					"groupid, groupname", "1", new JsonHttpResponseHandler(
-							"UTF-8") {
+					"groupid, groupname", "groupid = " + grounpid,
+					new JsonHttpResponseHandler("UTF-8") {
 						@Override
 						public void onFailure(int statusCode, Header[] headers,
 								String responseString, Throwable throwable) {
@@ -186,7 +192,7 @@ public class SecondHandGoods {
 			good.setContent(content);
 		}
 
-		String updatetime = json.getString("updatetime");
+		String updatetime = json.getString("addtime");
 		good.setUpdateTime(updatetime);
 
 		String nickname = json.getString("nickname");

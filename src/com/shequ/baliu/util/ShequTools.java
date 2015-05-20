@@ -1,6 +1,9 @@
 package com.shequ.baliu.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -14,14 +17,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore.Images.ImageColumns;
 import android.util.DisplayMetrics;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -212,6 +219,26 @@ public class ShequTools {
 		}
 	}
 
+	public static String getAppFilePath() {
+		String sdcardPath = Environment.getExternalStorageDirectory()
+				.getAbsolutePath();
+		String appPath = sdcardPath + "/" + StaticVariableSet.TAG;
+		File file = new File(appPath);
+		if (!file.exists()) {
+			file.mkdirs();
+		}
+		String noMediaPath = appPath + "/" + ".nomedia";
+		File noMedia = new File(noMediaPath);
+		try {
+			if (!noMedia.exists()) {
+				noMedia.createNewFile();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return appPath;
+	}
+
 	// 获得随机字符串对密码加密
 	public static String getRandomString(int length) {
 		String base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -240,8 +267,49 @@ public class ShequTools {
 		return false;
 	}
 
+	public static Bitmap getLoacalBitmap(String url) {
+		try {
+			FileInputStream fis = new FileInputStream(url);
+			return BitmapFactory.decodeStream(fis);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public static void parserHtmlContent() {
 
 	}
 
+	/**
+	 * Try to return the absolute file path from the given Uri
+	 * 
+	 * @param context
+	 * @param uri
+	 * @return the file path or null
+	 */
+	public static String getRealFilePath(final Context context, final Uri uri) {
+		if (null == uri)
+			return null;
+		final String scheme = uri.getScheme();
+		String data = null;
+		if (scheme == null)
+			data = uri.getPath();
+		else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
+			data = uri.getPath();
+		} else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+			Cursor cursor = context.getContentResolver().query(uri,
+					new String[] { ImageColumns.DATA }, null, null, null);
+			if (null != cursor) {
+				if (cursor.moveToFirst()) {
+					int index = cursor.getColumnIndex(ImageColumns.DATA);
+					if (index > -1) {
+						data = cursor.getString(index);
+					}
+				}
+				cursor.close();
+			}
+		}
+		return data;
+	}
 }

@@ -188,11 +188,19 @@
     <dimen name="release_title_margin_top">42dp</dimen>
     <dimen name="release_title_margin_left">20dp</dimen>
     <dimen name="release_description_margin_top">17dp</dimen>
+    <dimen name="release_cate_margin_top">12dp</dimen>
+    <dimen name="release_cate_text_width">70dp</dimen>
     <dimen name="release_line_width">330dp</dimen>
     <dimen name="release_img_width">66dp</dimen>
     <dimen name="release_price_edit_width">65dp</dimen>
     <dimen name="release_price_edit_height">17dp</dimen>
     <dimen name="release_details_layout_height">105dp</dimen>
     <dimen name="release_input_margin_left">20dp</dimen>
+    <dimen name="release_browsing_image_margin_left">10dp</dimen>
+    <dimen name="release_cate_text_padding">3dp</dimen>
+    <dimen name="release_menu_textline_margintop">15dp</dimen>
+    <dimen name="release_menu_text_marginLeft">40dp</dimen>
+    <dimen name="release_menu_line_height">1dp</dimen>
+    <dimen name="release_menu_textsize">15sp</dimen>
 
 </resources>

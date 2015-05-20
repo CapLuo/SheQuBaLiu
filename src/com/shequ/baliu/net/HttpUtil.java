@@ -60,7 +60,7 @@ public class HttpUtil {
 	 * 上传文件 params.put("fileName", file);
 	 */
 	public static void post(String uString, RequestParams params,
-			AsyncHttpResponseHandler responseHandler) {
+			ResponseHandlerInterface responseHandler) {
 		client.post(uString, params, responseHandler);
 	}
 

@@ -115,9 +115,9 @@ public class SheQuActivity extends FragmentActivity implements OnClickListener {
 			if (version_code == 0 || version_code < version_code_package) {
 				mShequTools.writeSharedPreferences(
 						StaticVariableSet.SHARE_VERSION, version_code_package);
-				Intent intent = new Intent();
-				intent.setClass(SheQuActivity.this, ShequAdDialogActivity.class);
-				this.startActivity(intent);
+				//Intent intent = new Intent();
+				//intent.setClass(SheQuActivity.this, ShequAdDialogActivity.class);
+				//this.startActivity(intent);
 			}
 		} catch (NameNotFoundException e) {
 			Log.e(StaticVariableSet.TAG, e.getMessage());

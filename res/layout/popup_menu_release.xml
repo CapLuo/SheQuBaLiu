@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_menu_background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/release_menu_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/release_menu_textline_margintop"
+        android:paddingLeft="@dimen/release_menu_text_marginLeft"
+        android:paddingRight="@dimen/release_menu_text_marginLeft"
+        android:paddingTop="@dimen/release_menu_textline_margintop"
+        android:text="@string/release_menu_camera"
+        android:textSize="@dimen/release_menu_textsize" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/release_menu_line_height"
+        android:background="@color/edit_stroke_gray" />
+
+    <TextView
+        android:id="@+id/release_menu_albums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/release_menu_textline_margintop"
+        android:paddingLeft="@dimen/release_menu_text_marginLeft"
+        android:paddingRight="@dimen/release_menu_text_marginLeft"
+        android:paddingTop="@dimen/release_menu_textline_margintop"
+        android:text="@string/release_menu_albums"
+        android:textSize="@dimen/release_menu_textsize" />
+
+</LinearLayout>
